@@ -1,0 +1,42 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.bs-callout {
+    padding: 30px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.disabled_fields{
+	color: #3c763d;
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
+	box-shadow: none;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.disabled_fields:focus{
+	outline: 0px !important;
+	box-shadow: none !important;
+	-webkit-appearance:none;
+}
+
+.final_total{
+	border: 0;
+	box-shadow: none;
+	font-size: 30px;
+	width: 100%;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+	vertical-align: middle;
+}
