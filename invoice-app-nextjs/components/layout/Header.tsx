@@ -9,43 +9,43 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-md border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+    <header className="bg-white shadow-lg border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="flex justify-between items-center h-24">
           <div className="flex items-center">
-            <Link href="/" className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+            <Link href="/" className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
               Invoice App
             </Link>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-2">
             <Link
               href="/"
-              className="px-4 py-2 text-gray-700 font-medium hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
+              className="px-5 py-2.5 text-slate-700 font-semibold hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
             >
               Dashboard
             </Link>
             <Link
               href="/clients"
-              className="px-4 py-2 text-gray-700 font-medium hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
+              className="px-5 py-2.5 text-slate-700 font-semibold hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
             >
               Clients
             </Link>
             <Link
               href="/products"
-              className="px-4 py-2 text-gray-700 font-medium hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
+              className="px-5 py-2.5 text-slate-700 font-semibold hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
             >
               Products
             </Link>
             <Link
               href="/invoices"
-              className="px-4 py-2 text-gray-700 font-medium hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
+              className="px-5 py-2.5 text-slate-700 font-semibold hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
             >
               Invoices
             </Link>
             <Link
               href="/settings"
-              className="px-4 py-2 text-gray-700 font-medium hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
+              className="px-5 py-2.5 text-slate-700 font-semibold hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
             >
               Settings
             </Link>
@@ -54,7 +54,7 @@ export function Header() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-gray-700 hover:bg-gray-100"
+            className="md:hidden text-slate-700 hover:bg-slate-100 rounded-xl"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -62,34 +62,34 @@ export function Header() {
         </div>
 
         {mobileMenuOpen && (
-          <nav className="md:hidden pb-6 space-y-2 border-t border-gray-200 pt-4">
+          <nav className="md:hidden pb-6 space-y-2 border-t border-slate-200 pt-4">
             <Link
               href="/"
-              className="block px-4 py-3 text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all"
+              className="block px-5 py-3 text-slate-700 font-semibold hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-all duration-200"
             >
               Dashboard
             </Link>
             <Link
               href="/clients"
-              className="block px-4 py-3 text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all"
+              className="block px-5 py-3 text-slate-700 font-semibold hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-all duration-200"
             >
               Clients
             </Link>
             <Link
               href="/products"
-              className="block px-4 py-3 text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all"
+              className="block px-5 py-3 text-slate-700 font-semibold hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-all duration-200"
             >
               Products
             </Link>
             <Link
               href="/invoices"
-              className="block px-4 py-3 text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all"
+              className="block px-5 py-3 text-slate-700 font-semibold hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-all duration-200"
             >
               Invoices
             </Link>
             <Link
               href="/settings"
-              className="block px-4 py-3 text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all"
+              className="block px-5 py-3 text-slate-700 font-semibold hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-all duration-200"
             >
               Settings
             </Link>
