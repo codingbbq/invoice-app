@@ -95,9 +95,7 @@ export const deleteClient = async (id: string) => {
 };
 
 export const getClients = async () => {
-  const querySnapshot = await getDocs(
-    query(collection(db, 'clients'), where('isActive', '==', true))
-  );
+  const querySnapshot = await getDocs(collection(db, 'clients'));
   return querySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
@@ -131,9 +129,7 @@ export const deleteProduct = async (id: string) => {
 };
 
 export const getProducts = async () => {
-  const querySnapshot = await getDocs(
-    query(collection(db, 'products'), where('isActive', '==', true))
-  );
+  const querySnapshot = await getDocs(collection(db, 'products'));
   return querySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
@@ -166,9 +162,7 @@ export const deleteInvoice = async (id: string) => {
 };
 
 export const getInvoices = async () => {
-  const querySnapshot = await getDocs(
-    query(collection(db, 'invoices'), orderBy('createdAt', 'desc'))
-  );
+  const querySnapshot = await getDocs(collection(db, 'invoices'));
   return querySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
