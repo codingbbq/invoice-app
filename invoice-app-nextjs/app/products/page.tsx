@@ -4,16 +4,24 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useProducts, useDeleteProduct } from '@/hooks/useProducts';
 import { usePagination } from '@/hooks/usePagination';
+import { useSearch } from '@/hooks/useSearch';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
+import { SearchInput } from '@/components/ui/search-input';
 import { Trash2, Edit, Plus } from 'lucide-react';
 
 export default function ProductsPage() {
   const { data: products = [], isLoading } = useProducts();
   const deleteProduct = useDeleteProduct();
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
-  const { items: paginatedProducts, pagination, goToPage, setPageSize } = usePagination(products, 10);
+  
+  const { items: searchedProducts, searchQuery, setSearchQuery, clearSearch } = useSearch({
+    data: products,
+    searchFields: ['name', 'description', 'hsnCode'] as const,
+  });
+  
+  const { items: paginatedProducts, pagination, goToPage, setPageSize } = usePagination(searchedProducts, 10);
 
   const handleDelete = async (id: string) => {
     try {
@@ -38,6 +46,19 @@ export default function ProductsPage() {
           </Button>
         </Link>
       </div>
+
+      {products.length > 0 && (
+        <div className="mb-8">
+          <SearchInput
+            value={searchQuery}
+            onChange={setSearchQuery}
+            onClear={clearSearch}
+            placeholder="Search by product name, description, or HSN code..."
+            resultCount={searchedProducts.length}
+            totalCount={products.length}
+          />
+        </div>
+      )}
 
       {isLoading ? (
         <Card className="p-12 text-center">

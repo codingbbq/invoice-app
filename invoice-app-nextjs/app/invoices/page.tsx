@@ -4,16 +4,24 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useInvoices, useDeleteInvoice } from '@/hooks/useInvoices';
 import { usePagination } from '@/hooks/usePagination';
+import { useSearch } from '@/hooks/useSearch';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
+import { SearchInput } from '@/components/ui/search-input';
 import { Trash2, Eye, Plus, Download } from 'lucide-react';
 
 export default function InvoicesPage() {
   const { data: invoices = [], isLoading } = useInvoices();
   const deleteInvoice = useDeleteInvoice();
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
-  const { items: paginatedInvoices, pagination, goToPage, setPageSize } = usePagination(invoices, 10);
+  
+  const { items: searchedInvoices, searchQuery, setSearchQuery, clearSearch } = useSearch({
+    data: invoices,
+    searchFields: ['invoiceNumber', 'clientId', 'invoiceDate', 'status'] as const,
+  });
+  
+  const { items: paginatedInvoices, pagination, goToPage, setPageSize } = usePagination(searchedInvoices, 10);
 
   const handleDelete = async (id: string) => {
     try {
@@ -38,6 +46,19 @@ export default function InvoicesPage() {
           </Button>
         </Link>
       </div>
+
+      {invoices.length > 0 && (
+        <div className="mb-8">
+          <SearchInput
+            value={searchQuery}
+            onChange={setSearchQuery}
+            onClear={clearSearch}
+            placeholder="Search by invoice number, client name, date, or status..."
+            resultCount={searchedInvoices.length}
+            totalCount={invoices.length}
+          />
+        </div>
+      )}
 
       {isLoading ? (
         <Card className="p-12 text-center">

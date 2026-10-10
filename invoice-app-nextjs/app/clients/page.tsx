@@ -4,16 +4,24 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useClients, useDeleteClient } from '@/hooks/useClients';
 import { usePagination } from '@/hooks/usePagination';
+import { useSearch } from '@/hooks/useSearch';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
+import { SearchInput } from '@/components/ui/search-input';
 import { Trash2, Edit, Plus } from 'lucide-react';
 
 export default function ClientsPage() {
   const { data: clients = [], isLoading } = useClients();
   const deleteClient = useDeleteClient();
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
-  const { items: paginatedClients, pagination, goToPage, setPageSize } = usePagination(clients, 10);
+  
+  const { items: searchedClients, searchQuery, setSearchQuery, clearSearch } = useSearch({
+    data: clients,
+    searchFields: ['client_name', 'client_email', 'client_phone', 'client_gst_no', 'client_address'] as const,
+  });
+  
+  const { items: paginatedClients, pagination, goToPage, setPageSize } = usePagination(searchedClients, 10);
 
   const handleDelete = async (id: string) => {
     try {
@@ -38,6 +46,19 @@ export default function ClientsPage() {
           </Button>
         </Link>
       </div>
+
+      {clients.length > 0 && (
+        <div className="mb-8">
+          <SearchInput
+            value={searchQuery}
+            onChange={setSearchQuery}
+            onClear={clearSearch}
+            placeholder="Search by name, email, phone, GST number, or address..."
+            resultCount={searchedClients.length}
+            totalCount={clients.length}
+          />
+        </div>
+      )}
 
       {isLoading ? (
         <Card className="p-12 text-center">
