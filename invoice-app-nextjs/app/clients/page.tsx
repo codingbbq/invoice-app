@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { useClients, useDeleteClient } from '@/hooks/useClients';
 import { usePagination } from '@/hooks/usePagination';
 import { useSearch } from '@/hooks/useSearch';
+import { useSort } from '@/hooks/useSort';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
 import { SearchInput } from '@/components/ui/search-input';
+import { SortableHeader } from '@/components/ui/sortable-header';
 import { Trash2, Edit, Plus } from 'lucide-react';
 
 export default function ClientsPage() {
@@ -21,7 +23,9 @@ export default function ClientsPage() {
     searchFields: ['client_name', 'client_email', 'client_phone', 'client_gst_no', 'client_address'] as const,
   });
   
-  const { items: paginatedClients, pagination, goToPage, setPageSize } = usePagination(searchedClients, 10);
+  const { items: sortedClients, sortConfig, toggleSort } = useSort(searchedClients);
+  
+  const { items: paginatedClients, pagination, goToPage, setPageSize } = usePagination(sortedClients, 10);
 
   const handleDelete = async (id: string) => {
     try {
@@ -78,20 +82,50 @@ export default function ClientsPage() {
               <table className="w-full">
                 <thead className="bg-gray-50 border-b">
                   <tr>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">
-                      Name
+                    <th className="px-6 py-3 text-left text-sm">
+                      <SortableHeader
+                        label="Name"
+                        sortKey="client_name"
+                        currentSortKey={sortConfig?.key as string | undefined}
+                        sortDirection={sortConfig?.direction}
+                        onSort={() => toggleSort('client_name' as any)}
+                      />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">
-                      GST Number
+                    <th className="px-6 py-3 text-left text-sm">
+                      <SortableHeader
+                        label="GST Number"
+                        sortKey="client_gst_no"
+                        currentSortKey={sortConfig?.key as string | undefined}
+                        sortDirection={sortConfig?.direction}
+                        onSort={() => toggleSort('client_gst_no' as any)}
+                      />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">
-                      Email
+                    <th className="px-6 py-3 text-left text-sm">
+                      <SortableHeader
+                        label="Email"
+                        sortKey="client_email"
+                        currentSortKey={sortConfig?.key as string | undefined}
+                        sortDirection={sortConfig?.direction}
+                        onSort={() => toggleSort('client_email' as any)}
+                      />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">
-                      Phone
+                    <th className="px-6 py-3 text-left text-sm">
+                      <SortableHeader
+                        label="Phone"
+                        sortKey="client_phone"
+                        currentSortKey={sortConfig?.key as string | undefined}
+                        sortDirection={sortConfig?.direction}
+                        onSort={() => toggleSort('client_phone' as any)}
+                      />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">
-                      Address
+                    <th className="px-6 py-3 text-left text-sm">
+                      <SortableHeader
+                        label="Address"
+                        sortKey="client_address"
+                        currentSortKey={sortConfig?.key as string | undefined}
+                        sortDirection={sortConfig?.direction}
+                        onSort={() => toggleSort('client_address' as any)}
+                      />
                     </th>
                     <th className="px-6 py-3 text-right text-sm font-semibold text-gray-900">
                       Actions

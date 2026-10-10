@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { useProducts, useDeleteProduct } from '@/hooks/useProducts';
 import { usePagination } from '@/hooks/usePagination';
 import { useSearch } from '@/hooks/useSearch';
+import { useSort } from '@/hooks/useSort';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
 import { SearchInput } from '@/components/ui/search-input';
+import { SortableHeader } from '@/components/ui/sortable-header';
 import { Trash2, Edit, Plus } from 'lucide-react';
 
 export default function ProductsPage() {
@@ -21,7 +23,9 @@ export default function ProductsPage() {
     searchFields: ['name', 'description', 'hsnCode'] as const,
   });
   
-  const { items: paginatedProducts, pagination, goToPage, setPageSize } = usePagination(searchedProducts, 10);
+  const { items: sortedProducts, sortConfig, toggleSort } = useSort(searchedProducts);
+  
+  const { items: paginatedProducts, pagination, goToPage, setPageSize } = usePagination(sortedProducts, 10);
 
   const handleDelete = async (id: string) => {
     try {
@@ -78,17 +82,41 @@ export default function ProductsPage() {
               <table className="w-full">
                 <thead className="bg-gray-50 border-b">
                   <tr>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">
-                      Name
+                    <th className="px-6 py-3 text-left text-sm">
+                      <SortableHeader
+                        label="Name"
+                        sortKey="name"
+                        currentSortKey={sortConfig?.key as string | undefined}
+                        sortDirection={sortConfig?.direction}
+                        onSort={() => toggleSort('name' as any)}
+                      />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">
-                      HSN Code
+                    <th className="px-6 py-3 text-left text-sm">
+                      <SortableHeader
+                        label="HSN Code"
+                        sortKey="hsnCode"
+                        currentSortKey={sortConfig?.key as string | undefined}
+                        sortDirection={sortConfig?.direction}
+                        onSort={() => toggleSort('hsnCode' as any)}
+                      />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">
-                      Description
+                    <th className="px-6 py-3 text-left text-sm">
+                      <SortableHeader
+                        label="Description"
+                        sortKey="description"
+                        currentSortKey={sortConfig?.key as string | undefined}
+                        sortDirection={sortConfig?.direction}
+                        onSort={() => toggleSort('description' as any)}
+                      />
                     </th>
-                    <th className="px-6 py-3 text-right text-sm font-semibold text-gray-900">
-                      MRP
+                    <th className="px-6 py-3 text-right text-sm">
+                      <SortableHeader
+                        label="MRP"
+                        sortKey="mrp"
+                        currentSortKey={sortConfig?.key as string | undefined}
+                        sortDirection={sortConfig?.direction}
+                        onSort={() => toggleSort('mrp' as any)}
+                      />
                     </th>
                     <th className="px-6 py-3 text-right text-sm font-semibold text-gray-900">
                       Actions
