@@ -81,19 +81,19 @@ export default function ClientsPage() {
                   {paginatedClients.map((client: any) => (
                     <tr key={client.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 text-sm font-medium text-gray-900">
-                        {client.name}
+                        {client.client_name}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-600">
-                        {client.gstNo}
+                        {client.client_gst_no}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-600">
-                        {client.email}
+                        {client.client_email}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-600">
-                        {client.phone}
+                        {client.client_phone}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-600">
-                        {client.address}
+                        {client.client_address}
                       </td>
                       <td className="px-6 py-4 text-right text-sm">
                         <div className="flex justify-end gap-2">

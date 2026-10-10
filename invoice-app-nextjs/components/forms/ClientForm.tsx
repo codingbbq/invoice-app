@@ -23,11 +23,11 @@ export function ClientForm({
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: initialData?.name || '',
-      email: initialData?.email || '',
-      phone: initialData?.phone || '',
-      gstNo: initialData?.gstNo || '',
-      address: initialData?.address || '',
+      client_name: initialData?.client_name || '',
+      client_email: initialData?.client_email || '',
+      client_phone: initialData?.client_phone || '',
+      client_gst_no: initialData?.client_gst_no || '',
+      client_address: initialData?.client_address || '',
     },
   });
 
@@ -40,12 +40,12 @@ export function ClientForm({
               Client Name *
             </label>
             <Input
-              {...register('name', { required: 'Client name is required' })}
+              {...register('client_name', { required: 'Client name is required' })}
               placeholder="Enter client name"
               disabled={isLoading}
             />
-            {errors.name && (
-              <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+            {errors.client_name && (
+              <p className="text-red-500 text-sm mt-1">{errors.client_name.message}</p>
             )}
           </div>
 
@@ -54,12 +54,12 @@ export function ClientForm({
               GST Number *
             </label>
             <Input
-              {...register('gstNo', { required: 'GST number is required' })}
+              {...register('client_gst_no', { required: 'GST number is required' })}
               placeholder="Enter GST number"
               disabled={isLoading}
             />
-            {errors.gstNo && (
-              <p className="text-red-500 text-sm mt-1">{errors.gstNo.message}</p>
+            {errors.client_gst_no && (
+              <p className="text-red-500 text-sm mt-1">{errors.client_gst_no.message}</p>
             )}
           </div>
 
@@ -68,7 +68,7 @@ export function ClientForm({
               Email *
             </label>
             <Input
-              {...register('email', {
+              {...register('client_email', {
                 required: 'Email is required',
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -79,8 +79,8 @@ export function ClientForm({
               placeholder="Enter email address"
               disabled={isLoading}
             />
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+            {errors.client_email && (
+              <p className="text-red-500 text-sm mt-1">{errors.client_email.message}</p>
             )}
           </div>
 
@@ -89,12 +89,12 @@ export function ClientForm({
               Phone *
             </label>
             <Input
-              {...register('phone', { required: 'Phone number is required' })}
+              {...register('client_phone', { required: 'Phone number is required' })}
               placeholder="Enter phone number"
               disabled={isLoading}
             />
-            {errors.phone && (
-              <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
+            {errors.client_phone && (
+              <p className="text-red-500 text-sm mt-1">{errors.client_phone.message}</p>
             )}
           </div>
 
@@ -103,12 +103,12 @@ export function ClientForm({
               Address *
             </label>
             <Input
-              {...register('address', { required: 'Address is required' })}
+              {...register('client_address', { required: 'Address is required' })}
               placeholder="Enter address"
               disabled={isLoading}
             />
-            {errors.address && (
-              <p className="text-red-500 text-sm mt-1">{errors.address.message}</p>
+            {errors.client_address && (
+              <p className="text-red-500 text-sm mt-1">{errors.client_address.message}</p>
             )}
           </div>
         </div>

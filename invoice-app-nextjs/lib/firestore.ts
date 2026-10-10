@@ -17,11 +17,11 @@ import {
 // Type definitions
 export interface Client {
   id?: string;
-  name: string;
-  gstNo: string;
-  address: string;
-  email: string;
-  phone: string;
+  client_name: string;
+  client_gst_no: string;
+  client_address: string;
+  client_email: string;
+  client_phone: string;
   createdAt?: Timestamp;
   updatedAt?: Timestamp;
   isActive?: boolean;

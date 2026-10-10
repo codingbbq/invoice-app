@@ -40,19 +40,19 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Validation
-    if (!body.name || !body.email || !body.phone || !body.gstNo || !body.address) {
+    if (!body.client_name || !body.client_email || !body.client_phone || !body.client_gst_no || !body.client_address) {
       return NextResponse.json(
-        { error: 'Missing required fields: name, email, phone, gstNo, address' },
+        { error: 'Missing required fields: client_name, client_email, client_phone, client_gst_no, client_address' },
         { status: 400 }
       );
     }
 
     const clientData: Client = {
-      name: body.name,
-      email: body.email,
-      phone: body.phone,
-      gstNo: body.gstNo,
-      address: body.address,
+      client_name: body.client_name,
+      client_email: body.client_email,
+      client_phone: body.client_phone,
+      client_gst_no: body.client_gst_no,
+      client_address: body.client_address,
     };
 
     const docRef = await addClient(clientData);
