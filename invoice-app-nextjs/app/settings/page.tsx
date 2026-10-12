@@ -31,6 +31,8 @@ export default function SettingsPage() {
       if (!response.ok) throw new Error('Failed to fetch settings');
       return response.json();
     },
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
   });
 
   const updateSettings = useMutation({

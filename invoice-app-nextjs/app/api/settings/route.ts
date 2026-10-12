@@ -4,18 +4,26 @@ import { getSettings, updateSettings, Settings } from '@/lib/firestore';
 export async function GET(request: NextRequest) {
   try {
     const settings = await getSettings();
-    if (!settings) {
-      return NextResponse.json(
-        { error: 'Settings not found' },
-        { status: 404 }
-      );
-    }
-    return NextResponse.json(settings);
+    return NextResponse.json(settings || {
+      name: '',
+      address: '',
+      phone: '',
+      email: '',
+      gstNumber: '',
+      cstNumber: '',
+    });
   } catch (error) {
     console.error('Error fetching settings:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch settings' },
-      { status: 500 }
+      {
+        name: '',
+        address: '',
+        phone: '',
+        email: '',
+        gstNumber: '',
+        cstNumber: '',
+      },
+      { status: 200 }
     );
   }
 }

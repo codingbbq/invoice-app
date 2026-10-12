@@ -7,6 +7,7 @@ import {
   doc,
   getDocs,
   getDoc,
+  setDoc,
   query,
   where,
   orderBy,
@@ -177,12 +178,38 @@ export const getInvoice = async (id: string) => {
 // Settings operations
 export const getSettings = async () => {
   const docSnap = await getDoc(doc(db, 'settings', 'company'));
-  return docSnap.exists() ? docSnap.data() : null;
+  if (docSnap.exists()) {
+    return docSnap.data() as Settings;
+  }
+  
+  // Create default settings if they don't exist
+  const defaultSettings: Settings = {
+    name: '',
+    address: '',
+    phone: '',
+    email: '',
+    gstNumber: '',
+    cstNumber: '',
+    updatedAt: Timestamp.now(),
+  };
+  
+  try {
+    await setDoc(doc(db, 'settings', 'company'), defaultSettings);
+  } catch (error) {
+    console.error('Error creating default settings:', error);
+  }
+  
+  return defaultSettings;
 };
 
 export const updateSettings = async (settings: Settings) => {
   return await updateDoc(doc(db, 'settings', 'company'), {
-    ...settings,
+    name: settings.name,
+    address: settings.address,
+    phone: settings.phone,
+    email: settings.email,
+    gstNumber: settings.gstNumber,
+    cstNumber: settings.cstNumber,
     updatedAt: Timestamp.now(),
   });
 };
