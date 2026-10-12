@@ -57,14 +57,14 @@ export function ActivityFeed({ data }: { data: ActivityFeedData }) {
   };
 
   return (
-    <Card className="p-6 mb-8">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+    <Card className="p-4 mb-6 border border-gray-100">
+      <h3 className="text-sm font-semibold text-gray-900 mb-3">Recent Activity</h3>
 
       {/* Tab Switcher */}
-      <div className="flex gap-2 mb-6 border-b border-gray-200">
+      <div className="flex gap-4 mb-3 border-b border-gray-100">
         <button
           onClick={() => setActiveTab('invoices')}
-          className={`px-4 py-2 font-medium text-sm border-b-2 transition-colors ${
+          className={`px-0 py-2 font-medium text-xs border-b-2 transition-colors ${
             activeTab === 'invoices'
               ? 'border-blue-600 text-blue-600'
               : 'border-transparent text-gray-600 hover:text-gray-900'
@@ -74,7 +74,7 @@ export function ActivityFeed({ data }: { data: ActivityFeedData }) {
         </button>
         <button
           onClick={() => setActiveTab('clients')}
-          className={`px-4 py-2 font-medium text-sm border-b-2 transition-colors ${
+          className={`px-0 py-2 font-medium text-xs border-b-2 transition-colors ${
             activeTab === 'clients'
               ? 'border-blue-600 text-blue-600'
               : 'border-transparent text-gray-600 hover:text-gray-900'
@@ -84,7 +84,7 @@ export function ActivityFeed({ data }: { data: ActivityFeedData }) {
         </button>
         <button
           onClick={() => setActiveTab('products')}
-          className={`px-4 py-2 font-medium text-sm border-b-2 transition-colors ${
+          className={`px-0 py-2 font-medium text-xs border-b-2 transition-colors ${
             activeTab === 'products'
               ? 'border-blue-600 text-blue-600'
               : 'border-transparent text-gray-600 hover:text-gray-900'
@@ -96,88 +96,158 @@ export function ActivityFeed({ data }: { data: ActivityFeedData }) {
 
       {/* Invoices Tab */}
       {activeTab === 'invoices' && (
-        <div className="space-y-3">
+        <div className="space-y-2">
           {data.recentInvoices.length > 0 ? (
-            data.recentInvoices.map((invoice) => (
-              <div key={invoice.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div className="flex-1 min-w-0">
-                  <p className="font-medium text-gray-900 truncate">
-                    #{invoice.invoiceNumber} - {invoice.clientId}
-                  </p>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {invoice.invoiceDate} • ₹{invoice.total.toLocaleString()}
-                  </p>
-                </div>
-                <div className="flex items-center gap-2 ml-2">
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap ${getStatusColor(invoice.status)}`}>
-                    {getStatusLabel(invoice.status)}
-                  </span>
-                  <Link href={`/invoices/${invoice.id}`}>
-                    <Button variant="ghost" size="sm" className="p-1">
-                      <Eye className="h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
+            <div className="hidden md:block">
+              <div className="grid grid-cols-12 gap-3 px-3 py-2 text-xs font-semibold text-gray-600 bg-gray-50 rounded-md mb-2">
+                <div className="col-span-2">Invoice #</div>
+                <div className="col-span-3">Client</div>
+                <div className="col-span-2">Date</div>
+                <div className="col-span-2 text-right">Amount</div>
+                <div className="col-span-2 text-right">Status</div>
               </div>
-            ))
+              {data.recentInvoices.map((invoice) => (
+                <div key={invoice.id} className="grid grid-cols-12 gap-3 px-3 py-2.5 items-center hover:bg-gray-50 rounded-md transition-colors border border-transparent hover:border-gray-100">
+                  <div className="col-span-2">
+                    <p className="font-semibold text-gray-900 text-sm">#{invoice.invoiceNumber}</p>
+                  </div>
+                  <div className="col-span-3">
+                    <p className="text-sm text-gray-600 truncate">{invoice.clientId}</p>
+                  </div>
+                  <div className="col-span-2">
+                    <p className="text-sm text-gray-600">{invoice.invoiceDate}</p>
+                  </div>
+                  <div className="col-span-2 text-right">
+                    <p className="font-semibold text-gray-900 text-sm">₹{(invoice.total / 100000).toFixed(1)}L</p>
+                  </div>
+                  <div className="col-span-2 flex items-center justify-end gap-2">
+                    <span className={`px-2 py-1 rounded text-xs font-medium whitespace-nowrap ${getStatusColor(invoice.status)}`}>
+                      {getStatusLabel(invoice.status)}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : (
-            <p className="text-center text-gray-500 py-8">No invoices yet</p>
+            <p className="text-center text-gray-500 py-4 text-sm">No invoices yet</p>
+          )}
+          {data.recentInvoices.length > 0 && (
+            <div className="md:hidden space-y-2">
+              {data.recentInvoices.map((invoice) => (
+                <div key={invoice.id} className="p-3 bg-gray-50 rounded-md">
+                  <p className="font-semibold text-gray-900 text-sm">#{invoice.invoiceNumber}</p>
+                  <p className="text-xs text-gray-600 mt-1">{invoice.clientId}</p>
+                  <div className="flex items-center justify-between mt-2">
+                    <p className="text-xs text-gray-500">{invoice.invoiceDate}</p>
+                    <span className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(invoice.status)}`}>
+                      {getStatusLabel(invoice.status)}
+                    </span>
+                  </div>
+                  <p className="font-semibold text-gray-900 text-sm mt-2">₹{(invoice.total / 100000).toFixed(1)}L</p>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       )}
 
       {/* Clients Tab */}
       {activeTab === 'clients' && (
-        <div className="space-y-3">
+        <div className="space-y-2">
           {data.recentClients.length > 0 ? (
-            data.recentClients.map((client) => (
-              <div key={client.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div className="flex-1 min-w-0">
-                  <p className="font-medium text-gray-900 truncate">{client.client_name}</p>
-                  <p className="text-sm text-gray-500 mt-1 truncate">
-                    {client.client_email} • {client.client_phone}
-                  </p>
-                  <p className="text-xs text-gray-400 mt-1">
-                    {client.totalInvoices || 0} invoices • ₹{((client.totalValue || 0) / 100000).toFixed(1)}L lifetime
-                  </p>
-                </div>
-                <Link href={`/clients/${client.id}/edit`}>
-                  <Button variant="ghost" size="sm" className="p-1">
-                    <Eye className="h-4 w-4" />
-                  </Button>
-                </Link>
+            <div className="hidden md:block">
+              <div className="grid grid-cols-12 gap-3 px-3 py-2 text-xs font-semibold text-gray-600 bg-gray-50 rounded-md mb-2">
+                <div className="col-span-3">Name</div>
+                <div className="col-span-3">Email</div>
+                <div className="col-span-2">Phone</div>
+                <div className="col-span-2 text-right">Invoices</div>
+                <div className="col-span-2 text-right">Lifetime Value</div>
               </div>
-            ))
+              {data.recentClients.map((client) => (
+                <div key={client.id} className="grid grid-cols-12 gap-3 px-3 py-2.5 items-center hover:bg-gray-50 rounded-md transition-colors border border-transparent hover:border-gray-100">
+                  <div className="col-span-3">
+                    <p className="font-semibold text-gray-900 text-sm truncate">{client.client_name}</p>
+                  </div>
+                  <div className="col-span-3">
+                    <p className="text-sm text-gray-600 truncate">{client.client_email}</p>
+                  </div>
+                  <div className="col-span-2">
+                    <p className="text-sm text-gray-600">{client.client_phone}</p>
+                  </div>
+                  <div className="col-span-2 text-right">
+                    <p className="text-sm text-gray-900 font-medium">{client.totalInvoices || 0}</p>
+                  </div>
+                  <div className="col-span-2 text-right">
+                    <p className="font-semibold text-gray-900 text-sm">₹{((client.totalValue || 0) / 100000).toFixed(1)}L</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : (
-            <p className="text-center text-gray-500 py-8">No clients yet</p>
+            <p className="text-center text-gray-500 py-4 text-sm">No clients yet</p>
+          )}
+          {data.recentClients.length > 0 && (
+            <div className="md:hidden space-y-2">
+              {data.recentClients.map((client) => (
+                <div key={client.id} className="p-3 bg-gray-50 rounded-md">
+                  <p className="font-semibold text-gray-900 text-sm">{client.client_name}</p>
+                  <p className="text-xs text-gray-600 mt-1">{client.client_email}</p>
+                  <p className="text-xs text-gray-600">{client.client_phone}</p>
+                  <div className="flex items-center justify-between mt-2">
+                    <p className="text-xs text-gray-500">{client.totalInvoices || 0} invoices</p>
+                    <p className="font-semibold text-gray-900 text-sm">₹{((client.totalValue || 0) / 100000).toFixed(1)}L</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       )}
 
       {/* Products Tab */}
       {activeTab === 'products' && (
-        <div className="space-y-3">
+        <div className="space-y-2">
           {data.recentProducts.length > 0 ? (
-            data.recentProducts.map((product) => (
-              <div key={product.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div className="flex-1 min-w-0">
-                  <p className="font-medium text-gray-900 truncate">{product.name}</p>
-                  <p className="text-sm text-gray-500 mt-1">
-                    ₹{product.mrp.toLocaleString()} • {product.unitsSold || 0} units sold
-                  </p>
-                  <p className="text-xs text-gray-400 mt-1">
-                    Revenue: ₹{((product.totalRevenue || 0) / 100000).toFixed(1)}L
-                  </p>
-                </div>
-                <Link href={`/products/${product.id}/edit`}>
-                  <Button variant="ghost" size="sm" className="p-1">
-                    <Eye className="h-4 w-4" />
-                  </Button>
-                </Link>
+            <div className="hidden md:block">
+              <div className="grid grid-cols-12 gap-3 px-3 py-2 text-xs font-semibold text-gray-600 bg-gray-50 rounded-md mb-2">
+                <div className="col-span-4">Product Name</div>
+                <div className="col-span-2 text-right">Price</div>
+                <div className="col-span-2 text-right">Units Sold</div>
+                <div className="col-span-4 text-right">Revenue</div>
               </div>
-            ))
+              {data.recentProducts.map((product) => (
+                <div key={product.id} className="grid grid-cols-12 gap-3 px-3 py-2.5 items-center hover:bg-gray-50 rounded-md transition-colors border border-transparent hover:border-gray-100">
+                  <div className="col-span-4">
+                    <p className="font-semibold text-gray-900 text-sm truncate">{product.name}</p>
+                  </div>
+                  <div className="col-span-2 text-right">
+                    <p className="text-sm text-gray-600">₹{product.mrp.toLocaleString()}</p>
+                  </div>
+                  <div className="col-span-2 text-right">
+                    <p className="text-sm text-gray-900 font-medium">{product.unitsSold || 0}</p>
+                  </div>
+                  <div className="col-span-4 text-right">
+                    <p className="font-semibold text-gray-900 text-sm">₹{((product.totalRevenue || 0) / 100000).toFixed(1)}L</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : (
-            <p className="text-center text-gray-500 py-8">No products yet</p>
+            <p className="text-center text-gray-500 py-4 text-sm">No products yet</p>
+          )}
+          {data.recentProducts.length > 0 && (
+            <div className="md:hidden space-y-2">
+              {data.recentProducts.map((product) => (
+                <div key={product.id} className="p-3 bg-gray-50 rounded-md">
+                  <p className="font-semibold text-gray-900 text-sm">{product.name}</p>
+                  <div className="flex items-center justify-between mt-2">
+                    <p className="text-xs text-gray-600">₹{product.mrp.toLocaleString()}</p>
+                    <p className="text-xs text-gray-600">{product.unitsSold || 0} units</p>
+                  </div>
+                  <p className="font-semibold text-gray-900 text-sm mt-2">₹{((product.totalRevenue || 0) / 100000).toFixed(1)}L</p>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       )}
