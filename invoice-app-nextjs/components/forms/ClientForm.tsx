@@ -117,7 +117,7 @@ export function ClientForm({
           <Button
             type="submit"
             disabled={isLoading}
-            className="bg-blue-600 hover:bg-blue-700"
+            variant="primary"
           >
             {isLoading ? 'Saving...' : initialData ? 'Update Client' : 'Add Client'}
           </Button>

@@ -1,12 +1,35 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(href);
+  };
+
+  const navLinkClass = (href: string) => {
+    const baseClass = 'px-5 py-2.5 font-semibold rounded-xl transition-all duration-200';
+    const activeClass = 'bg-blue-600 text-white';
+    const inactiveClass = 'text-slate-700 hover:text-blue-600 hover:bg-blue-50';
+    return `${baseClass} ${isActive(href) ? activeClass : inactiveClass}`;
+  };
+
+  const mobileNavLinkClass = (href: string) => {
+    const baseClass = 'block px-5 py-3 font-semibold rounded-xl transition-all duration-200';
+    const activeClass = 'bg-blue-600 text-white';
+    const inactiveClass = 'text-slate-700 hover:bg-blue-50 hover:text-blue-600';
+    return `${baseClass} ${isActive(href) ? activeClass : inactiveClass}`;
+  };
 
   return (
     <header className="bg-white shadow-lg border-b border-slate-200">
@@ -19,34 +42,19 @@ export function Header() {
           </div>
 
           <nav className="hidden md:flex items-center space-x-2">
-            <Link
-              href="/"
-              className="px-5 py-2.5 text-slate-700 font-semibold hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
-            >
+            <Link href="/" className={navLinkClass('/')}>
               Dashboard
             </Link>
-            <Link
-              href="/clients"
-              className="px-5 py-2.5 text-slate-700 font-semibold hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
-            >
+            <Link href="/clients" className={navLinkClass('/clients')}>
               Clients
             </Link>
-            <Link
-              href="/products"
-              className="px-5 py-2.5 text-slate-700 font-semibold hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
-            >
+            <Link href="/products" className={navLinkClass('/products')}>
               Products
             </Link>
-            <Link
-              href="/invoices"
-              className="px-5 py-2.5 text-slate-700 font-semibold hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
-            >
+            <Link href="/invoices" className={navLinkClass('/invoices')}>
               Invoices
             </Link>
-            <Link
-              href="/settings"
-              className="px-5 py-2.5 text-slate-700 font-semibold hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all duration-200"
-            >
+            <Link href="/settings" className={navLinkClass('/settings')}>
               Settings
             </Link>
           </nav>
@@ -63,34 +71,19 @@ export function Header() {
 
         {mobileMenuOpen && (
           <nav className="md:hidden pb-6 space-y-2 border-t border-slate-200 pt-4">
-            <Link
-              href="/"
-              className="block px-5 py-3 text-slate-700 font-semibold hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-all duration-200"
-            >
+            <Link href="/" className={mobileNavLinkClass('/')}>
               Dashboard
             </Link>
-            <Link
-              href="/clients"
-              className="block px-5 py-3 text-slate-700 font-semibold hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-all duration-200"
-            >
+            <Link href="/clients" className={mobileNavLinkClass('/clients')}>
               Clients
             </Link>
-            <Link
-              href="/products"
-              className="block px-5 py-3 text-slate-700 font-semibold hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-all duration-200"
-            >
+            <Link href="/products" className={mobileNavLinkClass('/products')}>
               Products
             </Link>
-            <Link
-              href="/invoices"
-              className="block px-5 py-3 text-slate-700 font-semibold hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-all duration-200"
-            >
+            <Link href="/invoices" className={mobileNavLinkClass('/invoices')}>
               Invoices
             </Link>
-            <Link
-              href="/settings"
-              className="block px-5 py-3 text-slate-700 font-semibold hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-all duration-200"
-            >
+            <Link href="/settings" className={mobileNavLinkClass('/settings')}>
               Settings
             </Link>
           </nav>

@@ -44,7 +44,7 @@ export default function ClientsPage() {
           <p className="text-gray-600 mt-2">Manage your clients and their information</p>
         </div>
         <Link href="/clients/add">
-          <Button className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2">
+          <Button variant="primary" className="flex items-center gap-2">
             <Plus className="h-4 w-4" />
             Add Client
           </Button>
@@ -72,7 +72,7 @@ export default function ClientsPage() {
         <Card className="p-12 text-center">
           <p className="text-gray-600 mb-4">No clients found</p>
           <Link href="/clients/add">
-            <Button className="bg-blue-600 hover:bg-blue-700">Add Your First Client</Button>
+            <Button variant="primary">Add Your First Client</Button>
           </Link>
         </Card>
       ) : (

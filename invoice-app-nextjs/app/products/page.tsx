@@ -44,7 +44,7 @@ export default function ProductsPage() {
           <p className="text-gray-600 mt-2">Manage your products and pricing</p>
         </div>
         <Link href="/products/add">
-          <Button className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2">
+          <Button variant="primary" className="flex items-center gap-2">
             <Plus className="h-4 w-4" />
             Add Product
           </Button>
@@ -72,7 +72,7 @@ export default function ProductsPage() {
         <Card className="p-12 text-center">
           <p className="text-gray-600 mb-4">No products found</p>
           <Link href="/products/add">
-            <Button className="bg-blue-600 hover:bg-blue-700">Add Your First Product</Button>
+            <Button variant="primary">Add Your First Product</Button>
           </Link>
         </Card>
       ) : (

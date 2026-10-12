@@ -104,7 +104,7 @@ export function ProductForm({
           <Button
             type="submit"
             disabled={isLoading}
-            className="bg-blue-600 hover:bg-blue-700"
+            variant="primary"
           >
             {isLoading
               ? 'Saving...'

@@ -183,7 +183,7 @@ export default function SettingsPage() {
             <Button
               type="submit"
               disabled={updateSettings.isPending}
-              className="bg-blue-600 hover:bg-blue-700"
+              variant="primary"
             >
               {updateSettings.isPending ? 'Saving...' : 'Save Settings'}
             </Button>

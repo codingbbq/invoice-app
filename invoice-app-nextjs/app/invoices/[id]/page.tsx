@@ -85,7 +85,8 @@ export default function ViewInvoicePage() {
         </div>
         <Button
           onClick={handleDownloadPDF}
-          className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2 px-4 py-2"
+          variant="primary"
+          className="flex items-center gap-2"
         >
           <Download className="h-4 w-4" />
           Download PDF

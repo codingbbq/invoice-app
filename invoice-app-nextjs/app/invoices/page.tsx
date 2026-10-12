@@ -44,7 +44,7 @@ export default function InvoicesPage() {
           <p className="text-gray-600 mt-2">Manage and create invoices</p>
         </div>
         <Link href="/invoices/create">
-          <Button className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2">
+          <Button variant="primary" className="flex items-center gap-2">
             <Plus className="h-4 w-4" />
             Create Invoice
           </Button>
@@ -72,7 +72,7 @@ export default function InvoicesPage() {
         <Card className="p-12 text-center">
           <p className="text-gray-600 mb-4">No invoices found</p>
           <Link href="/invoices/create">
-            <Button className="bg-blue-600 hover:bg-blue-700">Create Your First Invoice</Button>
+            <Button variant="primary">Create Your First Invoice</Button>
           </Link>
         </Card>
       ) : (
