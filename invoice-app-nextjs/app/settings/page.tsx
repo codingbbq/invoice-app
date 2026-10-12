@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
@@ -13,6 +14,7 @@ export default function SettingsPage() {
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm({
     defaultValues: {
       name: '',
@@ -34,6 +36,17 @@ export default function SettingsPage() {
     retry: 1,
     staleTime: 5 * 60 * 1000,
   });
+
+  useEffect(() => {
+    if (settings) {
+      setValue('name', settings.name || '');
+      setValue('email', settings.email || '');
+      setValue('phone', settings.phone || '');
+      setValue('address', settings.address || '');
+      setValue('gstNumber', settings.gstNumber || '');
+      setValue('cstNumber', settings.cstNumber || '');
+    }
+  }, [settings, setValue]);
 
   const updateSettings = useMutation({
     mutationFn: async (data: any) => {
@@ -87,7 +100,6 @@ export default function SettingsPage() {
               <Input
                 {...register('name', { required: 'Company name is required' })}
                 placeholder="Enter company name"
-                defaultValue={settings?.name || ''}
                 disabled={updateSettings.isPending}
               />
               {errors.name && (
@@ -109,7 +121,6 @@ export default function SettingsPage() {
                 })}
                 type="email"
                 placeholder="Enter email"
-                defaultValue={settings?.email || ''}
                 disabled={updateSettings.isPending}
               />
               {errors.email && (
@@ -124,7 +135,6 @@ export default function SettingsPage() {
               <Input
                 {...register('phone', { required: 'Phone is required' })}
                 placeholder="Enter phone number"
-                defaultValue={settings?.phone || ''}
                 disabled={updateSettings.isPending}
               />
               {errors.phone && (
@@ -139,7 +149,6 @@ export default function SettingsPage() {
               <Input
                 {...register('gstNumber')}
                 placeholder="Enter GST number"
-                defaultValue={settings?.gstNumber || ''}
                 disabled={updateSettings.isPending}
               />
             </div>
@@ -151,7 +160,6 @@ export default function SettingsPage() {
               <Input
                 {...register('cstNumber')}
                 placeholder="Enter CST number"
-                defaultValue={settings?.cstNumber || ''}
                 disabled={updateSettings.isPending}
               />
             </div>
@@ -163,7 +171,6 @@ export default function SettingsPage() {
               <Input
                 {...register('address', { required: 'Address is required' })}
                 placeholder="Enter address"
-                defaultValue={settings?.address || ''}
                 disabled={updateSettings.isPending}
               />
               {errors.address && (
