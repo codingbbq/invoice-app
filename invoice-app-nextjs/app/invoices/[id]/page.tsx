@@ -7,7 +7,8 @@ import { InvoiceTemplate } from '@/components/invoice/invoice-template';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import html2pdf from 'html2pdf.js';
 
 export default function ViewInvoicePage() {
   const params = useParams();
@@ -16,30 +17,39 @@ export default function ViewInvoicePage() {
   const { data: client } = useClient(invoice?.clientId || null);
   const invoiceRef = useRef<HTMLDivElement>(null);
 
-  const handleDownloadPDF = () => {
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownloadPDF = async () => {
     if (!invoiceRef.current) return;
     
-    // Use browser's print-to-PDF functionality
-    const printWindow = window.open('', '', 'height=600,width=800');
-    if (printWindow) {
-      printWindow.document.write('<!DOCTYPE html>');
-      printWindow.document.write('<html><head><title>Invoice</title>');
-      printWindow.document.write('<style>');
-      printWindow.document.write('body { font-family: Arial, sans-serif; margin: 0; padding: 10px; }');
-      printWindow.document.write('table { width: 100%; border-collapse: collapse; }');
-      printWindow.document.write('th, td { padding: 8px; text-align: left; }');
-      printWindow.document.write('th { font-weight: bold; border-bottom: 2px solid #333; }');
-      printWindow.document.write('td { border-bottom: 1px solid #ddd; }');
-      printWindow.document.write('@media print { body { margin: 0; padding: 5mm; } }');
-      printWindow.document.write('</style></head><body>');
-      printWindow.document.write(invoiceRef.current.innerHTML);
-      printWindow.document.write('</body></html>');
-      printWindow.document.close();
-      
-      // Trigger print dialog which allows saving as PDF
-      setTimeout(() => {
-        printWindow.print();
-      }, 250);
+    setIsDownloading(true);
+    try {
+      const element = invoiceRef.current;
+      const opt: any = {
+        margin: [10, 10, 10, 10] as [number, number, number, number],
+        filename: `invoice-${invoice?.invoiceNumber}.pdf`,
+        image: { type: 'png', quality: 0.98 },
+        html2canvas: { 
+          scale: 2,
+          useCORS: true,
+          allowTaint: true,
+          backgroundColor: '#ffffff'
+        },
+        jsPDF: { 
+          orientation: 'portrait', 
+          unit: 'mm', 
+          format: 'a4',
+          compress: true
+        },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      };
+
+      await html2pdf().set(opt).from(element).save();
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Failed to generate PDF. Please try again.');
+    } finally {
+      setIsDownloading(false);
     }
   };
 
@@ -87,9 +97,10 @@ export default function ViewInvoicePage() {
           onClick={handleDownloadPDF}
           variant="primary"
           className="flex items-center gap-2"
+          disabled={isDownloading}
         >
           <Download className="h-4 w-4" />
-          Download PDF
+          {isDownloading ? 'Generating PDF...' : 'Download PDF'}
         </Button>
       </div>
 
