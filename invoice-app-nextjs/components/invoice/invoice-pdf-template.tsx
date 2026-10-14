@@ -68,11 +68,6 @@ export function InvoicePDFTemplate({ invoice, client, settings }: InvoicePDFTemp
   const paise = Math.round(((invoice?.total || 0) % 1) * 100);
 
   const styles = `
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
       font-family: Arial, sans-serif;
       color: #111827;
@@ -235,8 +230,8 @@ export function InvoicePDFTemplate({ invoice, client, settings }: InvoicePDFTemp
   `;
 
   return (
-    <div>
-      <style>{styles}</style>
+    <div style={{ fontFamily: 'Arial, sans-serif', color: '#111827', backgroundColor: '#ffffff', padding: '32px' }}>
+      <style dangerouslySetInnerHTML={{ __html: styles }} />
       <div className="invoice-container">
         {/* Header */}
         <div className="header">
