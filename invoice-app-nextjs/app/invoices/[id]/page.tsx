@@ -7,8 +7,7 @@ import { InvoiceTemplate } from '@/components/invoice/invoice-template';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
-import { useRef, useState } from 'react';
-import html2pdf from 'html2pdf.js';
+import { useRef, useState, useEffect } from 'react';
 
 export default function ViewInvoicePage() {
   const params = useParams();
@@ -24,6 +23,9 @@ export default function ViewInvoicePage() {
     
     setIsDownloading(true);
     try {
+      // Dynamically import html2pdf to avoid SSR issues
+      const html2pdf = (await import('html2pdf.js')).default;
+      
       const element = invoiceRef.current;
       const opt: any = {
         margin: [10, 10, 10, 10] as [number, number, number, number],
