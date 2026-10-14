@@ -80,16 +80,16 @@ export function InvoiceTemplate({ invoice, client }: InvoiceTemplateProps) {
   const paise = Math.round(((invoice?.total || 0) % 1) * 100);
 
   return (
-    <div className="bg-white p-8 text-gray-900 font-serif" style={{ fontFamily: 'Arial, sans-serif' }}>
+    <div style={{ backgroundColor: '#ffffff', padding: '32px', color: '#111827', fontFamily: 'Arial, sans-serif' }}>
       {/* Header */}
-      <div className="text-center mb-6 pb-4 border-b-4 border-gray-900">
-        <h1 className="text-2xl font-bold tracking-wide">TAX INVOICE</h1>
+      <div style={{ textAlign: 'center', marginBottom: '24px', paddingBottom: '16px', borderBottom: '4px solid #111827' }}>
+        <h1 style={{ fontSize: '24px', fontWeight: 'bold', letterSpacing: '0.05em', margin: 0 }}>TAX INVOICE</h1>
       </div>
 
       {/* Company Details */}
-      <div className="mb-6">
-        <h2 className="text-xl font-bold mb-1">{settings?.name || 'Company Name'}</h2>
-        <p className="text-sm text-gray-700">
+      <div style={{ marginBottom: '24px' }}>
+        <h2 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '4px', margin: '0 0 4px 0' }}>{settings?.name || 'Company Name'}</h2>
+        <p style={{ fontSize: '14px', color: '#374151', margin: 0 }}>
           {settings?.address && `${settings.address}, `}
           {settings?.phone && `Ph No: ${settings.phone}`}
           {settings?.email && ` | ${settings.email}`}
@@ -97,53 +97,53 @@ export function InvoiceTemplate({ invoice, client }: InvoiceTemplateProps) {
       </div>
 
       {/* Bill To and Invoice Details */}
-      <div className="grid grid-cols-2 gap-8 mb-6 pb-4 border-b-2 border-gray-400">
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', marginBottom: '24px', paddingBottom: '16px', borderBottom: '2px solid #9ca3af' }}>
         <div>
-          <h3 className="font-bold text-sm mb-2">BILL TO:</h3>
-          <p className="font-bold text-sm">{client?.client_name || 'Client Name'}</p>
-          <p className="text-xs text-gray-700">{client?.client_address || ''}</p>
+          <h3 style={{ fontWeight: 'bold', fontSize: '14px', marginBottom: '8px', margin: 0 }}>BILL TO:</h3>
+          <p style={{ fontWeight: 'bold', fontSize: '14px', margin: 0 }}>{client?.client_name || 'Client Name'}</p>
+          <p style={{ fontSize: '12px', color: '#374151', margin: 0 }}>{client?.client_address || ''}</p>
           {client?.client_gst_no && (
-            <p className="text-xs text-gray-700">
+            <p style={{ fontSize: '12px', color: '#374151', margin: 0 }}>
               <strong>GSTIN:</strong> {client.client_gst_no}
             </p>
           )}
         </div>
-        <div className="text-right text-sm">
-          <div className="flex justify-between mb-1">
+        <div style={{ textAlign: 'right', fontSize: '14px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
             <span>Invoice #:</span>
-            <span className="font-bold">{invoice?.invoiceNumber}</span>
+            <span style={{ fontWeight: 'bold' }}>{invoice?.invoiceNumber}</span>
           </div>
-          <div className="flex justify-between">
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <span>Invoice Date:</span>
-            <span className="font-bold">{invoice?.invoiceDate}</span>
+            <span style={{ fontWeight: 'bold' }}>{invoice?.invoiceDate}</span>
           </div>
         </div>
       </div>
 
       {/* Items Table */}
-      <div className="mb-6">
-        <table className="w-full text-sm border-collapse">
+      <div style={{ marginBottom: '24px' }}>
+        <table style={{ width: '100%', fontSize: '14px', borderCollapse: 'collapse' }}>
           <thead>
-            <tr className="border-b-2 border-gray-400">
-              <th className="text-left py-2 px-2 font-bold text-xs">#</th>
-              <th className="text-left py-2 px-2 font-bold text-xs">Item</th>
-              <th className="text-center py-2 px-2 font-bold text-xs">HSN</th>
-              <th className="text-right py-2 px-2 font-bold text-xs">MRP</th>
-              <th className="text-right py-2 px-2 font-bold text-xs">Qty.</th>
-              <th className="text-right py-2 px-2 font-bold text-xs">Rate</th>
-              <th className="text-right py-2 px-2 font-bold text-xs">Amount</th>
+            <tr style={{ borderBottom: '2px solid #9ca3af' }}>
+              <th style={{ textAlign: 'left', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontWeight: 'bold', fontSize: '12px' }}>#</th>
+              <th style={{ textAlign: 'left', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontWeight: 'bold', fontSize: '12px' }}>Item</th>
+              <th style={{ textAlign: 'center', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontWeight: 'bold', fontSize: '12px' }}>HSN</th>
+              <th style={{ textAlign: 'right', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontWeight: 'bold', fontSize: '12px' }}>MRP</th>
+              <th style={{ textAlign: 'right', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontWeight: 'bold', fontSize: '12px' }}>Qty.</th>
+              <th style={{ textAlign: 'right', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontWeight: 'bold', fontSize: '12px' }}>Rate</th>
+              <th style={{ textAlign: 'right', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontWeight: 'bold', fontSize: '12px' }}>Amount</th>
             </tr>
           </thead>
           <tbody>
             {invoice?.items?.map((item: any, index: number) => (
-              <tr key={index} className="border-b border-gray-300">
-                <td className="text-left py-2 px-2 text-xs">{index + 1}</td>
-                <td className="text-left py-2 px-2 text-xs">{item.productId}</td>
-                <td className="text-center py-2 px-2 text-xs">-</td>
-                <td className="text-right py-2 px-2 text-xs">{item.mrp}</td>
-                <td className="text-right py-2 px-2 text-xs">{item.quantity}</td>
-                <td className="text-right py-2 px-2 text-xs">₹{item.rate.toFixed(2)}</td>
-                <td className="text-right py-2 px-2 text-xs font-medium">₹{item.totalCost.toFixed(2)}</td>
+              <tr key={index} style={{ borderBottom: '1px solid #d1d5db' }}>
+                <td style={{ textAlign: 'left', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontSize: '12px' }}>{index + 1}</td>
+                <td style={{ textAlign: 'left', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontSize: '12px' }}>{item.productId}</td>
+                <td style={{ textAlign: 'center', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontSize: '12px' }}>-</td>
+                <td style={{ textAlign: 'right', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontSize: '12px' }}>{item.mrp}</td>
+                <td style={{ textAlign: 'right', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontSize: '12px' }}>{item.quantity}</td>
+                <td style={{ textAlign: 'right', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontSize: '12px' }}>₹{item.rate.toFixed(2)}</td>
+                <td style={{ textAlign: 'right', paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px', paddingRight: '8px', fontSize: '12px', fontWeight: '500' }}>₹{item.totalCost.toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
@@ -151,16 +151,16 @@ export function InvoiceTemplate({ invoice, client }: InvoiceTemplateProps) {
       </div>
 
       {/* Totals and Notes Section */}
-      <div className="grid grid-cols-2 gap-8 mb-6">
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', marginBottom: '24px' }}>
         {/* Left: Notes */}
         <div>
-          <p className="text-xs font-bold mb-2">Subject to Pune Jurisdiction</p>
-          <p className="text-xs font-bold mb-2">
+          <p style={{ fontSize: '12px', fontWeight: 'bold', marginBottom: '8px', margin: '0 0 8px 0' }}>Subject to Pune Jurisdiction</p>
+          <p style={{ fontSize: '12px', fontWeight: 'bold', marginBottom: '8px', margin: '0 0 8px 0' }}>
             {settings?.gstNumber && `GSTIN: ${settings.gstNumber}`}
           </p>
-          <div className="mt-4">
-            <p className="text-xs font-bold mb-1">Amount in Words:</p>
-            <p className="text-xs leading-relaxed">
+          <div style={{ marginTop: '16px' }}>
+            <p style={{ fontSize: '12px', fontWeight: 'bold', marginBottom: '4px', margin: '0 0 4px 0' }}>Amount in Words:</p>
+            <p style={{ fontSize: '12px', lineHeight: '1.5', margin: 0 }}>
               {amountInWords.toUpperCase()}
               {paise > 0 && ` AND ${paise} PAISE`}
               {' ONLY'}
@@ -170,30 +170,30 @@ export function InvoiceTemplate({ invoice, client }: InvoiceTemplateProps) {
 
         {/* Right: Totals */}
         <div>
-          <div className="space-y-1 text-xs">
-            <div className="flex justify-between">
+          <div style={{ fontSize: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
               <span>Sub Total :</span>
-              <span className="font-medium">₹{invoice?.subtotal.toFixed(2)}</span>
+              <span style={{ fontWeight: '500' }}>₹{invoice?.subtotal.toFixed(2)}</span>
             </div>
             {invoice?.discountPercentage > 0 && (
-              <div className="flex justify-between">
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
                 <span>Discount ({invoice.discountPercentage}%) :</span>
-                <span className="font-medium">
+                <span style={{ fontWeight: '500' }}>
                   -₹{((invoice.subtotal * invoice.discountPercentage) / 100).toFixed(2)}
                 </span>
               </div>
             )}
-            <div className="border-t border-gray-400 pt-1 mt-1">
-              <div className="flex justify-between">
+            <div style={{ borderTop: '1px solid #9ca3af', paddingTop: '4px', marginTop: '4px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
                 <span>CGST (9%) :</span>
-                <span className="font-medium">₹{invoice?.cgst.toFixed(2)}</span>
+                <span style={{ fontWeight: '500' }}>₹{invoice?.cgst.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between">
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
                 <span>SGST (9%) :</span>
-                <span className="font-medium">₹{invoice?.sgst.toFixed(2)}</span>
+                <span style={{ fontWeight: '500' }}>₹{invoice?.sgst.toFixed(2)}</span>
               </div>
             </div>
-            <div className="border-t-2 border-gray-400 pt-1 mt-1 flex justify-between font-bold text-sm">
+            <div style={{ borderTop: '2px solid #9ca3af', paddingTop: '4px', marginTop: '4px', display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', fontSize: '14px' }}>
               <span>Total :</span>
               <span>₹{invoice?.total.toFixed(2)}</span>
             </div>
@@ -202,8 +202,8 @@ export function InvoiceTemplate({ invoice, client }: InvoiceTemplateProps) {
       </div>
 
       {/* Footer */}
-      <div className="border-t-2 border-gray-400 pt-4 text-center text-xs text-gray-600">
-        <p>Thank you for your business!</p>
+      <div style={{ borderTop: '2px solid #9ca3af', paddingTop: '16px', textAlign: 'center', fontSize: '12px', color: '#4b5563' }}>
+        <p style={{ margin: 0 }}>Thank you for your business!</p>
       </div>
     </div>
   );
