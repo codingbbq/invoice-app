@@ -41,6 +41,11 @@ export default function ViewInvoicePage() {
       const html2pdf = (await import('html2pdf.js')).default;
       
       const element = pdfRef.current;
+      
+      // Temporarily show the element for html2canvas to render it
+      const originalDisplay = element.style.display;
+      element.style.display = 'block';
+      
       const opt: any = {
         margin: [10, 10, 10, 10] as [number, number, number, number],
         filename: `invoice-${invoice?.invoiceNumber}.pdf`,
@@ -49,7 +54,8 @@ export default function ViewInvoicePage() {
           scale: 2,
           useCORS: true,
           allowTaint: true,
-          backgroundColor: '#ffffff'
+          backgroundColor: '#ffffff',
+          logging: false
         },
         jsPDF: { 
           orientation: 'portrait', 
@@ -61,6 +67,9 @@ export default function ViewInvoicePage() {
       };
 
       await html2pdf().set(opt).from(element).save();
+      
+      // Hide the element again
+      element.style.display = originalDisplay;
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');
