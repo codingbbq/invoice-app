@@ -58,7 +58,8 @@ function convertSqlToFirebaseJson(sqlFilePath, outputJsonPath) {
 
   const firebaseData = {
     clients: {},
-    invoices: {}
+    invoices: {},
+    products: {}
   };
 
   const cleanString = (val) => val.replace(/^'|'$/g, '').replace(/\\r\\n/g, ' ').replace(/\\n/g, ' ').trim();
@@ -101,10 +102,24 @@ function convertSqlToFirebaseJson(sqlFilePath, outputJsonPath) {
     }
   });
 
+  // 3. Process 'product' table
+  const productRows = parseSqlTuples(sqlText, 'product');
+  productRows.forEach((tokens) => {
+    if (tokens.length >= 4) {
+      const productId = tokens[0];
+      firebaseData.products[productId] = {
+        product_id: parseInt(productId, 10),
+        product_name: cleanString(tokens[1]),
+        product_hsn_code: cleanString(tokens[2]),
+        product_gst_rate: parseFloat(tokens[3])
+      };
+    }
+  });
+
   fs.writeFileSync(outputJsonPath, JSON.stringify(firebaseData, null, 2), 'utf-8');
   console.log(`Conversion complete! Output saved to '${outputJsonPath}'.`);
-  console.log(`Converted ${Object.keys(firebaseData.clients).length} clients and ${Object.keys(firebaseData.invoices).length} invoices.`);
+  console.log(`Converted ${Object.keys(firebaseData.clients).length} clients, ${Object.keys(firebaseData.invoices).length} invoices, and ${Object.keys(firebaseData.products).length} products.`);
 }
 
 // Execute conversion
-convertSqlToFirebaseJson('./legacy-php-code/invoice_app.sql', 'data_scripts/firebase_import.json');
+convertSqlToFirebaseJson('../legacy-php-code/invoice_app.sql', 'firebase_import.json');

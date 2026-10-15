@@ -221,7 +221,7 @@ export function ActivityFeed({ data }: { data: ActivityFeedData }) {
                     <p className="font-semibold text-gray-900 text-sm truncate">{product.name}</p>
                   </div>
                   <div className="col-span-2 text-right">
-                    <p className="text-sm text-gray-600">₹{product.mrp.toLocaleString()}</p>
+                    <p className="text-sm text-gray-600">₹{(product.mrp || 0).toLocaleString()}</p>
                   </div>
                   <div className="col-span-2 text-right">
                     <p className="text-sm text-gray-900 font-medium">{product.unitsSold || 0}</p>
@@ -241,7 +241,7 @@ export function ActivityFeed({ data }: { data: ActivityFeedData }) {
                 <div key={product.id} className="p-3 bg-gray-50 rounded-md">
                   <p className="font-semibold text-gray-900 text-sm">{product.name}</p>
                   <div className="flex items-center justify-between mt-2">
-                    <p className="text-xs text-gray-600">₹{product.mrp.toLocaleString()}</p>
+                    <p className="text-xs text-gray-600">₹{(product.mrp || 0).toLocaleString()}</p>
                     <p className="text-xs text-gray-600">{product.unitsSold || 0} units</p>
                   </div>
                   <p className="font-semibold text-gray-900 text-sm mt-2">₹{((product.totalRevenue || 0) / 100000).toFixed(1)}L</p>
