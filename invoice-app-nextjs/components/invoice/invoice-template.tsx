@@ -162,7 +162,7 @@ export function InvoiceTemplate({ invoice, client }: InvoiceTemplateProps) {
             <p style={{ fontSize: '12px', fontWeight: 'bold', marginBottom: '4px', margin: '0 0 4px 0' }}>Amount in Words:</p>
             <p style={{ fontSize: '12px', lineHeight: '1.5', margin: 0 }}>
               {amountInWords.toUpperCase()}
-              {paise > 0 && ` AND ${paise} PAISE`}
+              {paise > 0 && ` AND ${convertNumberToWords(paise).toUpperCase()} PAISE`}
               {' ONLY'}
             </p>
           </div>

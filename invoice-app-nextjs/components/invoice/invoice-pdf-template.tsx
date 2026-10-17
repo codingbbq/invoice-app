@@ -310,7 +310,7 @@ export function InvoicePDFTemplate({ invoice, client, settings }: InvoicePDFTemp
               <p className="label">Amount in Words:</p>
               <p>
                 {amountInWords.toUpperCase()}
-                {paise > 0 && ` AND ${paise} PAISE`}
+                {paise > 0 && ` AND ${convertNumberToWords(paise).toUpperCase()} PAISE`}
                 {' ONLY'}
               </p>
             </div>
