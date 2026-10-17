@@ -22,6 +22,7 @@ export function SearchableSelect({
 }: SearchableSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -51,6 +52,17 @@ export function SearchableSelect({
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    if (isOpen && containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      setDropdownPosition({
+        top: rect.bottom + window.scrollY,
+        left: rect.left + window.scrollX,
+        width: rect.width,
+      });
+    }
+  }, [isOpen]);
+
   return (
     <div ref={containerRef} className={`relative w-full ${className}`} style={{ zIndex: 'auto' }}>
       <button
@@ -70,9 +82,9 @@ export function SearchableSelect({
 
       {isOpen && (
         <div className="fixed z-50 bg-white border border-gray-300 rounded-md shadow-lg" style={{
-          top: containerRef.current?.getBoundingClientRect().bottom || 0,
-          left: containerRef.current?.getBoundingClientRect().left || 0,
-          width: containerRef.current?.getBoundingClientRect().width || 'auto',
+          top: `${dropdownPosition.top}px`,
+          left: `${dropdownPosition.left}px`,
+          width: `${dropdownPosition.width}px`,
         }}>
           <div className="p-2 border-b border-gray-200">
             <div className="relative">

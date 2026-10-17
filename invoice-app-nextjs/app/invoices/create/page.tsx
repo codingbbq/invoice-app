@@ -240,7 +240,16 @@ export default function CreateInvoicePage() {
         {/* Invoice Items */}
         <Card className="p-6 overflow-x-auto">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Items</h2>
-          <table className="w-full">
+          <table className="w-full" style={{ tableLayout: 'fixed' }}>
+            <colgroup>
+              <col style={{ width: '35%' }} />
+              <col style={{ width: '12%' }} />
+              <col style={{ width: '12%' }} />
+              <col style={{ width: '10%' }} />
+              <col style={{ width: '10%' }} />
+              <col style={{ width: '12%' }} />
+              <col style={{ width: '9%' }} />
+            </colgroup>
             <thead className="bg-gray-50 border-b">
               <tr>
                 <th className="px-4 py-2 text-left text-sm font-semibold text-gray-900">
@@ -269,7 +278,7 @@ export default function CreateInvoicePage() {
             <tbody className="divide-y">
               {items.map((item, index) => (
                 <tr key={index} className="hover:bg-gray-50">
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-2 min-w-0">
                     <SearchableSelect
                       value={item.productId}
                       onChange={(value) =>
@@ -283,7 +292,7 @@ export default function CreateInvoicePage() {
                       required
                     />
                   </td>
-                  <td className="px-4 py-2 text-sm text-gray-600">
+                  <td className="px-4 py-2 text-sm text-gray-600 text-center">
                     {item.mrp > 0
                       ? products.find((p: any) => p.id === item.productId)
                           ?.hsnCode || '-'
@@ -292,7 +301,7 @@ export default function CreateInvoicePage() {
                   <td className="px-4 py-2 text-right text-sm">
                     ₹{item.mrp.toFixed(2)}
                   </td>
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-2 min-w-0">
                     <Input
                       type="number"
                       value={item.quantity}
@@ -304,7 +313,7 @@ export default function CreateInvoicePage() {
                       min="0"
                     />
                   </td>
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-2 min-w-0">
                     <Input
                       type="number"
                       value={item.rate}
