@@ -36,7 +36,7 @@ export default function InvoicesPage() {
   
   const { items: sortedInvoices, sortConfig, toggleSort } = useSort(searchedInvoices, {
     key: 'invoiceNumber' as any,
-    direction: 'asc',
+    direction: 'desc',
   });
   
   const { items: paginatedInvoices, pagination, goToPage, setPageSize } = usePagination(sortedInvoices, 10);
