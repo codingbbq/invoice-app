@@ -29,6 +29,14 @@ export function useSort<T>(data: T[]): SortResult<T> {
       if (aValue === null || aValue === undefined) return 1;
       if (bValue === null || bValue === undefined) return -1;
 
+      // Try to parse as numbers if both values look like numbers
+      const aNum = Number(aValue);
+      const bNum = Number(bValue);
+      
+      if (!isNaN(aNum) && !isNaN(bNum)) {
+        return sortConfig.direction === 'asc' ? aNum - bNum : bNum - aNum;
+      }
+
       if (typeof aValue === 'string' && typeof bValue === 'string') {
         return sortConfig.direction === 'asc'
           ? aValue.localeCompare(bValue)
