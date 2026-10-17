@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { useInvoices, useDeleteInvoice } from '@/hooks/useInvoices';
+import { useClients } from '@/hooks/useClients';
 import { usePagination } from '@/hooks/usePagination';
 import { useSearch } from '@/hooks/useSearch';
 import { useSort } from '@/hooks/useSort';
@@ -15,8 +16,18 @@ import { Trash2, Eye, Plus, Download } from 'lucide-react';
 
 export default function InvoicesPage() {
   const { data: invoices = [], isLoading } = useInvoices();
+  const { data: clients = [] } = useClients();
   const deleteInvoice = useDeleteInvoice();
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+
+  // Create a map of client IDs to client names for quick lookup
+  const clientMap = useMemo(() => {
+    const map: { [key: string]: string } = {};
+    clients.forEach((client: any) => {
+      map[client.id] = client.client_name || 'Unknown Client';
+    });
+    return map;
+  }, [clients]);
   
   const { items: searchedInvoices, searchQuery, setSearchQuery, clearSearch } = useSearch({
     data: invoices,
@@ -139,7 +150,7 @@ export default function InvoicesPage() {
                         #{invoice.invoiceNumber}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-600">
-                        {invoice.clientId}
+                        {clientMap[invoice.clientId] || invoice.clientId}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-600">
                         {invoice.invoiceDate}
