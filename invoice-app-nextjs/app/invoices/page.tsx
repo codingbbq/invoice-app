@@ -34,7 +34,10 @@ export default function InvoicesPage() {
     searchFields: ['invoiceNumber', 'clientId', 'invoiceDate', 'status'] as const,
   });
   
-  const { items: sortedInvoices, sortConfig, toggleSort } = useSort(searchedInvoices);
+  const { items: sortedInvoices, sortConfig, toggleSort } = useSort(searchedInvoices, {
+    key: 'invoiceNumber' as any,
+    direction: 'asc',
+  });
   
   const { items: paginatedInvoices, pagination, goToPage, setPageSize } = usePagination(sortedInvoices, 10);
 

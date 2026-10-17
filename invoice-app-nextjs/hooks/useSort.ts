@@ -14,8 +14,8 @@ export interface SortResult<T> {
   toggleSort: (key: keyof T) => void;
 }
 
-export function useSort<T>(data: T[]): SortResult<T> {
-  const [sortConfig, setSortConfig] = useState<SortConfig<T> | null>(null);
+export function useSort<T>(data: T[], initialSort?: SortConfig<T>): SortResult<T> {
+  const [sortConfig, setSortConfig] = useState<SortConfig<T> | null>(initialSort || null);
 
   const sortedItems = useMemo(() => {
     if (!sortConfig) {
