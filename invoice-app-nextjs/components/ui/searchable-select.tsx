@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import { ChevronDown, Search } from 'lucide-react';
 
 interface SearchableSelectProps {
@@ -23,14 +22,8 @@ export function SearchableSelect({
 }: SearchableSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 });
-  const [isMounted, setIsMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const filteredOptions = options.filter((option) =>
     option.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -58,32 +51,8 @@ export function SearchableSelect({
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    const updatePosition = () => {
-      if (isOpen && containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        setDropdownPosition({
-          top: rect.bottom,
-          left: rect.left,
-          width: rect.width,
-        });
-      }
-    };
-
-    updatePosition();
-
-    if (isOpen) {
-      window.addEventListener('scroll', updatePosition, true);
-      window.addEventListener('resize', updatePosition);
-      return () => {
-        window.removeEventListener('scroll', updatePosition, true);
-        window.removeEventListener('resize', updatePosition);
-      };
-    }
-  }, [isOpen]);
-
   return (
-    <div ref={containerRef} className={`relative w-full ${className}`} style={{ zIndex: 'auto' }}>
+    <div ref={containerRef} className={`relative w-full ${className}`}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -99,12 +68,8 @@ export function SearchableSelect({
         />
       </button>
 
-      {isMounted && isOpen && createPortal(
-        <div className="fixed z-50 bg-white border border-gray-300 rounded-md shadow-lg" style={{
-          top: `${dropdownPosition.top}px`,
-          left: `${dropdownPosition.left}px`,
-          width: `${dropdownPosition.width}px`,
-        }}>
+      {isOpen && (
+        <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
           <div className="p-2 border-b border-gray-200">
             <div className="relative">
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-400" />
@@ -145,8 +110,7 @@ export function SearchableSelect({
               </div>
             )}
           </div>
-        </div>,
-        document.body
+        </div>
       )}
     </div>
   );
