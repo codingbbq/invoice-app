@@ -71894,2012 +71894,2347 @@
     "69": {
       "product_id": 69,
       "product_name": "Falero Mango 988g",
-      "product_hsn_code": "261",
-      "product_gst_rate": null
+      "product_mrp": "261",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "70": {
       "product_id": 70,
       "product_name": "Falero Guava 988gm",
-      "product_hsn_code": "261",
-      "product_gst_rate": null
+      "product_mrp": "261",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "71": {
       "product_id": 71,
       "product_name": "Falero Raw Mango 988g",
-      "product_hsn_code": "261",
-      "product_gst_rate": null
+      "product_mrp": "261",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "72": {
       "product_id": 72,
       "product_name": "Falero Strawberry 988g",
-      "product_hsn_code": "261",
-      "product_gst_rate": null
+      "product_mrp": "261",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "73": {
       "product_id": 73,
       "product_name": "Mango Jam 1 Kgs Pet Jar",
-      "product_hsn_code": "162",
-      "product_gst_rate": null
+      "product_mrp": "162",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "74": {
       "product_id": 74,
       "product_name": "Mix Fruit Jam 1Kg",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "75": {
       "product_id": 75,
       "product_name": "Mix Fruit Jam 1kg (Offer)",
-      "product_hsn_code": "171",
-      "product_gst_rate": null
+      "product_mrp": "171",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "76": {
       "product_id": 76,
       "product_name": "Orange MMD 1kgs Pet",
-      "product_hsn_code": "162",
-      "product_gst_rate": null
+      "product_mrp": "162",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "77": {
       "product_id": 77,
       "product_name": "Pineapple Jam 1 Kgs Pet Jar",
-      "product_hsn_code": "162",
-      "product_gst_rate": null
+      "product_mrp": "162",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "78": {
       "product_id": 78,
       "product_name": "Raw Mango Jam 1kg",
-      "product_hsn_code": "160",
-      "product_gst_rate": null
+      "product_mrp": "160",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "79": {
       "product_id": 79,
       "product_name": "Strawberry Jam 1Kgs Pet",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "80": {
       "product_id": 80,
       "product_name": "Mix Fruit Jam 100g Tub",
-      "product_hsn_code": "25",
-      "product_gst_rate": null
+      "product_mrp": "25",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "81": {
       "product_id": 81,
       "product_name": "ALPHANSO MANGO CRUSH 1000ML",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "82": {
       "product_id": 82,
       "product_name": "APPLE BUTTER SCOTCH 1000ML",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "83": {
       "product_id": 83,
       "product_name": "Banana Crush 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "84": {
       "product_id": 84,
       "product_name": "Black Current Crush 1000ml",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "85": {
       "product_id": 85,
       "product_name": "Citrus Blue Crush 1000ml",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "86": {
       "product_id": 86,
       "product_name": "Kiwi Crush 1000ml",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "87": {
       "product_id": 87,
       "product_name": "Kokum Crush 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "88": {
       "product_id": 88,
       "product_name": "Litchee Crush 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "89": {
       "product_id": 89,
       "product_name": "Mango Crush 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "90": {
       "product_id": 90,
       "product_name": "Orange Crush 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "91": {
       "product_id": 91,
       "product_name": "Peach & Apricot 1000ml",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "92": {
       "product_id": 92,
       "product_name": "Pineapple Crush 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "93": {
       "product_id": 93,
       "product_name": "Raw Mango Crush 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "94": {
       "product_id": 94,
       "product_name": "Strawberry Crush 1000 Ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "95": {
       "product_id": 95,
       "product_name": "Khus Sharbat 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "96": {
       "product_id": 96,
       "product_name": "Mahakool Sharbat 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "97": {
       "product_id": 97,
       "product_name": "Rose Sharbat 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "98": {
       "product_id": 98,
       "product_name": "Strawberry Syrup 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "99": {
       "product_id": 99,
       "product_name": "Blue Berry Chunky Fruit Crush 1000ml",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "100": {
       "product_id": 100,
       "product_name": "Custard Apple (Whole) Crush 1000ml",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "101": {
       "product_id": 101,
       "product_name": "Kiwi Chunky Fruit Crush 1000ml",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "102": {
       "product_id": 102,
       "product_name": "Mango Chunky Fruit Crush 1000ml",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "103": {
       "product_id": 103,
       "product_name": "Orange Chunky Fruit Crush 1000ml",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "104": {
       "product_id": 104,
       "product_name": "Pineapple Chunky Fruit Crush 1000ml",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "105": {
       "product_id": 105,
       "product_name": "Strawberry Chunky Fruit Crush 1000ml",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "106": {
       "product_id": 106,
       "product_name": "Strawberry Crush (Whole) 1Ltrs",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "107": {
       "product_id": 107,
       "product_name": "Lemon Barley Water 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "108": {
       "product_id": 108,
       "product_name": "Lemon Ginger Squash 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "109": {
       "product_id": 109,
       "product_name": "Limboo Timboo Lemon Squash 1000ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "110": {
       "product_id": 110,
       "product_name": "Lime Juice Cordial 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "111": {
       "product_id": 111,
       "product_name": "Pinacolada Squash 1000ml",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "112": {
       "product_id": 112,
       "product_name": "Santra Mantra Orange Squash 1000ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "113": {
       "product_id": 113,
       "product_name": "Litchee Crush 1000ml (Thick)",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "114": {
       "product_id": 114,
       "product_name": "Mango Crush 1000ml (Thick)",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "115": {
       "product_id": 115,
       "product_name": "Orange Crush 1000ml  ( Thick)",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "116": {
       "product_id": 116,
       "product_name": "Pineapple Crush 1000ml(Thick)",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "117": {
       "product_id": 117,
       "product_name": "Strawberry Crush 1000ml (Thick)",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "118": {
       "product_id": 118,
       "product_name": "Django Mango 160g",
-      "product_hsn_code": "49",
-      "product_gst_rate": null
+      "product_mrp": "49",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "119": {
       "product_id": 119,
       "product_name": "Falero Guava 160 Gm",
-      "product_hsn_code": "49",
-      "product_gst_rate": null
+      "product_mrp": "49",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "120": {
       "product_id": 120,
       "product_name": "Falero Orange 160g",
-      "product_hsn_code": "49",
-      "product_gst_rate": null
+      "product_mrp": "49",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "121": {
       "product_id": 121,
       "product_name": "Falero Rawmango 160g",
-      "product_hsn_code": "49",
-      "product_gst_rate": null
+      "product_mrp": "49",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "122": {
       "product_id": 122,
       "product_name": "Falero Strawberry 160g",
-      "product_hsn_code": "49",
-      "product_gst_rate": null
+      "product_mrp": "49",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "123": {
       "product_id": 123,
       "product_name": "Falero Tamarind 160g",
-      "product_hsn_code": "49",
-      "product_gst_rate": null
+      "product_mrp": "49",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "124": {
       "product_id": 124,
       "product_name": "Falero Assorted 160 Gm",
-      "product_hsn_code": "50",
-      "product_gst_rate": null
+      "product_mrp": "50",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "125": {
       "product_id": 125,
       "product_name": "Falero Jumbu Dada 160g",
-      "product_hsn_code": "49",
-      "product_gst_rate": null
+      "product_mrp": "49",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "126": {
       "product_id": 126,
       "product_name": "Falero Litchi 160 Gm",
-      "product_hsn_code": "49",
-      "product_gst_rate": null
+      "product_mrp": "49",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "127": {
       "product_id": 127,
       "product_name": "Falero Orange 160 Gm",
-      "product_hsn_code": "49",
-      "product_gst_rate": null
+      "product_mrp": "49",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "128": {
       "product_id": 128,
       "product_name": "Falero Guava 19g",
-      "product_hsn_code": "5",
-      "product_gst_rate": null
+      "product_mrp": "5",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "129": {
       "product_id": 129,
       "product_name": "Falero Strawberry 19g",
-      "product_hsn_code": "5",
-      "product_gst_rate": null
+      "product_mrp": "5",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "130": {
       "product_id": 130,
       "product_name": "Mix Fruit Jam 15g",
-      "product_hsn_code": "2",
-      "product_gst_rate": null
+      "product_mrp": "2",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "131": {
       "product_id": 131,
       "product_name": "Django Mango 2kg",
-      "product_hsn_code": "522",
-      "product_gst_rate": null
+      "product_mrp": "522",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "132": {
       "product_id": 132,
       "product_name": "Falero Assorted 2kg",
-      "product_hsn_code": "522",
-      "product_gst_rate": null
+      "product_mrp": "522",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "133": {
       "product_id": 133,
       "product_name": "Falero Guava 2kg",
-      "product_hsn_code": "522",
-      "product_gst_rate": null
+      "product_mrp": "522",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "134": {
       "product_id": 134,
       "product_name": "Falero Jumbu Dada 2.059kg",
-      "product_hsn_code": "522",
-      "product_gst_rate": null
+      "product_mrp": "522",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "135": {
       "product_id": 135,
       "product_name": "Falero Mast Melon 2.083kg",
-      "product_hsn_code": "522",
-      "product_gst_rate": null
+      "product_mrp": "522",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "136": {
       "product_id": 136,
       "product_name": "Falero Rawmango 2kg",
-      "product_hsn_code": "522",
-      "product_gst_rate": null
+      "product_mrp": "522",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "137": {
       "product_id": 137,
       "product_name": "Falero Strawberry 1.79kg",
-      "product_hsn_code": "522",
-      "product_gst_rate": null
+      "product_mrp": "522",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "138": {
       "product_id": 138,
       "product_name": "Falero Strawberry 2 Kg",
-      "product_hsn_code": "522",
-      "product_gst_rate": null
+      "product_mrp": "522",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "139": {
       "product_id": 139,
       "product_name": "Falero Tamarind 2.059 Kg",
-      "product_hsn_code": "522",
-      "product_gst_rate": null
+      "product_mrp": "522",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "140": {
       "product_id": 140,
       "product_name": "Mango Jam 200gm",
-      "product_hsn_code": "60",
-      "product_gst_rate": null
+      "product_mrp": "60",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "141": {
       "product_id": 141,
       "product_name": "Mix Fruit Jam 200g",
-      "product_hsn_code": "60",
-      "product_gst_rate": null
+      "product_mrp": "60",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "142": {
       "product_id": 142,
       "product_name": "Orange MMD 200gm",
-      "product_hsn_code": "60",
-      "product_gst_rate": null
+      "product_mrp": "60",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "143": {
       "product_id": 143,
       "product_name": "Pineapple Jam 200gm",
-      "product_hsn_code": "60",
-      "product_gst_rate": null
+      "product_mrp": "60",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "144": {
       "product_id": 144,
       "product_name": "Strawberry Jam 200gm",
-      "product_hsn_code": "60",
-      "product_gst_rate": null
+      "product_mrp": "60",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "145": {
       "product_id": 145,
       "product_name": "Chocolate Syrup 210ml",
-      "product_hsn_code": "50",
-      "product_gst_rate": null
+      "product_mrp": "50",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "146": {
       "product_id": 146,
       "product_name": "Kesar Sharbat 200ml",
-      "product_hsn_code": "135",
-      "product_gst_rate": null
+      "product_mrp": "135",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "147": {
       "product_id": 147,
       "product_name": "Falero Strawberry 380g",
-      "product_hsn_code": "100",
-      "product_gst_rate": null
+      "product_mrp": "100",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "148": {
       "product_id": 148,
       "product_name": "Falero Wah Wah Guava 380gm(MT)",
-      "product_hsn_code": "100",
-      "product_gst_rate": null
+      "product_mrp": "100",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "149": {
       "product_id": 149,
       "product_name": "Mango Jam 500g Btl",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "150": {
       "product_id": 150,
       "product_name": "Mix Fruit Jam 500g Bot",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "151": {
       "product_id": 151,
       "product_name": "Mix Fruit Jam 700g",
-      "product_hsn_code": "120",
-      "product_gst_rate": null
+      "product_mrp": "120",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "152": {
       "product_id": 152,
       "product_name": "Orange MMD 500Gm Btl",
-      "product_hsn_code": "108",
-      "product_gst_rate": null
+      "product_mrp": "108",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "153": {
       "product_id": 153,
       "product_name": "Pineapple Jam 500gm Btl",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "154": {
       "product_id": 154,
       "product_name": "Strawberry Jam 500gm Bot-C",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "155": {
       "product_id": 155,
       "product_name": "Strawberry Jam 500 Gm Bot. (W)",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "156": {
       "product_id": 156,
       "product_name": "Rose Sharbat 5000 Ml",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "157": {
       "product_id": 157,
       "product_name": "Apple Butter Crush 5000ml",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "158": {
       "product_id": 158,
       "product_name": "Litchee Crush 5000 Ml",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "159": {
       "product_id": 159,
       "product_name": "Mango Crush 5000ml",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "160": {
       "product_id": 160,
       "product_name": "Orange Crush 5000ml",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "161": {
       "product_id": 161,
       "product_name": "Pineapple Crush 5000ml",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "162": {
       "product_id": 162,
       "product_name": "Strawberry Crush 5000 Ml",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "163": {
       "product_id": 163,
       "product_name": "Litchee Crush 5000 Ml(Thick)",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "164": {
       "product_id": 164,
       "product_name": "Mango Crush 5000ml (Thick)",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "165": {
       "product_id": 165,
       "product_name": "Orange Crush 5000ml (Thick)",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "166": {
       "product_id": 166,
       "product_name": "Pineapple Crush 5000ml ( Thick )",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "167": {
       "product_id": 167,
       "product_name": "Strawberry Crush 5000ml(Thick)",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "168": {
       "product_id": 168,
       "product_name": "Falero Guava 500g",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "169": {
       "product_id": 169,
       "product_name": "Falero Manchali Imli 500g",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "170": {
       "product_id": 170,
       "product_name": "Falero Pineapple Panga 500 Gm",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "171": {
       "product_id": 171,
       "product_name": "Falero Strawberry  400gm",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "172": {
       "product_id": 172,
       "product_name": "Falero Strawberry 500g",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "173": {
       "product_id": 173,
       "product_name": "Falero Guava 4.94 Kg",
-      "product_hsn_code": "1300",
-      "product_gst_rate": null
+      "product_mrp": "1300",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "174": {
       "product_id": 174,
       "product_name": "Falero Guava 5kg",
-      "product_hsn_code": "1300",
-      "product_gst_rate": null
+      "product_mrp": "1300",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "175": {
       "product_id": 175,
       "product_name": "Falero Strawberry 4.16 Kg",
-      "product_hsn_code": "1300",
-      "product_gst_rate": null
+      "product_mrp": "1300",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "176": {
       "product_id": 176,
       "product_name": "Falero Strawberry 4.41 Kg",
-      "product_hsn_code": "1300",
-      "product_gst_rate": null
+      "product_mrp": "1300",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "177": {
       "product_id": 177,
       "product_name": "Falero Strawberry 5kg",
-      "product_hsn_code": "1300",
-      "product_gst_rate": null
+      "product_mrp": "1300",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "178": {
       "product_id": 178,
       "product_name": "Mix Fruit Jam 5 Kg (CL)",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "179": {
       "product_id": 179,
       "product_name": "Mix Fruit Jam 5 Kgs (Red)",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "180": {
       "product_id": 180,
       "product_name": "Strawberry Jam 5kgs",
-      "product_hsn_code": "630",
-      "product_gst_rate": null
+      "product_mrp": "630",
+      "product_description": "",
+      "product_hsn_code": "20079990"
     },
     "181": {
       "product_id": 181,
       "product_name": "Django Mango 570g",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "182": {
       "product_id": 182,
       "product_name": "Falero Assorted 581.4gm",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "183": {
       "product_id": 183,
       "product_name": "Falero Guava 570g",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "184": {
       "product_id": 184,
       "product_name": "Falero Jumbu Dada 581.4g",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "185": {
       "product_id": 185,
       "product_name": "Falero Litchi 570g",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "186": {
       "product_id": 186,
       "product_name": "Falero Mast Melon 581.4gm",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "187": {
       "product_id": 187,
       "product_name": "Falero Orange 570g",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "188": {
       "product_id": 188,
       "product_name": "Falero Pineapple 581.4g",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "189": {
       "product_id": 189,
       "product_name": "Falero Rawmango 570g",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "190": {
       "product_id": 190,
       "product_name": "Falero Strawberry 489.6gm",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "191": {
       "product_id": 191,
       "product_name": "Falero Strawberry 521.6g",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "192": {
       "product_id": 192,
       "product_name": "Falero Strawberry 570g",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "193": {
       "product_id": 193,
       "product_name": "Falero Tamarind 581.4g",
-      "product_hsn_code": "153",
-      "product_gst_rate": null
+      "product_mrp": "153",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "194": {
       "product_id": 194,
       "product_name": "ALPHANSO MANGO CRUSH 750ML",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "195": {
       "product_id": 195,
       "product_name": "Apple Butter Scotch Crush 750ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "196": {
       "product_id": 196,
       "product_name": "Black Current Crush 750ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "197": {
       "product_id": 197,
       "product_name": "Blueberry Crush 750ml",
-      "product_hsn_code": "360",
-      "product_gst_rate": null
+      "product_mrp": "360",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "198": {
       "product_id": 198,
       "product_name": "Citrus Blue 750ML",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "199": {
       "product_id": 199,
       "product_name": "Custard Apple Crush 750ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "200": {
       "product_id": 200,
       "product_name": "Grape Crush 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "201": {
       "product_id": 201,
       "product_name": "Green Apple Crush 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "202": {
       "product_id": 202,
       "product_name": "Guava Crush  750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "203": {
       "product_id": 203,
       "product_name": "Kiwi Crush 750ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "204": {
       "product_id": 204,
       "product_name": "Kokum Crush 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "205": {
       "product_id": 205,
       "product_name": "Litchee Crush 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "206": {
       "product_id": 206,
       "product_name": "Mango Crush 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "207": {
       "product_id": 207,
       "product_name": "Mix Fruit Crush 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "208": {
       "product_id": 208,
       "product_name": "Muskmelon Crush 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "209": {
       "product_id": 209,
       "product_name": "Orange Crush 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "210": {
       "product_id": 210,
       "product_name": "Peach & Apricot 750ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "211": {
       "product_id": 211,
       "product_name": "Pineapple Crush 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "212": {
       "product_id": 212,
       "product_name": "Pink Guava Crush 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "213": {
       "product_id": 213,
       "product_name": "Raw Mango Crush 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "214": {
       "product_id": 214,
       "product_name": "Strawberry Crush 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "215": {
       "product_id": 215,
       "product_name": "Thandai Crush 750ml",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "216": {
       "product_id": 216,
       "product_name": "Kesar Sharbat 750ml",
-      "product_hsn_code": "396",
-      "product_gst_rate": null
+      "product_mrp": "396",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "217": {
       "product_id": 217,
       "product_name": "Khus Sharbat 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "218": {
       "product_id": 218,
       "product_name": "Mahakool Sharbat 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "219": {
       "product_id": 219,
       "product_name": "Pineapple Syrup 750 Ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "220": {
       "product_id": 220,
       "product_name": "Rose Sharbat 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "221": {
       "product_id": 221,
       "product_name": "Strawberry Syrup 750ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "222": {
       "product_id": 222,
       "product_name": "Variyali Sharbat 750 Ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "223": {
       "product_id": 223,
       "product_name": "Amla Ginger Squash 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "224": {
       "product_id": 224,
       "product_name": "Ginger Squash 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "225": {
       "product_id": 225,
       "product_name": "Jeera Masala Cordial 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "226": {
       "product_id": 226,
       "product_name": "Kala Khatta Squash 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "227": {
       "product_id": 227,
       "product_name": "Lemon Barley 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "228": {
       "product_id": 228,
       "product_name": "Lemon Ginger Squash 750ml",
-      "product_hsn_code": "117",
-      "product_gst_rate": null
+      "product_mrp": "117",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "229": {
       "product_id": 229,
       "product_name": "Limboo Timboo Lemon Squash 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "230": {
       "product_id": 230,
       "product_name": "Lime Juice  Cordial 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "231": {
       "product_id": 231,
       "product_name": "L&M Mint Flavoured Lime Squash 750ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "232": {
       "product_id": 232,
       "product_name": "Pina Colada  Squash 750ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "233": {
       "product_id": 233,
       "product_name": "Santra Mantra  Orange Squash 750ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "234": {
       "product_id": 234,
       "product_name": "Django Mango 100g",
-      "product_hsn_code": "27",
-      "product_gst_rate": null
+      "product_mrp": "27",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "235": {
       "product_id": 235,
       "product_name": "Dj Mango 70g",
-      "product_hsn_code": "20",
-      "product_gst_rate": null
+      "product_mrp": "20",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "236": {
       "product_id": 236,
       "product_name": "Falero Assorted Fruit Bars 280g",
-      "product_hsn_code": "100",
-      "product_gst_rate": null
+      "product_mrp": "100",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "237": {
       "product_id": 237,
       "product_name": "Falero Guava 100g",
-      "product_hsn_code": "27",
-      "product_gst_rate": null
+      "product_mrp": "27",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "238": {
       "product_id": 238,
       "product_name": "Falero Jumbu Dada 100g",
-      "product_hsn_code": "27",
-      "product_gst_rate": null
+      "product_mrp": "27",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "239": {
       "product_id": 239,
       "product_name": "Falero Jumbu Dada 70g",
-      "product_hsn_code": "20",
-      "product_gst_rate": null
+      "product_mrp": "20",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "240": {
       "product_id": 240,
       "product_name": "Falero Litchi 100g",
-      "product_hsn_code": "27",
-      "product_gst_rate": null
+      "product_mrp": "27",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "241": {
       "product_id": 241,
       "product_name": "Falero Orange 100g",
-      "product_hsn_code": "27",
-      "product_gst_rate": null
+      "product_mrp": "27",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "242": {
       "product_id": 242,
       "product_name": "Falero Pineapple 100g",
-      "product_hsn_code": "27",
-      "product_gst_rate": null
+      "product_mrp": "27",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "243": {
       "product_id": 243,
       "product_name": "Falero Pineapple Panga 70g",
-      "product_hsn_code": "20",
-      "product_gst_rate": null
+      "product_mrp": "20",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "244": {
       "product_id": 244,
       "product_name": "Falero Raw Mango 100g",
-      "product_hsn_code": "27",
-      "product_gst_rate": null
+      "product_mrp": "27",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "245": {
       "product_id": 245,
       "product_name": "Falero Strawberry 100g",
-      "product_hsn_code": "27",
-      "product_gst_rate": null
+      "product_mrp": "27",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "246": {
       "product_id": 246,
       "product_name": "Falero Strawberry 70g",
-      "product_hsn_code": "20",
-      "product_gst_rate": null
+      "product_mrp": "20",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "247": {
       "product_id": 247,
       "product_name": "Falero Tamarind 100gm",
-      "product_hsn_code": "27",
-      "product_gst_rate": null
+      "product_mrp": "27",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "248": {
       "product_id": 248,
       "product_name": "Falero Tamarind 70gm",
-      "product_hsn_code": "20",
-      "product_gst_rate": null
+      "product_mrp": "20",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "249": {
       "product_id": 249,
       "product_name": "Falero Wah Wah Guava 70g",
-      "product_hsn_code": "20",
-      "product_gst_rate": null
+      "product_mrp": "20",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "250": {
       "product_id": 250,
       "product_name": "Cafero Cappuccino 1 Kg",
-      "product_hsn_code": "225",
-      "product_gst_rate": null
+      "product_mrp": "225",
+      "product_description": "",
+      "product_hsn_code": "17049010"
     },
     "251": {
       "product_id": 251,
       "product_name": "Cafero Cappuccino 2.13kg",
-      "product_hsn_code": "522",
-      "product_gst_rate": null
+      "product_mrp": "522",
+      "product_description": "",
+      "product_hsn_code": "17049010"
     },
     "252": {
       "product_id": 252,
       "product_name": "Cafero Cappuccino 855g",
-      "product_hsn_code": "225",
-      "product_gst_rate": null
+      "product_mrp": "225",
+      "product_description": "",
+      "product_hsn_code": "17049010"
     },
     "253": {
       "product_id": 253,
       "product_name": "Cafero Cappuccino 912g",
-      "product_hsn_code": "225",
-      "product_gst_rate": null
+      "product_mrp": "225",
+      "product_description": "",
+      "product_hsn_code": "17049010"
     },
     "254": {
       "product_id": 254,
       "product_name": "Mazaana Chocolate Almond Dates 80g Gift Box",
-      "product_hsn_code": "135",
-      "product_gst_rate": null
+      "product_mrp": "135",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "255": {
       "product_id": 255,
       "product_name": "Mazaana Chocolate Almond Dates Standee Pouch 100g",
-      "product_hsn_code": "117",
-      "product_gst_rate": null
+      "product_mrp": "117",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "256": {
       "product_id": 256,
       "product_name": "Mazaana Chocolate Paan 64g Gift Box",
-      "product_hsn_code": "135",
-      "product_gst_rate": null
+      "product_mrp": "135",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "257": {
       "product_id": 257,
       "product_name": "Mazaana Chocolate Paan Standee Pouch 80g",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "258": {
       "product_id": 258,
       "product_name": "Mazaana Choco Spread 300g",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "259": {
       "product_id": 259,
       "product_name": "Mazaana Choco Spread with Coco Chips 300g",
-      "product_hsn_code": "198",
-      "product_gst_rate": null
+      "product_mrp": "198",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "260": {
       "product_id": 260,
       "product_name": "Mazaana Dark Almond 100g",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "261": {
       "product_id": 261,
       "product_name": "Mazaana Dark Cashew 100g",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "262": {
       "product_id": 262,
       "product_name": "Mazaana Dark Combo Pack of 300g",
-      "product_hsn_code": "510",
-      "product_gst_rate": null
+      "product_mrp": "510",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "263": {
       "product_id": 263,
       "product_name": "Mazaana Dark Raisin 100g",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "264": {
       "product_id": 264,
       "product_name": "Mazaana Milk Almond 100g",
-      "product_hsn_code": "170",
-      "product_gst_rate": null
+      "product_mrp": "170",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "265": {
       "product_id": 265,
       "product_name": "Mazaana Milk Cashew 100g",
-      "product_hsn_code": "170",
-      "product_gst_rate": null
+      "product_mrp": "170",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "266": {
       "product_id": 266,
       "product_name": "Mazaana Milk Combo Pack of 300g",
-      "product_hsn_code": "480",
-      "product_gst_rate": null
+      "product_mrp": "480",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "267": {
       "product_id": 267,
       "product_name": "Mazaana Milk Raisin 100g",
-      "product_hsn_code": "170",
-      "product_gst_rate": null
+      "product_mrp": "170",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "268": {
       "product_id": 268,
       "product_name": "Mazaana Paan 64g Gift Box",
-      "product_hsn_code": "100",
-      "product_gst_rate": null
+      "product_mrp": "100",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "269": {
       "product_id": 269,
       "product_name": "Mango Crush 5000ml (Colourless)",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "270": {
       "product_id": 270,
       "product_name": "Pineapple Crush 5000ml ( Colourless )",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "271": {
       "product_id": 271,
       "product_name": "Strawberry Crush 5000ml ( Colour Less )",
-      "product_hsn_code": "720",
-      "product_gst_rate": null
+      "product_mrp": "720",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "272": {
       "product_id": 272,
       "product_name": "Falchoos 15 Pack",
-      "product_hsn_code": "36",
-      "product_gst_rate": null
+      "product_mrp": "36",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "273": {
       "product_id": 273,
       "product_name": "Exotic Frubble 100g",
-      "product_hsn_code": "45",
-      "product_gst_rate": null
+      "product_mrp": "45",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "274": {
       "product_id": 274,
       "product_name": "Tropical Frubble 100g",
-      "product_hsn_code": "45",
-      "product_gst_rate": null
+      "product_mrp": "45",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "275": {
       "product_id": 275,
       "product_name": "Fruit Cube 100g",
-      "product_hsn_code": "36",
-      "product_gst_rate": null
+      "product_mrp": "36",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "276": {
       "product_id": 276,
       "product_name": "Fruit Cubes 200g",
-      "product_hsn_code": "63",
-      "product_gst_rate": null
+      "product_mrp": "63",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "277": {
       "product_id": 277,
       "product_name": "Fruit Cubes 500g",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "278": {
       "product_id": 278,
       "product_name": "Blue Berry Fruit Filling 900g",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "279": {
       "product_id": 279,
       "product_name": "Blueberry Fruit Fillings 1 Kg",
-      "product_hsn_code": "600",
-      "product_gst_rate": null
+      "product_mrp": "600",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "280": {
       "product_id": 280,
       "product_name": "Cherry Fruit Filling 900g",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "281": {
       "product_id": 281,
       "product_name": "Cherry Fruit Fillings 1 Kg",
-      "product_hsn_code": "600",
-      "product_gst_rate": null
+      "product_mrp": "600",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "282": {
       "product_id": 282,
       "product_name": "Kiwi Fruit Filling 900g",
-      "product_hsn_code": "360",
-      "product_gst_rate": null
+      "product_mrp": "360",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "283": {
       "product_id": 283,
       "product_name": "Kiwi Fruit Fillings 1 Kg",
-      "product_hsn_code": "400",
-      "product_gst_rate": null
+      "product_mrp": "400",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "284": {
       "product_id": 284,
       "product_name": "Mango Fruit Filling 900g",
-      "product_hsn_code": "360",
-      "product_gst_rate": null
+      "product_mrp": "360",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "285": {
       "product_id": 285,
       "product_name": "Mango Fruit Fillings 1 Kg",
-      "product_hsn_code": "400",
-      "product_gst_rate": null
+      "product_mrp": "400",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "286": {
       "product_id": 286,
       "product_name": "Orange Fruit Filling 900g",
-      "product_hsn_code": "360",
-      "product_gst_rate": null
+      "product_mrp": "360",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "287": {
       "product_id": 287,
       "product_name": "Pineapple Fruit Filling 900g",
-      "product_hsn_code": "360",
-      "product_gst_rate": null
+      "product_mrp": "360",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "288": {
       "product_id": 288,
       "product_name": "Pineapple Fruit Fillings 1 Kg",
-      "product_hsn_code": "400",
-      "product_gst_rate": null
+      "product_mrp": "400",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "289": {
       "product_id": 289,
       "product_name": "Strawberry Fruit Filling 1kg",
-      "product_hsn_code": "400",
-      "product_gst_rate": null
+      "product_mrp": "400",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "290": {
       "product_id": 290,
       "product_name": "Strawberry Fruit Filling 900g",
-      "product_hsn_code": "360",
-      "product_gst_rate": null
+      "product_mrp": "360",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "291": {
       "product_id": 291,
       "product_name": "Fruity Sweet 100g",
-      "product_hsn_code": "36",
-      "product_gst_rate": null
+      "product_mrp": "36",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "292": {
       "product_id": 292,
       "product_name": "Fruity Sweet 200g",
-      "product_hsn_code": "63",
-      "product_gst_rate": null
+      "product_mrp": "63",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "293": {
       "product_id": 293,
       "product_name": "Fruity Sweet 500g",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "20071000"
     },
     "294": {
       "product_id": 294,
       "product_name": "Golio Pops Milk & Honey 336g",
-      "product_hsn_code": "120",
-      "product_gst_rate": null
+      "product_mrp": "120",
+      "product_description": "",
+      "product_hsn_code": "17049010"
     },
     "295": {
       "product_id": 295,
       "product_name": "Golio Pops Milk & Honey 360g",
-      "product_hsn_code": "120",
-      "product_gst_rate": null
+      "product_mrp": "120",
+      "product_description": "",
+      "product_hsn_code": "17049010"
     },
     "296": {
       "product_id": 296,
       "product_name": "Golio Spark Imli 440 G",
-      "product_hsn_code": "99",
-      "product_gst_rate": null
+      "product_mrp": "99",
+      "product_description": "",
+      "product_hsn_code": "17049010"
     },
     "297": {
       "product_id": 297,
       "product_name": "Golio Spark Kachcha Aam 440g",
-      "product_hsn_code": "99",
-      "product_gst_rate": null
+      "product_mrp": "99",
+      "product_description": "",
+      "product_hsn_code": "17049010"
     },
     "298": {
       "product_id": 298,
       "product_name": "Tomato Ketchup 10g",
-      "product_hsn_code": "2",
-      "product_gst_rate": null
+      "product_mrp": "2",
+      "product_description": "",
+      "product_hsn_code": "21032000"
     },
     "299": {
       "product_id": 299,
       "product_name": "Tomato Ketchup 1 Kg",
-      "product_hsn_code": "117",
-      "product_gst_rate": null
+      "product_mrp": "117",
+      "product_description": "",
+      "product_hsn_code": "21032000"
     },
     "300": {
       "product_id": 300,
       "product_name": "Tomato Ketchup 500g(NONG)",
-      "product_hsn_code": "90",
-      "product_gst_rate": null
+      "product_mrp": "90",
+      "product_description": "",
+      "product_hsn_code": "21032000"
     },
     "301": {
       "product_id": 301,
       "product_name": "Tomato Ketchup 500g(REG)",
-      "product_hsn_code": "90",
-      "product_gst_rate": null
+      "product_mrp": "90",
+      "product_description": "",
+      "product_hsn_code": "21032000"
     },
     "302": {
       "product_id": 302,
       "product_name": "Cinnamon Syrup 1000ml",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "303": {
       "product_id": 303,
       "product_name": "Citrus Blue Syrup 1000ml",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "304": {
       "product_id": 304,
       "product_name": "Coconut Syrup 1 Liter",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "305": {
       "product_id": 305,
       "product_name": "Cucumber Syurp 1000ml",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "306": {
       "product_id": 306,
       "product_name": "Green Apple Syrup 1000ml",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "307": {
       "product_id": 307,
       "product_name": "Grenadine Syrup 1000ml(L)",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "308": {
       "product_id": 308,
       "product_name": "Hazel Nut Syrup 1000ml",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "309": {
       "product_id": 309,
       "product_name": "Mint Syrup 1000ml",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "310": {
       "product_id": 310,
       "product_name": "Peach Syrup 1000ml",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "311": {
       "product_id": 311,
       "product_name": "Strawberry Syrup 1000ml ( L)",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "312": {
       "product_id": 312,
       "product_name": "Triple Sec Syrup 1000ml",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "313": {
       "product_id": 313,
       "product_name": "Vanila Syrup 1000ml",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "314": {
       "product_id": 314,
       "product_name": "Water Melon Syrup 1000ml",
-      "product_hsn_code": "540",
-      "product_gst_rate": null
+      "product_mrp": "540",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "315": {
       "product_id": 315,
       "product_name": "Citrus Blue Syrup 250ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "316": {
       "product_id": 316,
       "product_name": "Green Apple Syrup 250ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "317": {
       "product_id": 317,
       "product_name": "Triple Sec Syrup 250ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "318": {
       "product_id": 318,
       "product_name": "Vanila Syrup 250ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "319": {
       "product_id": 319,
       "product_name": "Water Melon Syrup 250ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "320": {
       "product_id": 320,
       "product_name": "Citrus Blue Syrup 750ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "321": {
       "product_id": 321,
       "product_name": "Mazaana Salted Almonds 150gm",
-      "product_hsn_code": "260",
-      "product_gst_rate": null
+      "product_mrp": "260",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "322": {
       "product_id": 322,
       "product_name": "Mazaana Salted Cashew 150gm",
-      "product_hsn_code": "260",
-      "product_gst_rate": null
+      "product_mrp": "260",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "323": {
       "product_id": 323,
       "product_name": "Mazaana Salted Peanuts 150gm",
-      "product_hsn_code": "100",
-      "product_gst_rate": null
+      "product_mrp": "100",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "324": {
       "product_id": 324,
       "product_name": "PRA Kesar Sharbat 250ml",
-      "product_hsn_code": "225",
-      "product_gst_rate": null
+      "product_mrp": "225",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "325": {
       "product_id": 325,
       "product_name": "PRA Khus Syrup 250ml",
-      "product_hsn_code": "225",
-      "product_gst_rate": null
+      "product_mrp": "225",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "326": {
       "product_id": 326,
       "product_name": "PRA Kulfi Flavoured Badam Sharbat 250ml",
-      "product_hsn_code": "225",
-      "product_gst_rate": null
+      "product_mrp": "225",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "327": {
       "product_id": 327,
       "product_name": "PRA Rose Sharbat 250ml",
-      "product_hsn_code": "225",
-      "product_gst_rate": null
+      "product_mrp": "225",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "328": {
       "product_id": 328,
       "product_name": "PRA Thandai Sharbat 250ml",
-      "product_hsn_code": "225",
-      "product_gst_rate": null
+      "product_mrp": "225",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "329": {
       "product_id": 329,
       "product_name": "PRA Mango Preserve 300g",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "330": {
       "product_id": 330,
       "product_name": "PRA Strawberry Preserve 300g",
-      "product_hsn_code": "270",
-      "product_gst_rate": null
+      "product_mrp": "270",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "331": {
       "product_id": 331,
       "product_name": "Butter Scotch Topping 200ml",
-      "product_hsn_code": "72",
-      "product_gst_rate": null
+      "product_mrp": "72",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "332": {
       "product_id": 332,
       "product_name": "Butter ScotchTopping 500ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "333": {
       "product_id": 333,
       "product_name": "Chocolate Topping 1000ml",
-      "product_hsn_code": "297",
-      "product_gst_rate": null
+      "product_mrp": "297",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "334": {
       "product_id": 334,
       "product_name": "Chocolate Topping 200ml",
-      "product_hsn_code": "81",
-      "product_gst_rate": null
+      "product_mrp": "81",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "335": {
       "product_id": 335,
       "product_name": "Chocolate Topping 35 Ml",
-      "product_hsn_code": "10",
-      "product_gst_rate": null
+      "product_mrp": "10",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "336": {
       "product_id": 336,
       "product_name": "Chocolate Topping 5000ml",
-      "product_hsn_code": "1188",
-      "product_gst_rate": null
+      "product_mrp": "1188",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "337": {
       "product_id": 337,
       "product_name": "Chocolate Topping 500ml",
-      "product_hsn_code": "180",
-      "product_gst_rate": null
+      "product_mrp": "180",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "338": {
       "product_id": 338,
       "product_name": "Strawberry Crush Topping 200ml",
-      "product_hsn_code": "72",
-      "product_gst_rate": null
+      "product_mrp": "72",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "339": {
       "product_id": 339,
       "product_name": "Strawberry Crush  Topping 500ml",
-      "product_hsn_code": "144",
-      "product_gst_rate": null
+      "product_mrp": "144",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "340": {
       "product_id": 340,
       "product_name": "Strawberry Crush 35ml",
-      "product_hsn_code": "10",
-      "product_gst_rate": null
+      "product_mrp": "10",
+      "product_description": "",
+      "product_hsn_code": "20089919"
     },
     "341": {
       "product_id": 341,
       "product_name": "Aam Panha 35ml",
-      "product_hsn_code": "10",
-      "product_gst_rate": null
+      "product_mrp": "10",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "342": {
       "product_id": 342,
       "product_name": "Rose Sharbat 35ml",
-      "product_hsn_code": "10",
-      "product_gst_rate": null
+      "product_mrp": "10",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "343": {
       "product_id": 343,
       "product_name": "KETCHUP 360GM",
-      "product_hsn_code": "45",
-      "product_gst_rate": null
+      "product_mrp": "45",
+      "product_description": "",
+      "product_hsn_code": "21032000"
     },
     "344": {
       "product_id": 344,
       "product_name": "TOMATO KETUP 360 GMS",
-      "product_hsn_code": "45",
-      "product_gst_rate": null
+      "product_mrp": "45",
+      "product_description": "",
+      "product_hsn_code": "21032000"
     },
     "345": {
       "product_id": 345,
       "product_name": "NON TEREBLE CARDS",
-      "product_hsn_code": "0.55",
-      "product_gst_rate": null
+      "product_mrp": "0.55",
+      "product_description": "",
+      "product_hsn_code": "4909"
     },
     "346": {
       "product_id": 346,
       "product_name": "PAPER LETTER HEAD",
-      "product_hsn_code": "1.80",
-      "product_gst_rate": null
+      "product_mrp": "1.80",
+      "product_description": "",
+      "product_hsn_code": "4802"
     },
     "347": {
       "product_id": 347,
       "product_name": "CARDS",
-      "product_hsn_code": "0.60",
-      "product_gst_rate": null
+      "product_mrp": "0.60",
+      "product_description": "",
+      "product_hsn_code": "49111020"
     },
     "348": {
       "product_id": 348,
       "product_name": "DIGITAL PRINT",
-      "product_hsn_code": "80",
-      "product_gst_rate": null
+      "product_mrp": "80",
+      "product_description": "",
+      "product_hsn_code": "49119990"
     },
     "349": {
       "product_id": 349,
       "product_name": "GULKHAND.",
-      "product_hsn_code": "126",
-      "product_gst_rate": null
+      "product_mrp": "126",
+      "product_description": "",
+      "product_hsn_code": "2106"
     },
     "350": {
       "product_id": 350,
       "product_name": "STRAWBERRY 1Ltr.",
-      "product_hsn_code": "195",
-      "product_gst_rate": null
+      "product_mrp": "195",
+      "product_description": "",
+      "product_hsn_code": "9919"
     },
     "351": {
       "product_id": 351,
       "product_name": "KIWI 1Ltr",
-      "product_hsn_code": "350",
-      "product_gst_rate": null
+      "product_mrp": "350",
+      "product_description": "",
+      "product_hsn_code": "9919"
     },
     "352": {
       "product_id": 352,
       "product_name": "ECO SOLVENT PRINTS",
-      "product_hsn_code": "85",
-      "product_gst_rate": null
+      "product_mrp": "85",
+      "product_description": "",
+      "product_hsn_code": "39199090"
     },
     "353": {
       "product_id": 353,
       "product_name": "ECO + LAMINATION",
-      "product_hsn_code": "145",
-      "product_gst_rate": null
+      "product_mrp": "145",
+      "product_description": "",
+      "product_hsn_code": "3919"
     },
     "354": {
       "product_id": 354,
       "product_name": "COMBI KETUP & ROSE",
-      "product_hsn_code": "243",
-      "product_gst_rate": null
+      "product_mrp": "243",
+      "product_description": "",
+      "product_hsn_code": "9011"
     },
     "355": {
       "product_id": 355,
       "product_name": "CHOCOLATE GIFT HAMPER",
-      "product_hsn_code": "400",
-      "product_gst_rate": null
+      "product_mrp": "400",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "356": {
       "product_id": 356,
       "product_name": "READY TO DRINK 1LT",
-      "product_hsn_code": "81",
-      "product_gst_rate": null
+      "product_mrp": "81",
+      "product_description": "",
+      "product_hsn_code": "9011"
     },
     "357": {
       "product_id": 357,
       "product_name": "RUBBER STAMP",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "4016"
     },
     "358": {
       "product_id": 358,
       "product_name": "MAZAANA COMBO 300gms",
-      "product_hsn_code": "459",
-      "product_gst_rate": null
+      "product_mrp": "459",
+      "product_description": "",
+      "product_hsn_code": "1806"
     },
     "359": {
       "product_id": 359,
       "product_name": "NAME PLATE ALUMINIUM",
-      "product_hsn_code": "16.50",
-      "product_gst_rate": null
+      "product_mrp": "16.50",
+      "product_description": "",
+      "product_hsn_code": "8310"
     },
     "360": {
       "product_id": 360,
       "product_name": "ORANGE RTD 1000ML",
-      "product_hsn_code": "81",
-      "product_gst_rate": null
+      "product_mrp": "81",
+      "product_description": "",
+      "product_hsn_code": "2202"
     },
     "361": {
       "product_id": 361,
       "product_name": "GREEN APPLE RTD 1000ML",
-      "product_hsn_code": "81",
-      "product_gst_rate": null
+      "product_mrp": "81",
+      "product_description": "",
+      "product_hsn_code": "2202"
     },
     "362": {
       "product_id": 362,
       "product_name": "RAW MANGO RTD 1000ML",
-      "product_hsn_code": "81",
-      "product_gst_rate": null
+      "product_mrp": "81",
+      "product_description": "",
+      "product_hsn_code": "2202"
     },
     "363": {
       "product_id": 363,
       "product_name": "JEERA RTD 1000ML",
-      "product_hsn_code": "81",
-      "product_gst_rate": null
+      "product_mrp": "81",
+      "product_description": "",
+      "product_hsn_code": "2202"
     },
     "364": {
       "product_id": 364,
       "product_name": "MANGO RTD 1000ML",
-      "product_hsn_code": "81",
-      "product_gst_rate": null
+      "product_mrp": "81",
+      "product_description": "",
+      "product_hsn_code": "2202"
     },
     "365": {
       "product_id": 365,
       "product_name": "ORANGE RTD 200ML",
-      "product_hsn_code": "81",
-      "product_gst_rate": null
+      "product_mrp": "81",
+      "product_description": "",
+      "product_hsn_code": "2202"
     },
     "366": {
       "product_id": 366,
       "product_name": "GREENAPPLE RTD 200ML",
-      "product_hsn_code": "18",
-      "product_gst_rate": null
+      "product_mrp": "18",
+      "product_description": "",
+      "product_hsn_code": "2202"
     },
     "367": {
       "product_id": 367,
       "product_name": "RAW MANGO RTD 200ML",
-      "product_hsn_code": "18",
-      "product_gst_rate": null
+      "product_mrp": "18",
+      "product_description": "",
+      "product_hsn_code": "2202"
     },
     "368": {
       "product_id": 368,
       "product_name": "MODERN TAAZA MILK",
-      "product_hsn_code": "65",
-      "product_gst_rate": null
+      "product_mrp": "65",
+      "product_description": "",
+      "product_hsn_code": "0401"
     },
     "369": {
       "product_id": 369,
       "product_name": "MODERN COW GHEE 100GMS",
-      "product_hsn_code": "60",
-      "product_gst_rate": null
+      "product_mrp": "60",
+      "product_description": "",
+      "product_hsn_code": "04059020"
     },
     "370": {
       "product_id": 370,
       "product_name": "MODERN COW GHEE 200GMS",
-      "product_hsn_code": "120",
-      "product_gst_rate": null
+      "product_mrp": "120",
+      "product_description": "",
+      "product_hsn_code": "04059020"
     },
     "371": {
       "product_id": 371,
       "product_name": "MODERN COW GHEE 500GMS",
-      "product_hsn_code": "280",
-      "product_gst_rate": null
+      "product_mrp": "280",
+      "product_description": "",
+      "product_hsn_code": "04059020"
     },
     "372": {
       "product_id": 372,
       "product_name": "MODERN COW GHEE 1KG",
-      "product_hsn_code": "550",
-      "product_gst_rate": null
+      "product_mrp": "550",
+      "product_description": "",
+      "product_hsn_code": "04059020"
     },
     "373": {
       "product_id": 373,
       "product_name": "ECO PNT",
-      "product_hsn_code": "65",
-      "product_gst_rate": null
+      "product_mrp": "65",
+      "product_description": "",
+      "product_hsn_code": "21069011"
     },
     "374": {
       "product_id": 374,
       "product_name": "MALAI PANEER 200GMS",
-      "product_hsn_code": "80",
-      "product_gst_rate": null
+      "product_mrp": "80",
+      "product_description": "",
+      "product_hsn_code": "0406"
     },
     "375": {
       "product_id": 375,
       "product_name": "CURD 200GMS",
-      "product_hsn_code": "30",
-      "product_gst_rate": null
+      "product_mrp": "30",
+      "product_description": "",
+      "product_hsn_code": "0403"
     },
     "376": {
       "product_id": 376,
       "product_name": "SWEETCORN 200GMS",
-      "product_hsn_code": "45",
-      "product_gst_rate": null
+      "product_mrp": "45",
+      "product_description": "",
+      "product_hsn_code": "0710"
     },
     "377": {
       "product_id": 377,
       "product_name": "MIX VEG 500GMS",
-      "product_hsn_code": "80",
-      "product_gst_rate": null
+      "product_mrp": "80",
+      "product_description": "",
+      "product_hsn_code": "0701"
     },
     "378": {
       "product_id": 378,
       "product_name": "CHASS BOTTLE",
-      "product_hsn_code": "25",
-      "product_gst_rate": null
+      "product_mrp": "25",
+      "product_description": "",
+      "product_hsn_code": "0403"
     },
     "379": {
       "product_id": 379,
       "product_name": "MIX FRUITJAM 4KG.",
-      "product_hsn_code": "450",
-      "product_gst_rate": null
+      "product_mrp": "450",
+      "product_description": "",
+      "product_hsn_code": "200799"
     },
     "380": {
       "product_id": 380,
       "product_name": "600ML RAW MANGO",
-      "product_hsn_code": "45",
-      "product_gst_rate": null
+      "product_mrp": "45",
+      "product_description": "",
+      "product_hsn_code": "9011"
     },
     "381": {
       "product_id": 381,
       "product_name": "600ML GREEN APPLE",
-      "product_hsn_code": "45",
-      "product_gst_rate": null
+      "product_mrp": "45",
+      "product_description": "",
+      "product_hsn_code": "9011"
     },
     "382": {
       "product_id": 382,
       "product_name": "TWIST CHO 1KG",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "383": {
       "product_id": 383,
       "product_name": "TWIST HAZELNUT 1KG",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "384": {
       "product_id": 384,
       "product_name": "TWIST COCO 1KG",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "385": {
       "product_id": 385,
       "product_name": "TWIST STR 1KG",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "386": {
       "product_id": 386,
       "product_name": "TODAY JAR CAFE EXP",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "387": {
       "product_id": 387,
       "product_name": "TODAY JAR HAZALNUT 900GM",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "388": {
       "product_id": 388,
       "product_name": "TODAY JAR ORANGE 900GM",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "389": {
       "product_id": 389,
       "product_name": "TODAY JAR COCONUT 900GM",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "390": {
       "product_id": 390,
       "product_name": "TRUFFLES CHO 900GM",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "391": {
       "product_id": 391,
       "product_name": "TRUFFLES HAZELNUT 900GM",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "392": {
       "product_id": 392,
       "product_name": "TRUFFLES COCO 900GM",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "393": {
       "product_id": 393,
       "product_name": "TRUFFLES STR 900GM",
-      "product_hsn_code": "300",
-      "product_gst_rate": null
+      "product_mrp": "300",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "394": {
       "product_id": 394,
       "product_name": "TRUF. BAR HAZEL 22GM",
-      "product_hsn_code": "240",
-      "product_gst_rate": null
+      "product_mrp": "240",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "395": {
       "product_id": 395,
       "product_name": "TRUF.BAR ORANGE 22GM",
-      "product_hsn_code": "240",
-      "product_gst_rate": null
+      "product_mrp": "240",
+      "product_description": "",
+      "product_hsn_code": "18069010"
     },
     "396": {
       "product_id": 396,
       "product_name": "COSIMO STRAWBERRY",
-      "product_hsn_code": "20",
-      "product_gst_rate": null
+      "product_mrp": "20",
+      "product_description": "",
+      "product_hsn_code": "22029020"
     },
     "397": {
       "product_id": 397,
       "product_name": "COSIMO PEACH",
-      "product_hsn_code": "20",
-      "product_gst_rate": null
+      "product_mrp": "20",
+      "product_description": "",
+      "product_hsn_code": "22029020"
     },
     "398": {
       "product_id": 398,
       "product_name": "COSIMO MINT",
-      "product_hsn_code": "20",
-      "product_gst_rate": null
+      "product_mrp": "20",
+      "product_description": "",
+      "product_hsn_code": "22029020"
     },
     "399": {
       "product_id": 399,
       "product_name": "COSIMO LEMON",
-      "product_hsn_code": "20",
-      "product_gst_rate": null
+      "product_mrp": "20",
+      "product_description": "",
+      "product_hsn_code": "22029020"
     },
     "400": {
       "product_id": 400,
       "product_name": "JACKET",
-      "product_hsn_code": "200",
-      "product_gst_rate": null
+      "product_mrp": "200",
+      "product_description": "",
+      "product_hsn_code": "000020"
     },
     "401": {
       "product_id": 401,
       "product_name": "SALES AND PROMOTION ACTIVITY",
-      "product_hsn_code": "20,000",
-      "product_gst_rate": null
+      "product_mrp": "20,000",
+      "product_description": "",
+      "product_hsn_code": "996111"
     },
     "402": {
       "product_id": 402,
       "product_name": "BILL BOOKS",
-      "product_hsn_code": "2.5",
-      "product_gst_rate": null
+      "product_mrp": "2.5",
+      "product_description": "",
+      "product_hsn_code": "48025890"
     },
     "403": {
       "product_id": 403,
       "product_name": "PRINTING",
-      "product_hsn_code": "4",
-      "product_gst_rate": null
+      "product_mrp": "4",
+      "product_description": "",
+      "product_hsn_code": "48025890"
     }
   }
 }

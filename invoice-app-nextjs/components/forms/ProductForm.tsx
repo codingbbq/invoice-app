@@ -23,10 +23,10 @@ export function ProductForm({
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: initialData?.name || '',
-      description: initialData?.description || '',
-      mrp: initialData?.mrp || 0,
-      hsnCode: initialData?.hsnCode || '',
+      product_name: initialData?.product_name || initialData?.name || '',
+      product_description: initialData?.product_description || initialData?.description || '',
+      product_mrp: initialData?.product_mrp || initialData?.mrp || 0,
+      product_hsn_code: initialData?.product_hsn_code || initialData?.hsnCode || '',
     },
   });
 
@@ -39,12 +39,12 @@ export function ProductForm({
               Product Name *
             </label>
             <Input
-              {...register('name', { required: 'Product name is required' })}
+              {...register('product_name', { required: 'Product name is required' })}
               placeholder="Enter product name"
               disabled={isLoading}
             />
-            {errors.name && (
-              <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+            {errors.product_name && (
+              <p className="text-red-500 text-sm mt-1">{errors.product_name.message}</p>
             )}
           </div>
 
@@ -53,12 +53,12 @@ export function ProductForm({
               HSN Code *
             </label>
             <Input
-              {...register('hsnCode', { required: 'HSN code is required' })}
+              {...register('product_hsn_code', { required: 'HSN code is required' })}
               placeholder="Enter HSN code"
               disabled={isLoading}
             />
-            {errors.hsnCode && (
-              <p className="text-red-500 text-sm mt-1">{errors.hsnCode.message}</p>
+            {errors.product_hsn_code && (
+              <p className="text-red-500 text-sm mt-1">{errors.product_hsn_code.message}</p>
             )}
           </div>
 
@@ -67,7 +67,7 @@ export function ProductForm({
               MRP (₹) *
             </label>
             <Input
-              {...register('mrp', {
+              {...register('product_mrp', {
                 required: 'MRP is required',
                 valueAsNumber: true,
               })}
@@ -76,8 +76,8 @@ export function ProductForm({
               placeholder="Enter MRP"
               disabled={isLoading}
             />
-            {errors.mrp && (
-              <p className="text-red-500 text-sm mt-1">{errors.mrp.message}</p>
+            {errors.product_mrp && (
+              <p className="text-red-500 text-sm mt-1">{errors.product_mrp.message}</p>
             )}
           </div>
 
@@ -86,15 +86,15 @@ export function ProductForm({
               Description *
             </label>
             <Input
-              {...register('description', {
+              {...register('product_description', {
                 required: 'Description is required',
               })}
               placeholder="Enter product description"
               disabled={isLoading}
             />
-            {errors.description && (
+            {errors.product_description && (
               <p className="text-red-500 text-sm mt-1">
-                {errors.description.message}
+                {errors.product_description.message}
               </p>
             )}
           </div>

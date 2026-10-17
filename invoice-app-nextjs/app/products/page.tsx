@@ -20,7 +20,7 @@ export default function ProductsPage() {
   
   const { items: searchedProducts, searchQuery, setSearchQuery, clearSearch } = useSearch({
     data: products,
-    searchFields: ['name', 'description', 'hsnCode'] as const,
+    searchFields: ['product_name', 'product_description', 'product_hsn_code'] as const,
   });
   
   const { items: sortedProducts, sortConfig, toggleSort } = useSort(searchedProducts);
@@ -85,37 +85,37 @@ export default function ProductsPage() {
                     <th className="px-6 py-3 text-left text-sm">
                       <SortableHeader
                         label="Name"
-                        sortKey="name"
+                        sortKey="product_name"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
-                        onSort={() => toggleSort('name' as any)}
+                        onSort={() => toggleSort('product_name' as any)}
                       />
                     </th>
                     <th className="px-6 py-3 text-left text-sm">
                       <SortableHeader
                         label="HSN Code"
-                        sortKey="hsnCode"
+                        sortKey="product_hsn_code"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
-                        onSort={() => toggleSort('hsnCode' as any)}
+                        onSort={() => toggleSort('product_hsn_code' as any)}
                       />
                     </th>
                     <th className="px-6 py-3 text-left text-sm">
                       <SortableHeader
                         label="Description"
-                        sortKey="description"
+                        sortKey="product_description"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
-                        onSort={() => toggleSort('description' as any)}
+                        onSort={() => toggleSort('product_description' as any)}
                       />
                     </th>
                     <th className="px-6 py-3 text-right text-sm">
                       <SortableHeader
                         label="MRP"
-                        sortKey="mrp"
+                        sortKey="product_mrp"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
-                        onSort={() => toggleSort('mrp' as any)}
+                        onSort={() => toggleSort('product_mrp' as any)}
                       />
                     </th>
                     <th className="px-6 py-3 text-right text-sm font-semibold text-gray-900">
@@ -125,22 +125,22 @@ export default function ProductsPage() {
                 </thead>
                 <tbody className="divide-y">
                   {paginatedProducts.map((product: any) => (
-                    <tr key={product.id} className="hover:bg-gray-50">
+                    <tr key={product.product_id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 text-sm font-medium text-gray-900">
-                        {product.name}
+                        {product.product_name}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-600">
-                        {product.hsnCode}
+                        {product.product_hsn_code}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-600">
-                        {product.description}
+                        {product.product_description}
                       </td>
                       <td className="px-6 py-4 text-sm font-medium text-gray-900 text-right">
-                        ₹{product.mrp.toFixed(2)}
+                        ₹{parseFloat(product.product_mrp).toFixed(2)}
                       </td>
                       <td className="px-6 py-4 text-right text-sm">
                         <div className="flex justify-end gap-2">
-                          <Link href={`/products/${product.id}/edit`}>
+                          <Link href={`/products/${product.product_id}/edit`}>
                             <Button
                               variant="outline"
                               size="sm"
@@ -150,12 +150,12 @@ export default function ProductsPage() {
                               Edit
                             </Button>
                           </Link>
-                          {deleteConfirm === product.id ? (
+                          {deleteConfirm === product.product_id ? (
                             <div className="flex gap-2">
                               <Button
                                 size="sm"
                                 variant="destructive"
-                                onClick={() => handleDelete(product.id)}
+                                onClick={() => handleDelete(product.product_id)}
                                 disabled={deleteProduct.isPending}
                               >
                                 Confirm
@@ -173,7 +173,7 @@ export default function ProductsPage() {
                               size="sm"
                               variant="outline"
                               className="text-red-600 hover:text-red-700 flex items-center gap-1"
-                              onClick={() => setDeleteConfirm(product.id)}
+                              onClick={() => setDeleteConfirm(product.product_id)}
                             >
                               <Trash2 className="h-4 w-4" />
                               Delete

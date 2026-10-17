@@ -105,13 +105,14 @@ function convertSqlToFirebaseJson(sqlFilePath, outputJsonPath) {
   // 3. Process 'product' table
   const productRows = parseSqlTuples(sqlText, 'product');
   productRows.forEach((tokens) => {
-    if (tokens.length >= 4) {
+    if (tokens.length >= 5) {
       const productId = tokens[0];
       firebaseData.products[productId] = {
         product_id: parseInt(productId, 10),
         product_name: cleanString(tokens[1]),
-        product_hsn_code: cleanString(tokens[2]),
-        product_gst_rate: parseFloat(tokens[3])
+        product_mrp: cleanString(tokens[2]),
+        product_description: cleanString(tokens[3]),
+        product_hsn_code: cleanString(tokens[4])
       };
     }
   });

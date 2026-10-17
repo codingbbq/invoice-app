@@ -30,10 +30,15 @@ export interface Client {
 
 export interface Product {
   id?: string;
-  name: string;
-  description: string;
-  mrp: number;
-  hsnCode: string;
+  product_name: string;
+  product_description: string;
+  product_mrp: number | string;
+  product_hsn_code: string;
+  // Legacy field names for backward compatibility
+  name?: string;
+  description?: string;
+  mrp?: number;
+  hsnCode?: string;
   createdAt?: Timestamp;
   updatedAt?: Timestamp;
   isActive?: boolean;
