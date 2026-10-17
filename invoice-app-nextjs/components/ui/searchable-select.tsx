@@ -56,8 +56,8 @@ export function SearchableSelect({
     if (isOpen && containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect();
       setDropdownPosition({
-        top: rect.bottom + window.scrollY,
-        left: rect.left + window.scrollX,
+        top: rect.bottom,
+        left: rect.left,
         width: rect.width,
       });
     }
