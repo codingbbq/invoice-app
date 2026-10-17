@@ -52,7 +52,7 @@ export function SearchableSelect({
   }, [isOpen]);
 
   return (
-    <div ref={containerRef} className={`relative w-full ${className}`}>
+    <div ref={containerRef} className={`relative w-full ${className}`} style={{ zIndex: 'auto' }}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -69,7 +69,11 @@ export function SearchableSelect({
       </button>
 
       {isOpen && (
-        <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
+        <div className="fixed z-50 bg-white border border-gray-300 rounded-md shadow-lg" style={{
+          top: containerRef.current?.getBoundingClientRect().bottom || 0,
+          left: containerRef.current?.getBoundingClientRect().left || 0,
+          width: containerRef.current?.getBoundingClientRect().width || 'auto',
+        }}>
           <div className="p-2 border-b border-gray-200">
             <div className="relative">
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-400" />

@@ -166,32 +166,34 @@ export default function CreateInvoicePage() {
 
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Invoice Header */}
-        <Card className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Invoice Number
-              </label>
-              <Input
-                type="number"
-                value={formData.invoiceNumber}
-                disabled
-                className="bg-gray-100"
-              />
-            </div>
+        <Card className="p-6 overflow-visible">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Invoice Number
+                </label>
+                <Input
+                  type="number"
+                  value={formData.invoiceNumber}
+                  disabled
+                  className="bg-gray-100"
+                />
+              </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Invoice Date *
-              </label>
-              <Input
-                type="date"
-                value={formData.invoiceDate}
-                onChange={(e) =>
-                  setFormData({ ...formData, invoiceDate: e.target.value })
-                }
-                required
-              />
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Invoice Date *
+                </label>
+                <Input
+                  type="date"
+                  value={formData.invoiceDate}
+                  onChange={(e) =>
+                    setFormData({ ...formData, invoiceDate: e.target.value })
+                  }
+                  required
+                />
+              </div>
             </div>
 
             <div>
