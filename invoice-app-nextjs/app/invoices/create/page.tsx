@@ -8,6 +8,7 @@ import { useAddInvoice, useNextInvoiceNumber } from '@/hooks/useInvoices';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
+import { SearchableSelect } from '@/components/ui/searchable-select';
 import { Trash2, Plus } from 'lucide-react';
 
 interface InvoiceItem {
@@ -197,21 +198,18 @@ export default function CreateInvoicePage() {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Client *
               </label>
-              <select
+              <SearchableSelect
                 value={formData.clientId}
-                onChange={(e) =>
-                  setFormData({ ...formData, clientId: e.target.value })
+                onChange={(value) =>
+                  setFormData({ ...formData, clientId: value })
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                options={clients.map((client: any) => ({
+                  id: client.id,
+                  name: client.client_name || client.name || 'Unknown',
+                }))}
+                placeholder="Select Client"
                 required
-              >
-                <option value="">Select Client</option>
-                {clients.map((client: any) => (
-                  <option key={client.id} value={client.id}>
-                    {client.name}
-                  </option>
-                ))}
-              </select>
+              />
             </div>
 
             <div>
@@ -270,21 +268,18 @@ export default function CreateInvoicePage() {
               {items.map((item, index) => (
                 <tr key={index} className="hover:bg-gray-50">
                   <td className="px-4 py-2">
-                    <select
+                    <SearchableSelect
                       value={item.productId}
-                      onChange={(e) =>
-                        handleItemChange(index, 'productId', e.target.value)
+                      onChange={(value) =>
+                        handleItemChange(index, 'productId', value)
                       }
-                      className="w-full px-2 py-1 border border-gray-300 rounded text-sm"
+                      options={products.map((product: any) => ({
+                        id: product.id,
+                        name: product.product_name || product.name || 'Unknown',
+                      }))}
+                      placeholder="Select Product"
                       required
-                    >
-                      <option value="">Select Product</option>
-                      {products.map((product: any) => (
-                        <option key={product.id} value={product.id}>
-                          {product.name}
-                        </option>
-                      ))}
-                    </select>
+                    />
                   </td>
                   <td className="px-4 py-2 text-sm text-gray-600">
                     {item.mrp > 0
@@ -437,7 +432,7 @@ export default function CreateInvoicePage() {
           </Button>
           <Button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700"
+            className="bg-blue-600 hover:bg-blue-700 text-white"
             disabled={addInvoice.isPending}
           >
             {addInvoice.isPending ? 'Creating...' : 'Create Invoice'}
