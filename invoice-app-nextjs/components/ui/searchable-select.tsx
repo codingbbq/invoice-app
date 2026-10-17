@@ -59,13 +59,26 @@ export function SearchableSelect({
   }, [isOpen]);
 
   useEffect(() => {
-    if (isOpen && containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      setDropdownPosition({
-        top: rect.bottom,
-        left: rect.left,
-        width: rect.width,
-      });
+    const updatePosition = () => {
+      if (isOpen && containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setDropdownPosition({
+          top: rect.bottom,
+          left: rect.left,
+          width: rect.width,
+        });
+      }
+    };
+
+    updatePosition();
+
+    if (isOpen) {
+      window.addEventListener('scroll', updatePosition, true);
+      window.addEventListener('resize', updatePosition);
+      return () => {
+        window.removeEventListener('scroll', updatePosition, true);
+        window.removeEventListener('resize', updatePosition);
+      };
     }
   }, [isOpen]);
 
