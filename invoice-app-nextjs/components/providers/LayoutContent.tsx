@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { AuthContext } from './AuthProvider';
 import { Header } from '@/components/layout/Header';
@@ -13,7 +13,7 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const isPublicRoute = PUBLIC_ROUTES.includes(pathname);
+  const isPublicRoute = useMemo(() => PUBLIC_ROUTES.includes(pathname), [pathname]);
   const isAuthenticated = authContext?.isAuthenticated ?? false;
 
   useEffect(() => {
