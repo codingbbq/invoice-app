@@ -1,14 +1,15 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { useQuery } from '@tanstack/react-query';
 import { useInvoice } from '@/hooks/useInvoices';
 import { useClient } from '@/hooks/useClients';
 import { InvoiceTemplate } from '@/components/invoice/invoice-template';
+import { InvoicePDF } from '@/components/invoice/invoice-pdf';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 import { useRef, useState } from 'react';
+import { pdf } from '@react-pdf/renderer';
 
 export default function ViewInvoicePage() {
   const params = useParams();
@@ -20,71 +21,22 @@ export default function ViewInvoicePage() {
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownloadPDF = async () => {
-    if (!invoiceRef.current) return;
+    if (!invoice || !client) return;
     
     setIsDownloading(true);
     try {
-      const html2pdf = (await import('html2pdf.js')).default;
-      const element = invoiceRef.current;
+      const doc = <InvoicePDF invoice={invoice} client={client} />;
+      const blob = await pdf(doc).toBlob();
       
-      // Clone the element
-      const clonedElement = element.cloneNode(true) as HTMLElement;
-      
-      // Function to convert Tailwind classes to inline styles
-      const convertTailwindToInline = (el: HTMLElement) => {
-        const computedStyle = window.getComputedStyle(el);
-        
-        // Copy all computed styles to inline styles
-        for (let i = 0; i < computedStyle.length; i++) {
-          const property = computedStyle[i];
-          const value = computedStyle.getPropertyValue(property);
-          
-          // Skip problematic properties and only apply safe ones
-          if (!property.includes('webkit') && !property.includes('moz') && value) {
-            try {
-              el.style.setProperty(property, value, 'important');
-            } catch (e) {
-              // Skip properties that can't be set
-            }
-          }
-        }
-      };
-      
-      // Apply inline styles to all elements
-      const allElements = clonedElement.querySelectorAll('*');
-      allElements.forEach(el => {
-        convertTailwindToInline(el as HTMLElement);
-      });
-      
-      // Remove all class attributes
-      allElements.forEach(el => {
-        el.removeAttribute('class');
-      });
-      
-      const opt: any = {
-        margin: [10, 10, 10, 10],
-        filename: `invoice-${invoice?.invoiceNumber}.pdf`,
-        image: { type: 'png', quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          allowTaint: true,
-          backgroundColor: '#ffffff',
-          logging: false,
-          ignoreElements: (element: Element) => {
-            return element.tagName === 'SCRIPT' || element.tagName === 'STYLE';
-          },
-        },
-        jsPDF: {
-          orientation: 'portrait',
-          unit: 'mm',
-          format: 'a4',
-          compress: true,
-        },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
-      };
-
-      await html2pdf().set(opt).from(clonedElement).save();
+      // Create a download link
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `invoice-${invoice.invoiceNumber}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');
