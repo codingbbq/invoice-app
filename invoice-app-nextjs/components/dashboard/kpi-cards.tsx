@@ -42,17 +42,30 @@ export function KPICards({ data }: { data: KPIData }) {
         </div>
       </Card>
 
-      {/* Clients & Products Card */}
+      {/* Clients Card */}
       <Card className="p-4 bg-white border border-gray-100 hover:border-gray-200 transition-colors">
-        <div className="space-y-3">
-          <div>
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Clients</p>
+        <div className="flex items-start justify-between">
+          <div className="flex-1">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Total Clients</p>
             <p className="text-2xl font-bold text-gray-900">{data.totalClients}</p>
             <p className="text-xs text-gray-400 mt-1">+{data.newClientsThisMonth} new</p>
           </div>
-          <div className="border-t border-gray-100 pt-2">
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Products</p>
-            <p className="text-xl font-bold text-gray-900">{data.totalProducts}</p>
+          <div className="p-2 bg-green-50 rounded-md ml-2 flex-shrink-0">
+            <Users className="h-5 w-5 text-green-600" />
+          </div>
+        </div>
+      </Card>
+
+      {/* Products Card */}
+      <Card className="p-4 bg-white border border-gray-100 hover:border-gray-200 transition-colors">
+        <div className="flex items-start justify-between">
+          <div className="flex-1">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Total Products</p>
+            <p className="text-2xl font-bold text-gray-900">{data.totalProducts}</p>
+            <p className="text-xs text-gray-400 mt-1">In catalog</p>
+          </div>
+          <div className="p-2 bg-purple-50 rounded-md ml-2 flex-shrink-0">
+            <Package className="h-5 w-5 text-purple-600" />
           </div>
         </div>
       </Card>
