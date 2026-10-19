@@ -61,12 +61,15 @@ export async function POST(request: NextRequest) {
     };
 
     const docRef = await addProduct(productData);
+    const now = new Date().toISOString();
     const responseData = {
       id: docRef.id,
       product_name: productData.product_name,
       product_description: productData.product_description,
       product_mrp: productData.product_mrp,
       product_hsn_code: productData.product_hsn_code,
+      createdAt: now,
+      updatedAt: now,
     };
     return NextResponse.json(responseData, { status: 201 });
   } catch (error) {
