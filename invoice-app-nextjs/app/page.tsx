@@ -42,7 +42,7 @@ export default function Dashboard() {
   const recentClients = clients.slice(0, 5);
   const recentProducts = products.slice(0, 5);
 
-  // Top performers
+  // Top performers - Top 5 Clients
   const topClients = clients
     .map((client: any) => ({
       id: client.id,
@@ -53,15 +53,24 @@ export default function Dashboard() {
       invoiceCount: invoices.filter((inv: any) => inv.clientId === client.id).length,
     }))
     .sort((a: any, b: any) => b.totalRevenue - a.totalRevenue)
-    .slice(0, 3);
+    .slice(0, 5);
 
+  // Top 5 Products - calculate based on invoice items
   const topProducts = products
-    .map((product: any) => ({
-      id: product.id,
-      name: product.name,
-      totalRevenue: 0,
-      unitsSold: 0,
-    }))
+    .map((product: any) => {
+      const productInvoiceItems = invoices.flatMap((inv: any) => inv.items || [])
+        .filter((item: any) => item.productId === product.id);
+      
+      const unitsSold = productInvoiceItems.reduce((sum: number, item: any) => sum + (item.quantity || 0), 0);
+      const totalRevenue = productInvoiceItems.reduce((sum: number, item: any) => sum + (item.totalCost || 0), 0);
+      
+      return {
+        id: product.id,
+        name: product.product_name || product.name || 'Unknown Product',
+        totalRevenue: totalRevenue,
+        unitsSold: unitsSold,
+      };
+    })
     .sort((a: any, b: any) => b.totalRevenue - a.totalRevenue)
     .slice(0, 5);
 
