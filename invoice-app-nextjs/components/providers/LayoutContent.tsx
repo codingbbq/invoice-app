@@ -14,22 +14,16 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   const isPublicRoute = PUBLIC_ROUTES.includes(pathname);
-  const isLoading = authContext?.isLoading ?? true;
   const isAuthenticated = authContext?.isAuthenticated ?? false;
 
   useEffect(() => {
-    // Once loading is done, check if we need to redirect
-    if (!isLoading && !isAuthenticated && !isPublicRoute) {
+    // Redirect to login if not authenticated and not on a public route
+    if (!isAuthenticated && !isPublicRoute) {
       router.push('/login');
     }
-  }, [isLoading, isAuthenticated, isPublicRoute, router]);
+  }, [isAuthenticated, isPublicRoute, router]);
 
-  // Show nothing while loading (AuthProvider will handle redirect)
-  if (isLoading) {
-    return null;
-  }
-
-  // If not authenticated and not on public route, don't render (redirect is happening)
+  // If not authenticated and not on public route, show nothing (redirect is happening)
   if (!isAuthenticated && !isPublicRoute) {
     return null;
   }
