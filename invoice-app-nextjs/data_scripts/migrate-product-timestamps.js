@@ -1,15 +1,13 @@
-const admin = require('firebase-admin');
-const path = require('path');
+const { initializeApp, cert } = require('firebase-admin/app');
+const { getFirestore, Timestamp } = require('firebase-admin/firestore');
+const serviceAccount = require('./serviceAccountKey.json');
 
 // Initialize Firebase Admin SDK
-const serviceAccountPath = path.join(__dirname, '../firebase-service-account.json');
-const serviceAccount = require(serviceAccountPath);
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+initializeApp({
+  credential: cert(serviceAccount),
 });
 
-const db = admin.firestore();
+const db = getFirestore();
 
 async function migrateProductTimestamps() {
   try {
@@ -29,14 +27,14 @@ async function migrateProductTimestamps() {
       // Check and convert createdAt
       if (product.createdAt && typeof product.createdAt === 'string') {
         console.log(`Converting createdAt for product ${doc.id}: ${product.createdAt}`);
-        updateData.createdAt = admin.firestore.Timestamp.fromDate(new Date(product.createdAt));
+        updateData.createdAt = Timestamp.fromDate(new Date(product.createdAt));
         needsUpdate = true;
       }
       
       // Check and convert updatedAt
       if (product.updatedAt && typeof product.updatedAt === 'string') {
         console.log(`Converting updatedAt for product ${doc.id}: ${product.updatedAt}`);
-        updateData.updatedAt = admin.firestore.Timestamp.fromDate(new Date(product.updatedAt));
+        updateData.updatedAt = Timestamp.fromDate(new Date(product.updatedAt));
         needsUpdate = true;
       }
       
