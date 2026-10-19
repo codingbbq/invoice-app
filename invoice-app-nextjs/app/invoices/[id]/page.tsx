@@ -42,9 +42,16 @@ export default function ViewInvoicePage() {
       
       const element = pdfRef.current;
       
-      // Temporarily show the element for html2canvas to render it
-      const originalDisplay = element.style.display;
-      element.style.display = 'block';
+      // Move element off-screen instead of showing it
+      const originalPosition = element.style.position;
+      const originalLeft = element.style.left;
+      const originalTop = element.style.top;
+      const originalVisibility = element.style.visibility;
+      
+      element.style.position = 'fixed';
+      element.style.left = '-9999px';
+      element.style.top = '-9999px';
+      element.style.visibility = 'hidden';
       
       const opt: any = {
         margin: [10, 10, 10, 10] as [number, number, number, number],
@@ -68,8 +75,11 @@ export default function ViewInvoicePage() {
 
       await html2pdf().set(opt).from(element).save();
       
-      // Hide the element again
-      element.style.display = originalDisplay;
+      // Restore original position
+      element.style.position = originalPosition;
+      element.style.left = originalLeft;
+      element.style.top = originalTop;
+      element.style.visibility = originalVisibility;
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');
@@ -121,8 +131,8 @@ export default function ViewInvoicePage() {
         <InvoiceTemplate invoice={invoice} client={client} />
       </div>
 
-      {/* Hidden PDF template for download */}
-      <div ref={pdfRef} style={{ display: 'none' }}>
+      {/* Hidden PDF template for download - positioned off-screen */}
+      <div ref={pdfRef} style={{ position: 'fixed', left: '-9999px', top: '-9999px', visibility: 'hidden' }}>
         <InvoicePDFTemplate invoice={invoice} client={client} settings={settings} />
       </div>
     </div>
