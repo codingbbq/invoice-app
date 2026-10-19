@@ -1,14 +1,17 @@
 'use client';
 
-import { useState } from 'react';
-import { useAuthContext } from '@/components/providers/AuthProvider';
+import { useState, useContext } from 'react';
+import { AuthContext } from '@/components/providers/AuthProvider';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { AlertCircle } from 'lucide-react';
 
 export default function LoginPage() {
-  const { login, isLoading } = useAuthContext();
+  const authContext = useContext(AuthContext);
+  const login = authContext?.login || (async () => {});
+  const isLoading = authContext?.isLoading || false;
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
