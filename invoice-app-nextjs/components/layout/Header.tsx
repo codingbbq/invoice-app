@@ -48,41 +48,49 @@ export function Header() {
             </Link>
           </div>
 
-          {isAuthenticated && (
-            <nav className="hidden md:flex items-center space-x-2">
-              <Link href="/" className={navLinkClass('/')}>
-                Dashboard
-              </Link>
-              <Link href="/clients" className={navLinkClass('/clients')}>
-                Clients
-              </Link>
-              <Link href="/products" className={navLinkClass('/products')}>
-                Products
-              </Link>
-              <Link href="/invoices" className={navLinkClass('/invoices')}>
-                Invoices
-              </Link>
-              <Link href="/settings" className={navLinkClass('/settings')}>
-                Settings
-              </Link>
-            </nav>
-          )}
+          {isAuthenticated ? (
+            <>
+              <nav className="hidden md:flex items-center space-x-2">
+                <Link href="/" className={navLinkClass('/')}>
+                  Dashboard
+                </Link>
+                <Link href="/clients" className={navLinkClass('/clients')}>
+                  Clients
+                </Link>
+                <Link href="/products" className={navLinkClass('/products')}>
+                  Products
+                </Link>
+                <Link href="/invoices" className={navLinkClass('/invoices')}>
+                  Invoices
+                </Link>
+                <Link href="/settings" className={navLinkClass('/settings')}>
+                  Settings
+                </Link>
+              </nav>
 
-          <div className="hidden md:flex items-center space-x-4">
-            {isAuthenticated && user && (
-              <>
-                <span className="text-sm text-gray-600">Welcome, <strong>{user.username}</strong></span>
-                <Button
-                  onClick={logout}
-                  variant="ghost"
-                  className="flex items-center gap-2 text-slate-700 hover:bg-red-50 hover:text-red-600"
-                >
-                  <LogOut className="w-4 h-4" />
-                  Logout
-                </Button>
-              </>
-            )}
-          </div>
+              <div className="hidden md:flex items-center space-x-4">
+                {user && (
+                  <>
+                    <span className="text-sm text-gray-600">Welcome, <strong>{user.username}</strong></span>
+                    <Button
+                      onClick={logout}
+                      variant="ghost"
+                      className="flex items-center gap-2 text-slate-700 hover:bg-red-50 hover:text-red-600"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      Logout
+                    </Button>
+                  </>
+                )}
+              </div>
+            </>
+          ) : (
+            <div className="hidden md:flex items-center">
+              <Link href="/login" className="px-5 py-2.5 font-semibold text-blue-600 hover:bg-blue-50 rounded-xl transition-all">
+                Sign In
+              </Link>
+            </div>
+          )}
 
           <Button
             variant="ghost"
