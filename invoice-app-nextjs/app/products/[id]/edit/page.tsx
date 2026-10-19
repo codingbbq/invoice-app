@@ -3,6 +3,7 @@
 import { useRouter, useParams } from 'next/navigation';
 import { useProduct, useUpdateProduct } from '@/hooks/useProducts';
 import { ProductForm } from '@/components/forms/ProductForm';
+import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { Card } from '@/components/ui/card';
 
 export default function EditProductPage() {
@@ -48,6 +49,13 @@ export default function EditProductPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <Breadcrumb
+        items={[
+          { label: 'Dashboard', href: '/' },
+          { label: 'Products', href: '/products' },
+          { label: `Edit ${product?.product_name}` },
+        ]}
+      />
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-gray-900">Edit Product</h1>
         <p className="text-gray-600 mt-2">Update product information</p>

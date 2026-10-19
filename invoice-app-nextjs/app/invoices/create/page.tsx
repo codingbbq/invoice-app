@@ -8,6 +8,7 @@ import { useAddInvoice, useNextInvoiceNumber } from '@/hooks/useInvoices';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
+import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { Trash2, Plus } from 'lucide-react';
 
@@ -159,6 +160,13 @@ export default function CreateInvoicePage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <Breadcrumb
+        items={[
+          { label: 'Dashboard', href: '/' },
+          { label: 'Invoices', href: '/invoices' },
+          { label: 'Create Invoice' },
+        ]}
+      />
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-gray-900">Create Invoice</h1>
         <p className="text-gray-600 mt-2">Create a new invoice for your client</p>
