@@ -23,38 +23,44 @@ export default function ViewInvoicePage() {
     
     setIsDownloading(true);
     try {
-      const html2pdf = (await import('html2pdf.js')).default;
+      const html2canvas = (await import('html2canvas-pro')).default;
+      const { jsPDF } = await import('jspdf');
       const element = invoiceRef.current;
       
-      const opt: any = {
-        margin: [10, 10, 10, 10],
-        filename: `invoice-${invoice?.invoiceNumber}.pdf`,
-        image: { type: 'png', quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          allowTaint: true,
-          backgroundColor: '#ffffff',
-          logging: false,
-          onclone: (clonedDocument: Document) => {
-            const styles = clonedDocument.querySelectorAll('style');
-            styles.forEach(style => {
-              if (style.textContent) {
-                style.textContent = style.textContent.replace(/lab\([^)]*\)/g, '#000000');
-              }
-            });
-          },
-        },
-        jsPDF: {
-          orientation: 'portrait',
-          unit: 'mm',
-          format: 'a4',
-          compress: true,
-        },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
-      };
+      // Generate canvas from element
+      const canvas = await html2canvas(element, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        logging: false,
+      });
 
-      await html2pdf().set(opt).from(element).save();
+      // Get canvas dimensions
+      const imgWidth = 210; // A4 width in mm
+      const pageHeight = 297; // A4 height in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+
+      // Create PDF
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+
+      // Add image to PDF
+      const imgData = canvas.toDataURL('image/png');
+      pdf.addImage(imgData, 'PNG', 10, position + 10, imgWidth - 20, imgHeight);
+      heightLeft -= pageHeight;
+
+      // Add additional pages if needed
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, 'PNG', 10, position + 10, imgWidth - 20, imgHeight);
+        heightLeft -= pageHeight;
+      }
+
+      // Download PDF
+      pdf.save(`invoice-${invoice?.invoiceNumber}.pdf`);
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');
