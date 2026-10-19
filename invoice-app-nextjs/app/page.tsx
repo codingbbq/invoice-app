@@ -56,6 +56,8 @@ export default function Dashboard() {
     .slice(0, 5);
 
   // Top 5 Products - calculate based on invoice items
+  // totalRevenue = sum of (quantity * rate) for each invoice item
+  // Note: rate is the actual price charged per unit in the invoice, which may differ from MRP
   const topProducts = products
     .map((product: any) => {
       const productInvoiceItems = invoices.flatMap((inv: any) => inv.items || [])
