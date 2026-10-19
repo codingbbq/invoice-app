@@ -11,39 +11,39 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const authContext = useContext(AuthContext);
   const router = useRouter();
   const pathname = usePathname();
-  const [isReady, setIsReady] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const isPublicRoute = PUBLIC_ROUTES.includes(pathname);
-  const isLoading = authContext?.isLoading ?? true;
   const isAuthenticated = authContext?.isAuthenticated ?? false;
 
   useEffect(() => {
-    // Wait for auth check to complete
-    if (!isLoading) {
-      // If not authenticated and not on a public route, redirect to login
-      if (!isAuthenticated && !isPublicRoute) {
-        router.push('/login');
-      } else {
-        setIsReady(true);
-      }
-    }
-  }, [isLoading, isAuthenticated, isPublicRoute, router]);
+    setMounted(true);
+  }, []);
 
-  // Show loading screen while checking authentication
-  if (isLoading) {
+  useEffect(() => {
+    if (!mounted) return;
+
+    // If not authenticated and not on a public route, redirect to login
+    if (!isAuthenticated && !isPublicRoute) {
+      router.push('/login');
+    }
+  }, [mounted, isAuthenticated, isPublicRoute, router]);
+
+  // Don't render anything until component is mounted
+  if (!mounted) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <Card className="p-8 text-center">
           <div className="flex justify-center mb-4">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
           </div>
-          <p className="text-gray-600">Checking authentication...</p>
+          <p className="text-gray-600">Loading...</p>
         </Card>
       </div>
     );
   }
 
-  // If not authenticated and not on public route, don't render anything (redirect is happening)
+  // If not authenticated and not on public route, don't render children (redirect is happening)
   if (!isAuthenticated && !isPublicRoute) {
     return null;
   }
