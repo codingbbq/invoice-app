@@ -92,11 +92,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       setUser(loggedInUser);
       localStorage.setItem('user', JSON.stringify(loggedInUser));
-      router.push('/');
+      // Redirect after a short delay to allow state to update
+      setTimeout(() => router.push('/'), 100);
     } catch (error) {
-      throw error;
-    } finally {
       setIsLoading(false);
+      throw error;
     }
   };
 

@@ -1,21 +1,19 @@
 'use client';
 
-import { useState, useContext } from 'react';
-import { AuthContext } from '@/components/providers/AuthProvider';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { loginUser } from '@/lib/auth-service';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { AlertCircle } from 'lucide-react';
 
 export default function LoginPage() {
-  const authContext = useContext(AuthContext);
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Use the login function from context, or throw error if not available
-  const login = authContext?.login;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,12 +21,11 @@ export default function LoginPage() {
     setIsSubmitting(true);
 
     try {
-      if (!login) {
-        throw new Error('Authentication service not available');
-      }
       console.log('Attempting login with:', { username });
-      await login(username, password);
+      await loginUser(username, password);
       console.log('Login successful');
+      // Redirect to dashboard
+      router.push('/');
     } catch (err) {
       console.error('Login failed:', err);
       setError(err instanceof Error ? err.message : 'Login failed');
