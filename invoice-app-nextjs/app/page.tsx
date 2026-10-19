@@ -86,8 +86,8 @@ export default function Dashboard() {
     })),
     recentProducts: recentProducts.map((product: any) => ({
       id: product.id,
-      name: product.name,
-      mrp: product.mrp,
+      name: product.product_name || product.name || 'Unknown Product',
+      mrp: product.product_mrp || product.mrp || 0,
       unitsSold: 0,
       totalRevenue: 0,
     })),
