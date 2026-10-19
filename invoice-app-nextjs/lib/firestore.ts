@@ -66,7 +66,6 @@ export interface Invoice {
   total: number;
   createdAt?: Timestamp;
   updatedAt?: Timestamp;
-  status: 'draft' | 'finalized';
 }
 
 export interface Settings {

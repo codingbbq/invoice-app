@@ -82,7 +82,6 @@ export async function POST(request: NextRequest) {
       cgst: body.cgst || 0,
       sgst: body.sgst || 0,
       total: body.total || 0,
-      status: body.status || 'draft',
     };
 
     const docRef = await addInvoice(invoiceData);

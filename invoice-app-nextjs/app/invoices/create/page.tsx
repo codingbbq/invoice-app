@@ -147,7 +147,6 @@ export default function CreateInvoicePage() {
         cgst: totals.cgst,
         sgst: totals.sgst,
         total: totals.total,
-        status: 'draft',
       };
       console.log(invoiceData);
       await addInvoice.mutateAsync(invoiceData as any);

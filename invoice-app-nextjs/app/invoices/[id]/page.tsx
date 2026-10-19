@@ -105,18 +105,6 @@ export default function ViewInvoicePage() {
           <h1 className="text-3xl font-bold text-gray-900">
             Invoice #{invoice.invoiceNumber}
           </h1>
-          <p className="text-gray-600 mt-1">
-            Status:{' '}
-            <span
-              className={`px-3 py-1 rounded-full text-xs font-medium ${
-                invoice.status === 'finalized'
-                  ? 'bg-green-100 text-green-800'
-                  : 'bg-yellow-100 text-yellow-800'
-              }`}
-            >
-              {invoice.status}
-            </span>
-          </p>
         </div>
         <Button
           onClick={handleDownloadPDF}

@@ -16,19 +16,14 @@ export default function Dashboard() {
   const { data: products = [], isLoading: productsLoading } = useProducts();
 
   // Calculate KPI data
-  const paidInvoices = invoices.filter((inv: any) => inv.status === 'finalized');
-  const pendingInvoices = invoices.filter((inv: any) => inv.status === 'draft');
-  const draftInvoices = invoices.filter((inv: any) => inv.status === 'draft');
-  
-  const paidRevenue = paidInvoices.reduce((sum: number, inv: any) => sum + (inv.total || 0), 0);
-  const outstandingBalance = pendingInvoices.reduce((sum: number, inv: any) => sum + (inv.total || 0), 0);
+  const totalRevenue = invoices.reduce((sum: number, inv: any) => sum + (inv.total || 0), 0);
   
   const kpiData = {
-    paidRevenue,
-    outstandingBalance,
+    paidRevenue: totalRevenue,
+    outstandingBalance: 0,
     totalInvoices: invoices.length,
-    draftInvoices: draftInvoices.length,
-    pendingInvoices: pendingInvoices.length,
+    draftInvoices: 0,
+    pendingInvoices: 0,
     overdueInvoices: 0,
     totalClients: clients.length,
     newClientsThisMonth: Math.floor(clients.length * 0.1),
@@ -36,8 +31,8 @@ export default function Dashboard() {
   };
 
   const paymentStatusData = {
-    paid: paidRevenue,
-    pending: outstandingBalance,
+    paid: totalRevenue,
+    pending: 0,
     overdue: 0,
   };
 
@@ -76,7 +71,6 @@ export default function Dashboard() {
       clientId: inv.clientId,
       invoiceDate: inv.invoiceDate,
       total: inv.total,
-      status: inv.status,
     })),
     recentClients: recentClients.map((client: any) => ({
       id: client.id,

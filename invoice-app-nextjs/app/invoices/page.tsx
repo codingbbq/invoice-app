@@ -31,7 +31,7 @@ export default function InvoicesPage() {
   
   const { items: searchedInvoices, searchQuery, setSearchQuery, clearSearch } = useSearch({
     data: invoices,
-    searchFields: ['invoiceNumber', 'clientId', 'invoiceDate', 'status'] as const,
+    searchFields: ['invoiceNumber', 'clientId', 'invoiceDate'] as const,
   });
   
   const { items: sortedInvoices, sortConfig, toggleSort } = useSort(searchedInvoices, {
@@ -132,15 +132,6 @@ export default function InvoicesPage() {
                         onSort={() => toggleSort('total' as any)}
                       />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm">
-                      <SortableHeader
-                        label="Status"
-                        sortKey="status"
-                        currentSortKey={sortConfig?.key as string | undefined}
-                        sortDirection={sortConfig?.direction}
-                        onSort={() => toggleSort('status' as any)}
-                      />
-                    </th>
                     <th className="px-6 py-3 text-right text-sm font-semibold text-gray-900">
                       Actions
                     </th>
@@ -160,17 +151,6 @@ export default function InvoicesPage() {
                       </td>
                       <td className="px-6 py-4 text-sm font-medium text-gray-900 text-right">
                         ₹{invoice.total.toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4 text-sm">
-                        <span
-                          className={`px-3 py-1 rounded-full text-xs font-medium ${
-                            invoice.status === 'finalized'
-                              ? 'bg-green-100 text-green-800'
-                              : 'bg-yellow-100 text-yellow-800'
-                          }`}
-                        >
-                          {invoice.status}
-                        </span>
                       </td>
                       <td className="px-6 py-4 text-right text-sm">
                         <div className="flex justify-end gap-2">
