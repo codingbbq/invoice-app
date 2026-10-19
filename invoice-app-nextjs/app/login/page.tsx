@@ -20,7 +20,7 @@ export default function LoginPage() {
     setIsSubmitting(true);
 
     try {
-      if (!authContext?.login) {
+      if (!authContext || !authContext.login) {
         throw new Error('Authentication service not available');
       }
       await authContext.login(username, password);
