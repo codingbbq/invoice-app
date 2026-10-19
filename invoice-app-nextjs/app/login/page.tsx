@@ -16,14 +16,18 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form submitted', { username, password, authContext });
     setError('');
     setIsSubmitting(true);
 
     try {
       if (!authContext?.login) {
+        console.error('AuthContext or login function not available', authContext);
         throw new Error('Authentication service not available');
       }
+      console.log('Calling login with:', { username, password });
       await authContext.login(username, password);
+      console.log('Login successful');
     } catch (err) {
       console.error('Login error:', err);
       setError(err instanceof Error ? err.message : 'Login failed');
