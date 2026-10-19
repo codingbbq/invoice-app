@@ -7,14 +7,7 @@ import {
   getInvoice,
   Invoice,
 } from '@/lib/firestore';
-import { db } from '@/lib/firebase';
-import {
-  doc,
-  getDoc,
-  setDoc,
-  runTransaction,
-  Timestamp,
-} from 'firebase/firestore';
+import { Timestamp } from 'firebase/firestore';
 
 export async function GET(request: NextRequest) {
   try {
@@ -61,21 +54,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get next invoice number using transaction
+    // Get next invoice number by finding the max existing invoice number
     let invoiceNumber: number;
     try {
-      invoiceNumber = await runTransaction(db, async (transaction) => {
-        const counterRef = doc(db, 'invoiceCounters', 'current');
-        const counterSnap = await transaction.get(counterRef);
-
-        let nextNumber = 1;
-        if (counterSnap.exists()) {
-          nextNumber = (counterSnap.data().value || 0) + 1;
-        }
-
-        transaction.set(counterRef, { value: nextNumber });
-        return nextNumber;
-      });
+      const existingInvoices = await getInvoices();
+      invoiceNumber = 1;
+      if (existingInvoices.length > 0) {
+        const maxNumber = Math.max(...existingInvoices.map(inv => inv.invoiceNumber || 0));
+        invoiceNumber = maxNumber + 1;
+      }
     } catch (error) {
       console.error('Error getting invoice number:', error);
       return NextResponse.json(
@@ -163,12 +150,13 @@ export async function DELETE(request: NextRequest) {
 // Get next invoice number
 export async function PATCH(request: NextRequest) {
   try {
-    const counterRef = doc(db, 'invoiceCounters', 'current');
-    const counterSnap = await getDoc(counterRef);
-
+    // Get all invoices and calculate the next number based on existing invoices
+    const invoices = await getInvoices();
+    
     let nextNumber = 1;
-    if (counterSnap.exists()) {
-      nextNumber = (counterSnap.data().value || 0) + 1;
+    if (invoices.length > 0) {
+      const maxNumber = Math.max(...invoices.map(inv => inv.invoiceNumber || 0));
+      nextNumber = maxNumber + 1;
     }
 
     return NextResponse.json({ invoiceNumber: nextNumber });

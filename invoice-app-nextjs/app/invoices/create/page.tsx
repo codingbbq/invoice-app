@@ -148,7 +148,7 @@ export default function CreateInvoicePage() {
         total: totals.total,
         status: 'draft',
       };
-
+      console.log(invoiceData);
       await addInvoice.mutateAsync(invoiceData as any);
       router.push('/invoices');
     } catch (error) {
@@ -238,7 +238,7 @@ export default function CreateInvoicePage() {
         </Card>
 
         {/* Invoice Items */}
-        <Card className="p-6 overflow-x-auto">
+        <Card className="p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Items</h2>
           <table className="w-full" style={{ tableLayout: 'fixed' }}>
             <colgroup>
