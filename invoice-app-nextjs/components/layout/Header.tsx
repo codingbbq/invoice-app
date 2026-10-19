@@ -2,13 +2,15 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import { useAuthContext } from '@/components/providers/AuthProvider';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { user, logout, isAuthenticated } = useAuthContext();
 
   const isActive = (href: string) => {
     if (href === '/') {
@@ -41,23 +43,41 @@ export function Header() {
             </Link>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-2">
-            <Link href="/" className={navLinkClass('/')}>
-              Dashboard
-            </Link>
-            <Link href="/clients" className={navLinkClass('/clients')}>
-              Clients
-            </Link>
-            <Link href="/products" className={navLinkClass('/products')}>
-              Products
-            </Link>
-            <Link href="/invoices" className={navLinkClass('/invoices')}>
-              Invoices
-            </Link>
-            <Link href="/settings" className={navLinkClass('/settings')}>
-              Settings
-            </Link>
-          </nav>
+          {isAuthenticated && (
+            <nav className="hidden md:flex items-center space-x-2">
+              <Link href="/" className={navLinkClass('/')}>
+                Dashboard
+              </Link>
+              <Link href="/clients" className={navLinkClass('/clients')}>
+                Clients
+              </Link>
+              <Link href="/products" className={navLinkClass('/products')}>
+                Products
+              </Link>
+              <Link href="/invoices" className={navLinkClass('/invoices')}>
+                Invoices
+              </Link>
+              <Link href="/settings" className={navLinkClass('/settings')}>
+                Settings
+              </Link>
+            </nav>
+          )}
+
+          <div className="hidden md:flex items-center space-x-4">
+            {isAuthenticated && user && (
+              <>
+                <span className="text-sm text-gray-600">Welcome, <strong>{user.username}</strong></span>
+                <Button
+                  onClick={logout}
+                  variant="ghost"
+                  className="flex items-center gap-2 text-slate-700 hover:bg-red-50 hover:text-red-600"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </Button>
+              </>
+            )}
+          </div>
 
           <Button
             variant="ghost"
@@ -69,7 +89,7 @@ export function Header() {
           </Button>
         </div>
 
-        {mobileMenuOpen && (
+        {mobileMenuOpen && isAuthenticated && (
           <nav className="md:hidden pb-6 space-y-2 border-t border-slate-200 pt-4">
             <Link href="/" className={mobileNavLinkClass('/')}>
               Dashboard
@@ -86,6 +106,18 @@ export function Header() {
             <Link href="/settings" className={mobileNavLinkClass('/settings')}>
               Settings
             </Link>
+            {user && (
+              <div className="pt-4 border-t border-slate-200 space-y-2">
+                <p className="px-5 py-2 text-sm text-gray-600">Welcome, <strong>{user.username}</strong></p>
+                <button
+                  onClick={logout}
+                  className="w-full text-left px-5 py-3 font-semibold text-red-600 hover:bg-red-50 rounded-xl transition-all duration-200 flex items-center gap-2"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </button>
+              </div>
+            )}
           </nav>
         )}
       </div>
