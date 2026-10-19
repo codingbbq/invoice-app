@@ -24,69 +24,80 @@ export default function ViewInvoicePage() {
     
     setIsDownloading(true);
     try {
-      const html2pdf = (await import('html2pdf.js')).default;
       const element = invoiceRef.current;
+      const printWindow = window.open('', '_blank');
       
-      // Create a copy of the element
-      const clonedElement = element.cloneNode(true) as HTMLElement;
-      
-      // Create a temporary container and add it to DOM for rendering
-      const container = document.createElement('div');
-      container.style.position = 'fixed';
-      container.style.left = '-9999px';
-      container.style.top = '0';
-      container.appendChild(clonedElement);
-      document.body.appendChild(container);
-      
-      // Wait for styles to be computed
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      // Get computed styles and convert lab() colors to rgb equivalents
-      const allElements = clonedElement.querySelectorAll('*');
-      allElements.forEach(el => {
-        const element = el as HTMLElement;
-        const computedStyle = window.getComputedStyle(element);
-        
-        // Check for lab() colors in computed style and apply fallback inline styles
-        const color = computedStyle.color;
-        const bgColor = computedStyle.backgroundColor;
-        
-        if (color && color.includes('lab(')) {
-          element.style.color = '#000000';
-        }
-        if (bgColor && bgColor.includes('lab(')) {
-          element.style.backgroundColor = '#ffffff';
-        }
-      });
-      
-      const opt: any = {
-        margin: [10, 10, 10, 10],
-        filename: `invoice-${invoice?.invoiceNumber}.pdf`,
-        image: { type: 'png', quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          allowTaint: true,
-          backgroundColor: '#ffffff',
-          logging: false,
-        },
-        jsPDF: {
-          orientation: 'portrait',
-          unit: 'mm',
-          format: 'a4',
-          compress: true,
-        },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
-      };
+      if (!printWindow) {
+        throw new Error('Failed to open print window. Please check popup blocker settings.');
+      }
 
-      await html2pdf().set(opt).from(clonedElement).save();
+      // Get the HTML content
+      const htmlContent = element.innerHTML;
       
-      // Clean up
-      document.body.removeChild(container);
+      // Write HTML with print-friendly styles
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Invoice ${invoice?.invoiceNumber}</title>
+            <style>
+              * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+              }
+              
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+                line-height: 1.5;
+                color: #000;
+                background: #fff;
+              }
+              
+              @media print {
+                body {
+                  margin: 0;
+                  padding: 0;
+                }
+                
+                * {
+                  -webkit-print-color-adjust: exact !important;
+                  print-color-adjust: exact !important;
+                  color-adjust: exact !important;
+                }
+              }
+              
+              @page {
+                size: A4;
+                margin: 10mm;
+              }
+            </style>
+          </head>
+          <body>
+            ${htmlContent}
+            <script>
+              window.addEventListener('load', function() {
+                window.print();
+              });
+            </script>
+          </body>
+        </html>
+      `);
+      
+      printWindow.document.close();
+      
+      // Set a timeout to close the window after printing
+      setTimeout(() => {
+        if (!printWindow.closed) {
+          printWindow.close();
+        }
+        setIsDownloading(false);
+      }, 2000);
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');
-    } finally {
       setIsDownloading(false);
     }
   };
