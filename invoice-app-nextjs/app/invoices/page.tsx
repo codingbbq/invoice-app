@@ -29,10 +29,26 @@ export default function InvoicesPage() {
     return map;
   }, [clients]);
   
-  const { items: searchedInvoices, searchQuery, setSearchQuery, clearSearch } = useSearch({
-    data: invoices,
-    searchFields: ['invoiceNumber', 'clientId', 'invoiceDate'] as const,
-  });
+  // Custom search that includes client names
+  const [searchQuery, setSearchQuery] = useState('');
+  const searchedInvoices = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return invoices;
+    }
+
+    const query = searchQuery.toLowerCase();
+    return invoices.filter((invoice: any) => {
+      const invoiceNumberMatch = String(invoice.invoiceNumber).toLowerCase().includes(query);
+      const clientNameMatch = (clientMap[invoice.clientId] || '').toLowerCase().includes(query);
+      const dateMatch = (invoice.invoiceDate || '').toLowerCase().includes(query);
+      
+      return invoiceNumberMatch || clientNameMatch || dateMatch;
+    });
+  }, [invoices, searchQuery, clientMap]);
+
+  const clearSearch = () => {
+    setSearchQuery('');
+  };
   
   const { items: sortedInvoices, sortConfig, toggleSort } = useSort(searchedInvoices, {
     key: 'invoiceNumber' as any,
