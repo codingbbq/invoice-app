@@ -29,21 +29,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Check if user is logged in on mount
   useEffect(() => {
-    const checkAuth = () => {
+    const checkAuth = async () => {
       try {
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
           const parsedUser = JSON.parse(storedUser);
-          // Validate that the user object has required fields
-          if (parsedUser.id && parsedUser.username) {
+          // Validate that the user object has required fields (id and username)
+          if (parsedUser && typeof parsedUser === 'object' && parsedUser.id && parsedUser.username) {
             setUser(parsedUser);
           } else {
+            // Invalid user object, clear it
             localStorage.removeItem('user');
+            setUser(null);
           }
+        } else {
+          setUser(null);
         }
       } catch (error) {
         console.error('Error parsing stored user:', error);
         localStorage.removeItem('user');
+        setUser(null);
       }
       setIsLoading(false);
     };
