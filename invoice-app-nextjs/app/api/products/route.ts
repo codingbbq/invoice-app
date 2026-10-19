@@ -61,10 +61,14 @@ export async function POST(request: NextRequest) {
     };
 
     const docRef = await addProduct(productData);
-    return NextResponse.json(
-      { id: docRef.id, ...productData },
-      { status: 201 }
-    );
+    const responseData = {
+      id: docRef.id,
+      product_name: productData.product_name,
+      product_description: productData.product_description,
+      product_mrp: productData.product_mrp,
+      product_hsn_code: productData.product_hsn_code,
+    };
+    return NextResponse.json(responseData, { status: 201 });
   } catch (error) {
     console.error('Error creating product:', error);
     return NextResponse.json(
