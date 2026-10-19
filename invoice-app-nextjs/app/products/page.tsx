@@ -28,29 +28,29 @@ export default function ProductsPage() {
     let dateA = new Date(0);
     let dateB = new Date(0);
     
-    // Handle Firestore Timestamp objects
-    if (a.createdAt?.toDate) {
-      dateA = a.createdAt.toDate();
-    } else if (a.createdAt) {
-      dateA = new Date(a.createdAt);
+    // Handle both Firestore Timestamp objects and ISO strings
+    if (a.createdAt) {
+      if (typeof a.createdAt === 'string') {
+        dateA = new Date(a.createdAt);
+      } else if (a.createdAt.toDate) {
+        dateA = a.createdAt.toDate();
+      } else {
+        dateA = new Date(a.createdAt);
+      }
     }
     
-    // Handle Firestore Timestamp objects
-    if (b.createdAt?.toDate) {
-      dateB = b.createdAt.toDate();
-    } else if (b.createdAt) {
-      dateB = new Date(b.createdAt);
+    if (b.createdAt) {
+      if (typeof b.createdAt === 'string') {
+        dateB = new Date(b.createdAt);
+      } else if (b.createdAt.toDate) {
+        dateB = b.createdAt.toDate();
+      } else {
+        dateB = new Date(b.createdAt);
+      }
     }
     
-    const result = dateB.getTime() - dateA.getTime();
-    return result;
+    return dateB.getTime() - dateA.getTime();
   });
-  
-  // Debug logging
-  if (sortedByDate.length > 0) {
-    console.log('First product:', sortedByDate[0].product_name, 'createdAt:', sortedByDate[0].createdAt);
-    console.log('Last product:', sortedByDate[sortedByDate.length - 1].product_name, 'createdAt:', sortedByDate[sortedByDate.length - 1].createdAt);
-  }
   
   // Use the pre-sorted data directly without useSort to maintain date ordering
   const sortedProducts = sortedByDate;

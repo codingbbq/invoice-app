@@ -51,17 +51,25 @@ export default function Dashboard() {
       const aDate = a.updatedAt || a.createdAt;
       const bDate = b.updatedAt || b.createdAt;
       
-      // Handle Firestore Timestamp objects
-      if (aDate?.toDate) {
-        dateA = aDate.toDate();
-      } else if (aDate) {
-        dateA = new Date(aDate);
+      // Handle both ISO strings and Firestore Timestamp objects
+      if (aDate) {
+        if (typeof aDate === 'string') {
+          dateA = new Date(aDate);
+        } else if (aDate.toDate) {
+          dateA = aDate.toDate();
+        } else {
+          dateA = new Date(aDate);
+        }
       }
       
-      if (bDate?.toDate) {
-        dateB = bDate.toDate();
-      } else if (bDate) {
-        dateB = new Date(bDate);
+      if (bDate) {
+        if (typeof bDate === 'string') {
+          dateB = new Date(bDate);
+        } else if (bDate.toDate) {
+          dateB = bDate.toDate();
+        } else {
+          dateB = new Date(bDate);
+        }
       }
       
       return dateB.getTime() - dateA.getTime();

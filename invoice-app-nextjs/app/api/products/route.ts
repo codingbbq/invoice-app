@@ -69,8 +69,8 @@ export async function POST(request: NextRequest) {
       product_description: productData.product_description,
       product_mrp: productData.product_mrp,
       product_hsn_code: productData.product_hsn_code,
-      createdAt: now,
-      updatedAt: now,
+      createdAt: now.toDate().toISOString(),
+      updatedAt: now.toDate().toISOString(),
     };
     return NextResponse.json(responseData, { status: 201 });
   } catch (error) {
