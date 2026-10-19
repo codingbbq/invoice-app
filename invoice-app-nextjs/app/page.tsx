@@ -5,7 +5,6 @@ import { useClients } from '@/hooks/useClients';
 import { useProducts } from '@/hooks/useProducts';
 import { KPICards } from '@/components/dashboard/kpi-cards';
 import { QuickActions } from '@/components/dashboard/quick-actions';
-import { PaymentStatusBar } from '@/components/dashboard/payment-status-bar';
 import { ActivityFeed } from '@/components/dashboard/activity-feed';
 import { TopPerformers } from '@/components/dashboard/top-performers';
 import { Card } from '@/components/ui/card';
@@ -20,20 +19,10 @@ export default function Dashboard() {
   
   const kpiData = {
     paidRevenue: totalRevenue,
-    outstandingBalance: 0,
     totalInvoices: invoices.length,
-    draftInvoices: 0,
-    pendingInvoices: 0,
-    overdueInvoices: 0,
     totalClients: clients.length,
     newClientsThisMonth: Math.floor(clients.length * 0.1),
     totalProducts: products.length,
-  };
-
-  const paymentStatusData = {
-    paid: totalRevenue,
-    pending: 0,
-    overdue: 0,
   };
 
   // Recent items
@@ -105,9 +94,6 @@ export default function Dashboard() {
 
         {/* Quick Actions */}
         <QuickActions />
-
-        {/* Payment Status Bar */}
-        <PaymentStatusBar data={paymentStatusData} />
 
         {/* Activity Feed */}
         <ActivityFeed data={activityFeedData} />

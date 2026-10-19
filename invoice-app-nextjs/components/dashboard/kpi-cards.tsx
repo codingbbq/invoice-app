@@ -5,11 +5,7 @@ import { TrendingUp, Users, Package, FileText } from 'lucide-react';
 
 export interface KPIData {
   paidRevenue: number;
-  outstandingBalance: number;
   totalInvoices: number;
-  draftInvoices: number;
-  pendingInvoices: number;
-  overdueInvoices: number;
   totalClients: number;
   newClientsThisMonth: number;
   totalProducts: number;
@@ -32,30 +28,13 @@ export function KPICards({ data }: { data: KPIData }) {
         </div>
       </Card>
 
-      {/* Outstanding Balance Card */}
+      {/* Total Invoices Card */}
       <Card className="p-4 bg-white border border-gray-100 hover:border-gray-200 transition-colors">
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Outstanding</p>
-            <p className="text-2xl font-bold text-gray-900">₹{(data.outstandingBalance / 100000).toFixed(1)}L</p>
-            <p className="text-xs text-gray-400 mt-1">Unpaid invoices</p>
-          </div>
-          <div className="p-2 bg-red-50 rounded-md ml-2 flex-shrink-0">
-            <FileText className="h-5 w-5 text-red-600" />
-          </div>
-        </div>
-      </Card>
-
-      {/* Invoice Status Card */}
-      <Card className="p-4 bg-white border border-gray-100 hover:border-gray-200 transition-colors">
-        <div className="flex items-start justify-between">
-          <div className="flex-1">
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Invoices</p>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Total Invoices</p>
             <p className="text-2xl font-bold text-gray-900">{data.totalInvoices}</p>
-            <div className="text-xs text-gray-400 mt-1 space-y-0.5">
-              <p>Draft: {data.draftInvoices}</p>
-              <p>Pending: {data.pendingInvoices}</p>
-            </div>
+            <p className="text-xs text-gray-400 mt-1">Created</p>
           </div>
           <div className="p-2 bg-blue-50 rounded-md ml-2 flex-shrink-0">
             <FileText className="h-5 w-5 text-blue-600" />
