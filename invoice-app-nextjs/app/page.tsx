@@ -25,8 +25,20 @@ export default function Dashboard() {
     totalProducts: products.length,
   };
 
-  // Recent items
-  const recentInvoices = invoices.slice(0, 10);
+  // Create a map of client IDs to client names
+  const clientMap: { [key: string]: string } = {};
+  clients.forEach((client: any) => {
+    clientMap[client.id] = client.client_name || 'Unknown Client';
+  });
+
+  // Recent items - sort invoices in descending order by invoice number
+  const recentInvoices = invoices
+    .sort((a: any, b: any) => {
+      const numA = parseInt(String(a.invoiceNumber), 10) || 0;
+      const numB = parseInt(String(b.invoiceNumber), 10) || 0;
+      return numB - numA;
+    })
+    .slice(0, 10);
   const recentClients = clients.slice(0, 5);
   const recentProducts = products.slice(0, 5);
 
@@ -58,6 +70,7 @@ export default function Dashboard() {
       id: inv.id,
       invoiceNumber: inv.invoiceNumber,
       clientId: inv.clientId,
+      clientName: clientMap[inv.clientId] || 'Unknown Client',
       invoiceDate: inv.invoiceDate,
       total: inv.total,
     })),

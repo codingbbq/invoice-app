@@ -10,6 +10,7 @@ export interface Invoice {
   id: string;
   invoiceNumber: number;
   clientId: string;
+  clientName?: string;
   invoiceDate: string;
   total: number;
 }
@@ -95,13 +96,13 @@ export function ActivityFeed({ data }: { data: ActivityFeedData }) {
                     <p className="font-semibold text-gray-900 text-sm">#{invoice.invoiceNumber}</p>
                   </div>
                   <div className="col-span-3">
-                    <p className="text-sm text-gray-600 truncate">{invoice.clientId}</p>
+                    <p className="text-sm text-gray-600 truncate">{invoice.clientName || invoice.clientId}</p>
                   </div>
                   <div className="col-span-2">
                     <p className="text-sm text-gray-600">{invoice.invoiceDate}</p>
                   </div>
                   <div className="col-span-5 text-right">
-                    <p className="font-semibold text-gray-900 text-sm">₹{(invoice.total / 100000).toFixed(1)}L</p>
+                    <p className="font-semibold text-gray-900 text-sm">₹{(invoice.total || 0).toFixed(2)}</p>
                   </div>
                 </div>
               ))}
@@ -114,10 +115,10 @@ export function ActivityFeed({ data }: { data: ActivityFeedData }) {
               {data.recentInvoices.map((invoice) => (
                 <div key={invoice.id} className="p-3 bg-gray-50 rounded-md">
                   <p className="font-semibold text-gray-900 text-sm">#{invoice.invoiceNumber}</p>
-                  <p className="text-xs text-gray-600 mt-1">{invoice.clientId}</p>
+                  <p className="text-xs text-gray-600 mt-1">{invoice.clientName || invoice.clientId}</p>
                   <div className="flex items-center justify-between mt-2">
                     <p className="text-xs text-gray-500">{invoice.invoiceDate}</p>
-                    <p className="font-semibold text-gray-900 text-sm">₹{(invoice.total / 100000).toFixed(1)}L</p>
+                    <p className="font-semibold text-gray-900 text-sm">₹{(invoice.total || 0).toFixed(2)}</p>
                   </div>
                 </div>
               ))}
