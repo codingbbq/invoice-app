@@ -4,12 +4,10 @@ import { useParams } from 'next/navigation';
 import { useInvoice } from '@/hooks/useInvoices';
 import { useClient } from '@/hooks/useClients';
 import { InvoiceTemplate } from '@/components/invoice/invoice-template';
-import { InvoicePDF } from '@/components/invoice/invoice-pdf';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 import { useRef, useState } from 'react';
-import { pdf } from '@react-pdf/renderer';
 
 export default function ViewInvoicePage() {
   const params = useParams();
@@ -21,22 +19,34 @@ export default function ViewInvoicePage() {
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownloadPDF = async () => {
-    if (!invoice || !client) return;
+    if (!invoiceRef.current) return;
     
     setIsDownloading(true);
     try {
-      const doc = <InvoicePDF invoice={invoice} client={client} />;
-      const blob = await pdf(doc).toBlob();
+      const html2pdf = (await import('html2pdf.js')).default;
+      const element = invoiceRef.current;
       
-      // Create a download link
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `invoice-${invoice.invoiceNumber}.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+      const opt: any = {
+        margin: [10, 10, 10, 10],
+        filename: `invoice-${invoice?.invoiceNumber}.pdf`,
+        image: { type: 'png', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          allowTaint: true,
+          backgroundColor: '#ffffff',
+          logging: false,
+        },
+        jsPDF: {
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a4',
+          compress: true,
+        },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+      };
+
+      await html2pdf().set(opt).from(element).save();
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');
