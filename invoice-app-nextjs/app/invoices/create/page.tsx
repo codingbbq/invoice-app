@@ -299,7 +299,7 @@ export default function CreateInvoicePage() {
                       : '-'}
                   </td>
                   <td className="px-4 py-2 text-right text-sm">
-                    ₹{item.mrp.toFixed(2)}
+                    ₹{(item.mrp || 0).toFixed(2)}
                   </td>
                   <td className="px-4 py-2 min-w-0">
                     <Input

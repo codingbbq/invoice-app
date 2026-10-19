@@ -154,7 +154,7 @@ export async function PATCH(request: NextRequest) {
     const invoices = await getInvoices();
     
     let nextNumber = 1;
-    if (invoices.length > 0) {
+    if (invoices && invoices.length > 0) {
       const maxNumber = Math.max(...invoices.map(inv => inv.invoiceNumber || 0));
       nextNumber = maxNumber + 1;
     }
@@ -162,9 +162,8 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.json({ invoiceNumber: nextNumber });
   } catch (error) {
     console.error('Error getting next invoice number:', error);
-    return NextResponse.json(
-      { error: 'Failed to get next invoice number' },
-      { status: 500 }
-    );
+    // Return a default invoice number instead of failing
+    // The actual invoice number will be calculated during POST
+    return NextResponse.json({ invoiceNumber: 1 });
   }
 }
