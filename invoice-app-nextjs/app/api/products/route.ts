@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Timestamp } from 'firebase/firestore';
 import {
   addProduct,
   updateProduct,
@@ -61,7 +62,7 @@ export async function POST(request: NextRequest) {
     };
 
     const docRef = await addProduct(productData);
-    const now = new Date().toISOString();
+    const now = Timestamp.now();
     const responseData = {
       id: docRef.id,
       product_name: productData.product_name,

@@ -46,12 +46,6 @@ export default function ProductsPage() {
     return result;
   });
   
-  // Debug: Log the first and last products to verify sorting
-  if (sortedByDate.length > 0) {
-    console.log('First product (should be newest):', sortedByDate[0].product_name, sortedByDate[0].createdAt);
-    console.log('Last product (should be oldest):', sortedByDate[sortedByDate.length - 1].product_name, sortedByDate[sortedByDate.length - 1].createdAt);
-  }
-  
   // Use the pre-sorted data directly without useSort to maintain date ordering
   const sortedProducts = sortedByDate;
   const sortConfig = { key: 'createdAt' as any, direction: 'desc' as const };
