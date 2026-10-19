@@ -38,7 +38,21 @@ export default function ViewInvoicePage() {
           useCORS: true,
           allowTaint: true,
           backgroundColor: '#ffffff',
-          logging: false
+          logging: false,
+          ignoreElements: (element: Element) => {
+            // Ignore script and style elements
+            return element.tagName === 'SCRIPT' || element.tagName === 'STYLE';
+          },
+          onclone: (clonedDocument: Document) => {
+            // Remove or replace unsupported CSS color functions
+            const styles = clonedDocument.querySelectorAll('style');
+            styles.forEach(style => {
+              if (style.textContent) {
+                // Replace lab() color functions with a fallback color
+                style.textContent = style.textContent.replace(/lab\([^)]*\)/g, '#000000');
+              }
+            });
+          }
         },
         jsPDF: { 
           orientation: 'portrait', 
