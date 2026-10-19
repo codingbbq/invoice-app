@@ -4,13 +4,18 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
-import { useAuthContext } from '@/components/providers/AuthProvider';
+import { useState, useContext } from 'react';
+import { AuthContext } from '@/components/providers/AuthProvider';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { user, logout, isAuthenticated } = useAuthContext();
+  const authContext = useContext(AuthContext) as any;
+  
+  // Handle case where Header is rendered outside AuthProvider
+  const user = authContext?.user || null;
+  const logout = authContext?.logout || (() => {});
+  const isAuthenticated = authContext?.isAuthenticated || false;
 
   const isActive = (href: string) => {
     if (href === '/') {
