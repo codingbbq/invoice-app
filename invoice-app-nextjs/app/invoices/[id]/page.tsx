@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import { useInvoice } from '@/hooks/useInvoices';
 import { useClient } from '@/hooks/useClients';
 import { InvoiceTemplate } from '@/components/invoice/invoice-template';
+import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
@@ -91,6 +92,13 @@ export default function ViewInvoicePage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <Breadcrumb
+        items={[
+          { label: 'Dashboard', href: '/' },
+          { label: 'Invoices', href: '/invoices' },
+          { label: `Invoice #${invoice.invoiceNumber}` },
+        ]}
+      />
       <div className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
