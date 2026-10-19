@@ -88,7 +88,8 @@ export function ActivityFeed({ data }: { data: ActivityFeedData }) {
                 <div className="col-span-2">Invoice #</div>
                 <div className="col-span-3">Client</div>
                 <div className="col-span-2">Date</div>
-                <div className="col-span-5 text-right">Amount</div>
+                <div className="col-span-2 text-right">Amount</div>
+                <div className="col-span-3 text-right">Action</div>
               </div>
               {data.recentInvoices.map((invoice) => (
                 <div key={invoice.id} className="grid grid-cols-12 gap-3 px-3 py-2.5 items-center hover:bg-gray-50 rounded-md transition-colors border border-transparent hover:border-gray-100">
@@ -101,8 +102,16 @@ export function ActivityFeed({ data }: { data: ActivityFeedData }) {
                   <div className="col-span-2">
                     <p className="text-sm text-gray-600">{invoice.invoiceDate}</p>
                   </div>
-                  <div className="col-span-5 text-right">
+                  <div className="col-span-2 text-right">
                     <p className="font-semibold text-gray-900 text-sm">₹{(invoice.total || 0).toFixed(2)}</p>
+                  </div>
+                  <div className="col-span-3 text-right">
+                    <Link href={`/invoices/${invoice.id}`}>
+                      <Button variant="outline" size="sm" className="flex items-center gap-1">
+                        <Eye className="h-4 w-4" />
+                        View
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -114,8 +123,16 @@ export function ActivityFeed({ data }: { data: ActivityFeedData }) {
             <div className="md:hidden space-y-2">
               {data.recentInvoices.map((invoice) => (
                 <div key={invoice.id} className="p-3 bg-gray-50 rounded-md">
-                  <p className="font-semibold text-gray-900 text-sm">#{invoice.invoiceNumber}</p>
-                  <p className="text-xs text-gray-600 mt-1">{invoice.clientName || invoice.clientId}</p>
+                  <div className="flex items-start justify-between mb-2">
+                    <p className="font-semibold text-gray-900 text-sm">#{invoice.invoiceNumber}</p>
+                    <Link href={`/invoices/${invoice.id}`}>
+                      <Button variant="outline" size="sm" className="flex items-center gap-1">
+                        <Eye className="h-3 w-3" />
+                        View
+                      </Button>
+                    </Link>
+                  </div>
+                  <p className="text-xs text-gray-600">{invoice.clientName || invoice.clientId}</p>
                   <div className="flex items-center justify-between mt-2">
                     <p className="text-xs text-gray-500">{invoice.invoiceDate}</p>
                     <p className="font-semibold text-gray-900 text-sm">₹{(invoice.total || 0).toFixed(2)}</p>
