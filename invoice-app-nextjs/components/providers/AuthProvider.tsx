@@ -30,13 +30,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Check if user is logged in on mount
   useEffect(() => {
     const checkAuth = () => {
-      const storedUser = localStorage.getItem('user');
-      if (storedUser) {
-        try {
-          setUser(JSON.parse(storedUser));
-        } catch (error) {
-          localStorage.removeItem('user');
+      try {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+          const parsedUser = JSON.parse(storedUser);
+          // Validate that the user object has required fields
+          if (parsedUser.id && parsedUser.username) {
+            setUser(parsedUser);
+          } else {
+            localStorage.removeItem('user');
+          }
         }
+      } catch (error) {
+        console.error('Error parsing stored user:', error);
+        localStorage.removeItem('user');
       }
       setIsLoading(false);
     };
