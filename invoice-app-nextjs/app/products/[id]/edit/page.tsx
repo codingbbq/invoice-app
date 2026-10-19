@@ -22,6 +22,10 @@ export default function EditProductPage() {
     }
   };
 
+  const handleCancel = () => {
+    router.back();
+  };
+
   if (isLoading) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -52,6 +56,7 @@ export default function EditProductPage() {
       <ProductForm 
         initialData={product} 
         onSubmit={handleSubmit} 
+        onCancel={handleCancel}
         isLoading={updateProduct.isPending} 
       />
     </div>

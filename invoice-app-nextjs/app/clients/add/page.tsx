@@ -18,6 +18,10 @@ export default function AddClientPage() {
     }
   };
 
+  const handleCancel = () => {
+    router.back();
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-8">
@@ -25,7 +29,7 @@ export default function AddClientPage() {
         <p className="text-gray-600 mt-2">Fill in the details below to add a new client</p>
       </div>
 
-      <ClientForm onSubmit={handleSubmit} isLoading={addClient.isPending} />
+      <ClientForm onSubmit={handleSubmit} onCancel={handleCancel} isLoading={addClient.isPending} />
     </div>
   );
 }

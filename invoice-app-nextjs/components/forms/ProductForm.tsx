@@ -9,12 +9,14 @@ import { Product } from '@/lib/firestore';
 interface ProductFormProps {
   initialData?: Product & { id: string };
   onSubmit: (data: Omit<Product, 'id'>) => Promise<void>;
+  onCancel?: () => void;
   isLoading?: boolean;
 }
 
 export function ProductForm({
   initialData,
   onSubmit,
+  onCancel,
   isLoading = false,
 }: ProductFormProps) {
   const {
@@ -112,6 +114,16 @@ export function ProductForm({
                 ? 'Update Product'
                 : 'Add Product'}
           </Button>
+          {onCancel && (
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onCancel}
+              disabled={isLoading}
+            >
+              Cancel
+            </Button>
+          )}
         </div>
       </form>
     </Card>

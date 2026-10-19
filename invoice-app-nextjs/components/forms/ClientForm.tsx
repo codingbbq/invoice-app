@@ -9,12 +9,14 @@ import { Client } from '@/lib/firestore';
 interface ClientFormProps {
   initialData?: Client & { id: string };
   onSubmit: (data: Omit<Client, 'id'>) => Promise<void>;
+  onCancel?: () => void;
   isLoading?: boolean;
 }
 
 export function ClientForm({
   initialData,
   onSubmit,
+  onCancel,
   isLoading = false,
 }: ClientFormProps) {
   const {
@@ -121,6 +123,16 @@ export function ClientForm({
           >
             {isLoading ? 'Saving...' : initialData ? 'Update Client' : 'Add Client'}
           </Button>
+          {onCancel && (
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onCancel}
+              disabled={isLoading}
+            >
+              Cancel
+            </Button>
+          )}
         </div>
       </form>
     </Card>
