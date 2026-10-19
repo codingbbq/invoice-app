@@ -52,6 +52,14 @@ export default function ProductsPage() {
     return dateB.getTime() - dateA.getTime();
   });
   
+  // Debug: Log all products with their timestamps
+  console.log('=== PRODUCTS DEBUG ===');
+  console.log('Total products:', sortedByDate.length);
+  sortedByDate.forEach((p: any, idx: number) => {
+    console.log(`[${idx}] ${p.product_name} - createdAt:`, p.createdAt, 'type:', typeof p.createdAt);
+  });
+  console.log('=== END DEBUG ===');
+  
   // Use the pre-sorted data directly without useSort to maintain date ordering
   const sortedProducts = sortedByDate;
   const sortConfig = { key: 'createdAt' as any, direction: 'desc' as const };
