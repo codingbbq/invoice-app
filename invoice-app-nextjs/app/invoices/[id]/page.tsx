@@ -24,46 +24,65 @@ export default function ViewInvoicePage() {
     
     setIsDownloading(true);
     try {
-      // Dynamically import html2pdf to avoid SSR issues
       const html2pdf = (await import('html2pdf.js')).default;
-      
       const element = invoiceRef.current;
       
+      // Create a copy of the element
+      const clonedElement = element.cloneNode(true) as HTMLElement;
+      
+      // Create a temporary container and add it to DOM for rendering
+      const container = document.createElement('div');
+      container.style.position = 'fixed';
+      container.style.left = '-9999px';
+      container.style.top = '0';
+      container.appendChild(clonedElement);
+      document.body.appendChild(container);
+      
+      // Wait for styles to be computed
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Get computed styles and convert lab() colors to rgb equivalents
+      const allElements = clonedElement.querySelectorAll('*');
+      allElements.forEach(el => {
+        const element = el as HTMLElement;
+        const computedStyle = window.getComputedStyle(element);
+        
+        // Check for lab() colors in computed style and apply fallback inline styles
+        const color = computedStyle.color;
+        const bgColor = computedStyle.backgroundColor;
+        
+        if (color && color.includes('lab(')) {
+          element.style.color = '#000000';
+        }
+        if (bgColor && bgColor.includes('lab(')) {
+          element.style.backgroundColor = '#ffffff';
+        }
+      });
+      
       const opt: any = {
-        margin: [10, 10, 10, 10] as [number, number, number, number],
+        margin: [10, 10, 10, 10],
         filename: `invoice-${invoice?.invoiceNumber}.pdf`,
         image: { type: 'png', quality: 0.98 },
-        html2canvas: { 
+        html2canvas: {
           scale: 2,
           useCORS: true,
           allowTaint: true,
           backgroundColor: '#ffffff',
           logging: false,
-          ignoreElements: (element: Element) => {
-            // Ignore script and style elements
-            return element.tagName === 'SCRIPT' || element.tagName === 'STYLE';
-          },
-          onclone: (clonedDocument: Document) => {
-            // Remove or replace unsupported CSS color functions
-            const styles = clonedDocument.querySelectorAll('style');
-            styles.forEach(style => {
-              if (style.textContent) {
-                // Replace lab() color functions with a fallback color
-                style.textContent = style.textContent.replace(/lab\([^)]*\)/g, '#000000');
-              }
-            });
-          }
         },
-        jsPDF: { 
-          orientation: 'portrait', 
-          unit: 'mm', 
+        jsPDF: {
+          orientation: 'portrait',
+          unit: 'mm',
           format: 'a4',
-          compress: true
+          compress: true,
         },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
       };
 
-      await html2pdf().set(opt).from(element).save();
+      await html2pdf().set(opt).from(clonedElement).save();
+      
+      // Clean up
+      document.body.removeChild(container);
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');
