@@ -39,19 +39,25 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
+    // Support both field name formats (product_name and name, etc.)
+    const productName = body.product_name || body.name;
+    const productDescription = body.product_description || body.description;
+    const productMrp = body.product_mrp || body.mrp;
+    const productHsnCode = body.product_hsn_code || body.hsnCode;
+
     // Validation
-    if (!body.name || !body.description || body.mrp === undefined || !body.hsnCode) {
+    if (!productName || !productDescription || productMrp === undefined || !productHsnCode) {
       return NextResponse.json(
-        { error: 'Missing required fields: name, description, mrp, hsnCode' },
+        { error: 'Missing required fields: product_name, product_description, product_mrp, product_hsn_code' },
         { status: 400 }
       );
     }
 
     const productData: Product = {
-      name: body.name,
-      description: body.description,
-      mrp: parseFloat(body.mrp),
-      hsnCode: body.hsnCode,
+      product_name: productName,
+      product_description: productDescription,
+      product_mrp: parseFloat(productMrp),
+      product_hsn_code: productHsnCode,
     };
 
     const docRef = await addProduct(productData);
@@ -81,7 +87,19 @@ export async function PUT(request: NextRequest) {
     }
 
     const body = await request.json();
-    await updateProduct(id, body);
+    
+    // Map field names to the database format if needed
+    const updateData: any = {};
+    if (body.product_name) updateData.product_name = body.product_name;
+    if (body.name) updateData.product_name = body.name;
+    if (body.product_description) updateData.product_description = body.product_description;
+    if (body.description) updateData.product_description = body.description;
+    if (body.product_mrp !== undefined) updateData.product_mrp = parseFloat(body.product_mrp);
+    if (body.mrp !== undefined) updateData.product_mrp = parseFloat(body.mrp);
+    if (body.product_hsn_code) updateData.product_hsn_code = body.product_hsn_code;
+    if (body.hsnCode) updateData.product_hsn_code = body.hsnCode;
+    
+    await updateProduct(id, updateData);
 
     return NextResponse.json({ success: true, id });
   } catch (error) {
