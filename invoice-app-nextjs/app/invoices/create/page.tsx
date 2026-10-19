@@ -387,11 +387,11 @@ export default function CreateInvoicePage() {
             <div>
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">CGST (9%):</span>
+                  <span className="text-gray-600">CGST ({formData.gstPercentage / 2}%):</span>
                   <span className="font-medium">₹{totals.cgst.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">SGST (9%):</span>
+                  <span className="text-gray-600">SGST ({formData.gstPercentage / 2}%):</span>
                   <span className="font-medium">₹{totals.sgst.toFixed(2)}</span>
                 </div>
                 <div className="border-t pt-3 border-b pb-3">
