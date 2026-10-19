@@ -25,8 +25,23 @@ export default function ProductsPage() {
   
   // Sort by createdAt descending by default (latest first)
   const sortedByDate = [...searchedProducts].sort((a: any, b: any) => {
-    const dateA = a.createdAt?.toDate?.() || new Date(0);
-    const dateB = b.createdAt?.toDate?.() || new Date(0);
+    let dateA = new Date(0);
+    let dateB = new Date(0);
+    
+    // Handle Firestore Timestamp objects
+    if (a.createdAt?.toDate) {
+      dateA = a.createdAt.toDate();
+    } else if (a.createdAt) {
+      dateA = new Date(a.createdAt);
+    }
+    
+    // Handle Firestore Timestamp objects
+    if (b.createdAt?.toDate) {
+      dateB = b.createdAt.toDate();
+    } else if (b.createdAt) {
+      dateB = new Date(b.createdAt);
+    }
+    
     return dateB.getTime() - dateA.getTime();
   });
   

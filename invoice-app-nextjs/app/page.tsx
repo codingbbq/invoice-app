@@ -44,8 +44,26 @@ export default function Dashboard() {
   // Sort products by updatedAt descending (latest first)
   const recentProducts = [...products]
     .sort((a: any, b: any) => {
-      const dateA = a.updatedAt?.toDate?.() || a.createdAt?.toDate?.() || new Date(0);
-      const dateB = b.updatedAt?.toDate?.() || b.createdAt?.toDate?.() || new Date(0);
+      let dateA = new Date(0);
+      let dateB = new Date(0);
+      
+      // Try updatedAt first, then createdAt
+      const aDate = a.updatedAt || a.createdAt;
+      const bDate = b.updatedAt || b.createdAt;
+      
+      // Handle Firestore Timestamp objects
+      if (aDate?.toDate) {
+        dateA = aDate.toDate();
+      } else if (aDate) {
+        dateA = new Date(aDate);
+      }
+      
+      if (bDate?.toDate) {
+        dateB = bDate.toDate();
+      } else if (bDate) {
+        dateB = new Date(bDate);
+      }
+      
       return dateB.getTime() - dateA.getTime();
     })
     .slice(0, 5);
