@@ -24,80 +24,71 @@ export default function ViewInvoicePage() {
     
     setIsDownloading(true);
     try {
+      const html2pdf = (await import('html2pdf.js')).default;
       const element = invoiceRef.current;
-      const printWindow = window.open('', '_blank');
       
-      if (!printWindow) {
-        throw new Error('Failed to open print window. Please check popup blocker settings.');
-      }
-
-      // Get the HTML content
-      const htmlContent = element.innerHTML;
+      // Clone the element
+      const clonedElement = element.cloneNode(true) as HTMLElement;
       
-      // Write HTML with print-friendly styles
-      printWindow.document.write(`
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Invoice ${invoice?.invoiceNumber}</title>
-            <style>
-              * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-              }
-              
-              body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-                line-height: 1.5;
-                color: #000;
-                background: #fff;
-              }
-              
-              @media print {
-                body {
-                  margin: 0;
-                  padding: 0;
-                }
-                
-                * {
-                  -webkit-print-color-adjust: exact !important;
-                  print-color-adjust: exact !important;
-                  color-adjust: exact !important;
-                }
-              }
-              
-              @page {
-                size: A4;
-                margin: 10mm;
-              }
-            </style>
-          </head>
-          <body>
-            ${htmlContent}
-            <script>
-              window.addEventListener('load', function() {
-                window.print();
-              });
-            </script>
-          </body>
-        </html>
-      `);
-      
-      printWindow.document.close();
-      
-      // Set a timeout to close the window after printing
-      setTimeout(() => {
-        if (!printWindow.closed) {
-          printWindow.close();
+      // Function to convert Tailwind classes to inline styles
+      const convertTailwindToInline = (el: HTMLElement) => {
+        const computedStyle = window.getComputedStyle(el);
+        
+        // Copy all computed styles to inline styles
+        for (let i = 0; i < computedStyle.length; i++) {
+          const property = computedStyle[i];
+          const value = computedStyle.getPropertyValue(property);
+          
+          // Skip problematic properties and only apply safe ones
+          if (!property.includes('webkit') && !property.includes('moz') && value) {
+            try {
+              el.style.setProperty(property, value, 'important');
+            } catch (e) {
+              // Skip properties that can't be set
+            }
+          }
         }
-        setIsDownloading(false);
-      }, 2000);
+      };
+      
+      // Apply inline styles to all elements
+      const allElements = clonedElement.querySelectorAll('*');
+      allElements.forEach(el => {
+        convertTailwindToInline(el as HTMLElement);
+      });
+      
+      // Remove all class attributes
+      allElements.forEach(el => {
+        el.removeAttribute('class');
+      });
+      
+      const opt: any = {
+        margin: [10, 10, 10, 10],
+        filename: `invoice-${invoice?.invoiceNumber}.pdf`,
+        image: { type: 'png', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          allowTaint: true,
+          backgroundColor: '#ffffff',
+          logging: false,
+          ignoreElements: (element: Element) => {
+            return element.tagName === 'SCRIPT' || element.tagName === 'STYLE';
+          },
+        },
+        jsPDF: {
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a4',
+          compress: true,
+        },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+      };
+
+      await html2pdf().set(opt).from(clonedElement).save();
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');
+    } finally {
       setIsDownloading(false);
     }
   };
