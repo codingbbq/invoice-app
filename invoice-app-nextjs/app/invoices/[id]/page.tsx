@@ -36,6 +36,14 @@ export default function ViewInvoicePage() {
           allowTaint: true,
           backgroundColor: '#ffffff',
           logging: false,
+          onclone: (clonedDocument: Document) => {
+            const styles = clonedDocument.querySelectorAll('style');
+            styles.forEach(style => {
+              if (style.textContent) {
+                style.textContent = style.textContent.replace(/lab\([^)]*\)/g, '#000000');
+              }
+            });
+          },
         },
         jsPDF: {
           orientation: 'portrait',
