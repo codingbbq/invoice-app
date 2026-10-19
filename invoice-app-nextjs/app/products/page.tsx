@@ -11,12 +11,14 @@ import { Card } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
 import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
+import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { Trash2, Edit, Plus } from 'lucide-react';
 
 export default function ProductsPage() {
   const { data: products = [], isLoading } = useProducts();
   const deleteProduct = useDeleteProduct();
-  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [deleteConfirm, setDeleteConfirm] = useState<{ id: string; name: string } | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   
   const { items: searchedProducts, searchQuery, setSearchQuery, clearSearch } = useSearch({
     data: products,
@@ -59,12 +61,16 @@ export default function ProductsPage() {
   
   const { items: paginatedProducts, pagination, goToPage, setPageSize } = usePagination(sortedProducts, 10);
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async () => {
+    if (!deleteConfirm) return;
+    setIsDeleting(true);
     try {
-      await deleteProduct.mutateAsync(id);
+      await deleteProduct.mutateAsync(deleteConfirm.id);
       setDeleteConfirm(null);
     } catch (error) {
       console.error('Failed to delete product:', error);
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -182,35 +188,15 @@ export default function ProductsPage() {
                               Edit
                             </Button>
                           </Link>
-                          {deleteConfirm === product.id ? (
-                            <div className="flex gap-2">
-                              <Button
-                                size="sm"
-                                variant="destructive"
-                                onClick={() => handleDelete(product.id)}
-                                disabled={deleteProduct.isPending}
-                              >
-                                Confirm
-                              </Button>
-                              <Button
-                                size="sm"
-                                variant="outline"
-                                onClick={() => setDeleteConfirm(null)}
-                              >
-                                Cancel
-                              </Button>
-                            </div>
-                          ) : (
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="text-red-600 hover:text-red-700 flex items-center gap-1"
-                              onClick={() => setDeleteConfirm(product.id)}
-                            >
-                              <Trash2 className="h-4 w-4" />
-                              Delete
-                            </Button>
-                          )}
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="text-red-600 hover:text-red-700 flex items-center gap-1"
+                            onClick={() => setDeleteConfirm({ id: product.id, name: product.product_name })}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                            Delete
+                          </Button>
                         </div>
                       </td>
                     </tr>
@@ -229,6 +215,18 @@ export default function ProductsPage() {
           />
         </div>
       )}
+      
+      <ConfirmDialog
+        isOpen={!!deleteConfirm}
+        title="Delete Product"
+        description={`Are you sure you want to delete "${deleteConfirm?.name}"? This action cannot be undone.`}
+        confirmText="Delete"
+        cancelText="Cancel"
+        isLoading={isDeleting}
+        isDangerous={true}
+        onConfirm={handleDelete}
+        onCancel={() => setDeleteConfirm(null)}
+      />
     </div>
   );
 }
