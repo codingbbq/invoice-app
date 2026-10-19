@@ -40,7 +40,15 @@ export default function Dashboard() {
     })
     .slice(0, 10);
   const recentClients = clients.slice(0, 5);
-  const recentProducts = products.slice(0, 5);
+  
+  // Sort products by updatedAt descending (latest first)
+  const recentProducts = [...products]
+    .sort((a: any, b: any) => {
+      const dateA = a.updatedAt?.toDate?.() || a.createdAt?.toDate?.() || new Date(0);
+      const dateB = b.updatedAt?.toDate?.() || b.createdAt?.toDate?.() || new Date(0);
+      return dateB.getTime() - dateA.getTime();
+    })
+    .slice(0, 5);
 
   // Top performers - Top 5 Clients
   const topClients = clients

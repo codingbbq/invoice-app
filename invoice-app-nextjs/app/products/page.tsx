@@ -23,7 +23,14 @@ export default function ProductsPage() {
     searchFields: ['product_name', 'product_description', 'product_hsn_code'] as const,
   });
   
-  const { items: sortedProducts, sortConfig, toggleSort } = useSort(searchedProducts);
+  // Sort by createdAt descending by default (latest first)
+  const sortedByDate = [...searchedProducts].sort((a: any, b: any) => {
+    const dateA = a.createdAt?.toDate?.() || new Date(0);
+    const dateB = b.createdAt?.toDate?.() || new Date(0);
+    return dateB.getTime() - dateA.getTime();
+  });
+  
+  const { items: sortedProducts, sortConfig, toggleSort } = useSort(sortedByDate);
   
   const { items: paginatedProducts, pagination, goToPage, setPageSize } = usePagination(sortedProducts, 10);
 

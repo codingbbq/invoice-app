@@ -104,6 +104,7 @@ function convertSqlToFirebaseJson(sqlFilePath, outputJsonPath) {
 
   // 3. Process 'product' table
   const productRows = parseSqlTuples(sqlText, 'product');
+  const today = new Date().toISOString();
   productRows.forEach((tokens) => {
     if (tokens.length >= 5) {
       const productId = tokens[0];
@@ -112,7 +113,9 @@ function convertSqlToFirebaseJson(sqlFilePath, outputJsonPath) {
         product_name: cleanString(tokens[1]),
         product_mrp: cleanString(tokens[2]),
         product_description: cleanString(tokens[3]),
-        product_hsn_code: cleanString(tokens[4])
+        product_hsn_code: cleanString(tokens[4]),
+        createdAt: today,
+        updatedAt: today
       };
     }
   });
