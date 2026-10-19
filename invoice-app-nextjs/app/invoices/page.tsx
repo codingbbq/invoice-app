@@ -12,13 +12,15 @@ import { Card } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
 import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
+import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { Trash2, Eye, Plus, Download } from 'lucide-react';
 
 export default function InvoicesPage() {
   const { data: invoices = [], isLoading } = useInvoices();
   const { data: clients = [] } = useClients();
   const deleteInvoice = useDeleteInvoice();
-  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [deleteConfirm, setDeleteConfirm] = useState<{ id: string; number: string } | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   // Create a map of client IDs to client names for quick lookup
   const clientMap = useMemo(() => {
@@ -57,12 +59,16 @@ export default function InvoicesPage() {
   
   const { items: paginatedInvoices, pagination, goToPage, setPageSize } = usePagination(sortedInvoices, 10);
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async () => {
+    if (!deleteConfirm) return;
+    setIsDeleting(true);
     try {
-      await deleteInvoice.mutateAsync(id);
+      await deleteInvoice.mutateAsync(deleteConfirm.id);
       setDeleteConfirm(null);
     } catch (error) {
       console.error('Failed to delete invoice:', error);
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -180,35 +186,15 @@ export default function InvoicesPage() {
                               View
                             </Button>
                           </Link>
-                          {deleteConfirm === invoice.id ? (
-                            <div className="flex gap-2">
-                              <Button
-                                size="sm"
-                                variant="destructive"
-                                onClick={() => handleDelete(invoice.id)}
-                                disabled={deleteInvoice.isPending}
-                              >
-                                Confirm
-                              </Button>
-                              <Button
-                                size="sm"
-                                variant="outline"
-                                onClick={() => setDeleteConfirm(null)}
-                              >
-                                Cancel
-                              </Button>
-                            </div>
-                          ) : (
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="text-red-600 hover:text-red-700 flex items-center gap-1"
-                              onClick={() => setDeleteConfirm(invoice.id)}
-                            >
-                              <Trash2 className="h-4 w-4" />
-                              Delete
-                            </Button>
-                          )}
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="text-red-600 hover:text-red-700 flex items-center gap-1"
+                            onClick={() => setDeleteConfirm({ id: invoice.id, number: invoice.invoiceNumber })}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                            Delete
+                          </Button>
                         </div>
                       </td>
                     </tr>
@@ -227,6 +213,18 @@ export default function InvoicesPage() {
           />
         </div>
       )}
+      
+      <ConfirmDialog
+        isOpen={!!deleteConfirm}
+        title="Delete Invoice"
+        description={`Are you sure you want to delete invoice "${deleteConfirm?.number}"? This action cannot be undone.`}
+        confirmText="Delete"
+        cancelText="Cancel"
+        isLoading={isDeleting}
+        isDangerous={true}
+        onConfirm={handleDelete}
+        onCancel={() => setDeleteConfirm(null)}
+      />
     </div>
   );
 }
