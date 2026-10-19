@@ -125,7 +125,7 @@ export default function ProductsPage() {
                 </thead>
                 <tbody className="divide-y">
                   {paginatedProducts.map((product: any) => (
-                    <tr key={product.product_id} className="hover:bg-gray-50">
+                    <tr key={product.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 text-sm font-medium text-gray-900">
                         {product.product_name}
                       </td>
@@ -140,7 +140,7 @@ export default function ProductsPage() {
                       </td>
                       <td className="px-6 py-4 text-right text-sm">
                         <div className="flex justify-end gap-2">
-                          <Link href={`/products/${product.product_id}/edit`}>
+                          <Link href={`/products/${product.id}/edit`}>
                             <Button
                               variant="outline"
                               size="sm"
@@ -150,12 +150,12 @@ export default function ProductsPage() {
                               Edit
                             </Button>
                           </Link>
-                          {deleteConfirm === product.product_id ? (
+                          {deleteConfirm === product.id ? (
                             <div className="flex gap-2">
                               <Button
                                 size="sm"
                                 variant="destructive"
-                                onClick={() => handleDelete(product.product_id)}
+                                onClick={() => handleDelete(product.id)}
                                 disabled={deleteProduct.isPending}
                               >
                                 Confirm
@@ -173,7 +173,7 @@ export default function ProductsPage() {
                               size="sm"
                               variant="outline"
                               className="text-red-600 hover:text-red-700 flex items-center gap-1"
-                              onClick={() => setDeleteConfirm(product.product_id)}
+                              onClick={() => setDeleteConfirm(product.id)}
                             >
                               <Trash2 className="h-4 w-4" />
                               Delete
