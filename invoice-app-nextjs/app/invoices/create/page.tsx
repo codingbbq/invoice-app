@@ -304,7 +304,7 @@ export default function CreateInvoicePage() {
                   <td className="px-4 py-2 min-w-0">
                     <Input
                       type="number"
-                      value={item.quantity}
+                      value={item.quantity ?? 0}
                       onChange={(e) =>
                         handleItemChange(index, 'quantity', e.target.value)
                       }
@@ -316,7 +316,7 @@ export default function CreateInvoicePage() {
                   <td className="px-4 py-2 min-w-0">
                     <Input
                       type="number"
-                      value={item.rate}
+                      value={item.rate ?? 0}
                       onChange={(e) =>
                         handleItemChange(index, 'rate', e.target.value)
                       }
@@ -326,7 +326,7 @@ export default function CreateInvoicePage() {
                     />
                   </td>
                   <td className="px-4 py-2 text-right text-sm font-medium">
-                    ₹{item.totalCost.toFixed(2)}
+                    ₹{(item.totalCost || 0).toFixed(2)}
                   </td>
                   <td className="px-4 py-2 text-center">
                     <Button
