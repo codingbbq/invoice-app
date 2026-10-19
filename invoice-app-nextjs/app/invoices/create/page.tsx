@@ -83,9 +83,10 @@ export default function CreateInvoicePage() {
       const product = products.find((p: any) => p.id === value);
       if (product) {
         item.productId = value;
-        item.productName = product.name;
-        item.mrp = product.mrp;
-        item.rate = product.mrp;
+        item.productName = product.product_name || product.name || '';
+        const mrp = parseFloat(product.product_mrp || product.mrp || 0);
+        item.mrp = mrp;
+        item.rate = mrp;
       }
     } else if (field === 'quantity') {
       item.quantity = parseFloat(value) || 0;
@@ -295,7 +296,7 @@ export default function CreateInvoicePage() {
                   <td className="px-4 py-2 text-sm text-gray-600 text-center">
                     {item.mrp > 0
                       ? products.find((p: any) => p.id === item.productId)
-                          ?.hsnCode || '-'
+                          ?.product_hsn_code || products.find((p: any) => p.id === item.productId)?.hsnCode || '-'
                       : '-'}
                   </td>
                   <td className="px-4 py-2 text-right text-sm">
