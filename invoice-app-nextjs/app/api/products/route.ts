@@ -9,6 +9,15 @@ import {
   Product,
 } from '@/lib/firestore';
 
+// Helper function to convert Firestore Timestamps to ISO strings
+function normalizeProduct(product: any): any {
+  return {
+    ...product,
+    createdAt: product.createdAt instanceof Timestamp ? product.createdAt.toDate().toISOString() : product.createdAt,
+    updatedAt: product.updatedAt instanceof Timestamp ? product.updatedAt.toDate().toISOString() : product.updatedAt,
+  };
+}
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -22,11 +31,11 @@ export async function GET(request: NextRequest) {
           { status: 404 }
         );
       }
-      return NextResponse.json(product);
+      return NextResponse.json(normalizeProduct(product));
     }
 
     const products = await getProducts();
-    return NextResponse.json(products);
+    return NextResponse.json(products.map(normalizeProduct));
   } catch (error) {
     console.error('Error fetching products:', error);
     return NextResponse.json(
