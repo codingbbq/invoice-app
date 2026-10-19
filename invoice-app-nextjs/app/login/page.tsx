@@ -9,9 +9,6 @@ import { AlertCircle } from 'lucide-react';
 
 export default function LoginPage() {
   const authContext = useContext(AuthContext);
-  const login = authContext?.login || (async () => {});
-  const isLoading = authContext?.isLoading || false;
-  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -23,23 +20,17 @@ export default function LoginPage() {
     setIsSubmitting(true);
 
     try {
-      await login(username, password);
+      if (!authContext?.login) {
+        throw new Error('Authentication service not available');
+      }
+      await authContext.login(username, password);
     } catch (err) {
+      console.error('Login error:', err);
       setError(err instanceof Error ? err.message : 'Login failed');
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <Card className="p-8">
-          <p className="text-gray-600">Loading...</p>
-        </Card>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4">
