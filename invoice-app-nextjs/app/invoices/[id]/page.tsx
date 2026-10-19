@@ -42,20 +42,20 @@ export default function ViewInvoicePage() {
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       let heightLeft = imgHeight;
 
-      // Create PDF
+      // Create PDF with minimal margins
       const pdf = new jsPDF('p', 'mm', 'a4');
       let position = 0;
 
-      // Add image to PDF
+      // Add image to PDF with minimal spacing (5mm margins)
       const imgData = canvas.toDataURL('image/png');
-      pdf.addImage(imgData, 'PNG', 10, position + 10, imgWidth - 20, imgHeight);
+      pdf.addImage(imgData, 'PNG', 5, position + 5, imgWidth - 10, imgHeight);
       heightLeft -= pageHeight;
 
       // Add additional pages if needed
       while (heightLeft >= 0) {
         position = heightLeft - imgHeight;
         pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 10, position + 10, imgWidth - 20, imgHeight);
+        pdf.addImage(imgData, 'PNG', 5, position + 5, imgWidth - 10, imgHeight);
         heightLeft -= pageHeight;
       }
 
