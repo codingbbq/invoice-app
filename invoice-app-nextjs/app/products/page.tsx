@@ -45,7 +45,10 @@ export default function ProductsPage() {
     return dateB.getTime() - dateA.getTime();
   });
   
-  const { items: sortedProducts, sortConfig, toggleSort } = useSort(sortedByDate);
+  // Use the pre-sorted data directly without useSort to maintain date ordering
+  const sortedProducts = sortedByDate;
+  const sortConfig = { key: 'createdAt' as any, direction: 'desc' as const };
+  const toggleSort = (key: any) => {}; // No-op since we're using fixed date sort
   
   const { items: paginatedProducts, pagination, goToPage, setPageSize } = usePagination(sortedProducts, 10);
 
