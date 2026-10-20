@@ -3,12 +3,11 @@
 import { useInvoices } from '@/hooks/useInvoices';
 import { useClients } from '@/hooks/useClients';
 import { useProducts } from '@/hooks/useProducts';
-import { DashboardStats } from '@/components/dashboard/DashboardStats';
-import { RecentActivity } from '@/components/dashboard/RecentActivity';
 import { ProtectRoute } from '@/components/auth/ProtectRoute';
 import { ActivityFeed } from '@/components/dashboard/activity-feed';
 import { TopPerformers } from '@/components/dashboard/top-performers';
-import { Card } from '@/components/ui/card';
+import { KPICards } from '@/components/dashboard/kpi-cards';
+import { QuickActions } from '@/components/dashboard/quick-actions';
 
 export default function Dashboard() {
   const { data: invoices = [], isLoading: invoicesLoading } = useInvoices();
