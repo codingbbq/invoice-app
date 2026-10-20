@@ -7,11 +7,12 @@ import { usePagination } from '@/hooks/usePagination';
 import { useSearch } from '@/hooks/useSearch';
 import { useSort } from '@/hooks/useSort';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
 import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
+import { PageHeader } from '@/components/ui/page-header';
 import { Trash2, Edit, Plus } from 'lucide-react';
 import { ProtectRoute } from '@/components/auth/ProtectRoute';
 
@@ -45,19 +46,20 @@ export default function ClientsPage() {
 
   return (
     <ProtectRoute>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-4xl font-bold text-gray-900">Clients</h1>
-          <p className="text-gray-600 mt-2">Manage your clients and their information</p>
-        </div>
-        <Link href="/clients/add">
-          <Button variant="primary" className="flex items-center gap-2">
-            <Plus className="h-4 w-4" />
-            Add Client
-          </Button>
-        </Link>
-      </div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <PageHeader 
+            title="Clients" 
+            description="Manage your clients and their information"
+            action={
+              <Link href="/clients/add">
+                <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
+                  <Plus className="h-4 w-4" />
+                  Add Client
+                </Button>
+              </Link>
+            }
+          />
 
       {clients.length > 0 && (
         <div className="mb-8">

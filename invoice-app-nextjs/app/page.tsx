@@ -4,9 +4,11 @@ import { useInvoices } from '@/hooks/useInvoices';
 import { useClients } from '@/hooks/useClients';
 import { useProducts } from '@/hooks/useProducts';
 import { ProtectRoute } from '@/components/auth/ProtectRoute';
+import { PageHeader } from '@/components/ui/page-header';
+import { StatCard } from '@/components/ui/stat-card';
+import { DollarSign, FileText, Users, Package } from 'lucide-react';
 import { ActivityFeed } from '@/components/dashboard/activity-feed';
 import { TopPerformers } from '@/components/dashboard/top-performers';
-import { KPICards } from '@/components/dashboard/kpi-cards';
 import { QuickActions } from '@/components/dashboard/quick-actions';
 
 export default function Dashboard() {
@@ -140,16 +142,36 @@ export default function Dashboard() {
 
   return (
     <ProtectRoute>
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          {/* Page Header */}
-          <div className="mb-6">
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">Dashboard</h1>
-            <p className="text-gray-600 text-sm mt-1">Financial overview and quick insights</p>
-          </div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <PageHeader 
+            title="Dashboard" 
+            description="Financial overview and quick insights"
+          />
 
-          {/* KPI Cards */}
-          <KPICards data={kpiData} />
+          {/* KPI Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <StatCard
+              title="Total Revenue"
+              value={`₹${totalRevenue.toLocaleString()}`}
+              icon={DollarSign}
+            />
+            <StatCard
+              title="Total Invoices"
+              value={invoices.length}
+              icon={FileText}
+            />
+            <StatCard
+              title="Total Clients"
+              value={clients.length}
+              icon={Users}
+            />
+            <StatCard
+              title="Total Products"
+              value={products.length}
+              icon={Package}
+            />
+          </div>
 
           {/* Quick Actions */}
           <QuickActions />
