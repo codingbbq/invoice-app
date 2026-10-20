@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { ProtectRoute } from '@/components/auth/ProtectRoute';
 import Link from 'next/link';
 import { useInvoices, useDeleteInvoice } from '@/hooks/useInvoices';
 import { useClients } from '@/hooks/useClients';
@@ -73,7 +74,8 @@ export default function InvoicesPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <ProtectRoute>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-4xl font-bold text-gray-900">Invoices</h1>
@@ -226,5 +228,6 @@ export default function InvoicesPage() {
         onCancel={() => setDeleteConfirm(null)}
       />
     </div>
+    </ProtectRoute>
   );
 }

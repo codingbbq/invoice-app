@@ -13,6 +13,7 @@ import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { Trash2, Edit, Plus } from 'lucide-react';
+import { ProtectRoute } from '@/components/auth/ProtectRoute';
 
 export default function ProductsPage() {
   const { data: products = [], isLoading } = useProducts();
@@ -75,7 +76,8 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <ProtectRoute>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-4xl font-bold text-gray-900">Products</h1>
@@ -228,5 +230,6 @@ export default function ProductsPage() {
         onCancel={() => setDeleteConfirm(null)}
       />
     </div>
+    </ProtectRoute>
   );
 }

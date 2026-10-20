@@ -13,6 +13,7 @@ import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { Trash2, Edit, Plus } from 'lucide-react';
+import { ProtectRoute } from '@/components/auth/ProtectRoute';
 
 export default function ClientsPage() {
   const { data: clients = [], isLoading } = useClients();
@@ -43,7 +44,8 @@ export default function ClientsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <ProtectRoute>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-4xl font-bold text-gray-900">Clients</h1>
@@ -208,5 +210,6 @@ export default function ClientsPage() {
         onCancel={() => setDeleteConfirm(null)}
       />
     </div>
+    </ProtectRoute>
   );
 }

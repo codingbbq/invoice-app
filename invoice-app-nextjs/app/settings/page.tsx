@@ -6,6 +6,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
+import { ProtectRoute } from '@/components/auth/ProtectRoute';
 
 export default function SettingsPage() {
   const queryClient = useQueryClient();
@@ -73,18 +74,9 @@ export default function SettingsPage() {
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Card className="p-12 text-center">
-          <p className="text-gray-600">Loading settings...</p>
-        </Card>
-      </div>
-    );
-  }
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <ProtectRoute>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-gray-900">Settings</h1>
         <p className="text-gray-600 mt-2">Manage your company information</p>
@@ -191,5 +183,6 @@ export default function SettingsPage() {
         </form>
       </Card>
     </div>
+    </ProtectRoute>
   );
 }
