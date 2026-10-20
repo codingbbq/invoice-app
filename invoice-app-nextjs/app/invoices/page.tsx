@@ -9,11 +9,12 @@ import { usePagination } from '@/hooks/usePagination';
 import { useSearch } from '@/hooks/useSearch';
 import { useSort } from '@/hooks/useSort';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
 import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
+import { PageHeader } from '@/components/ui/page-header';
 import { Trash2, Eye, Plus, Download } from 'lucide-react';
 
 export default function InvoicesPage() {

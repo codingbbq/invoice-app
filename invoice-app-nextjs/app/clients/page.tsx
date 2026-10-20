@@ -75,19 +75,27 @@ export default function ClientsPage() {
       )}
 
       {isLoading ? (
-        <Card className="p-12 text-center">
-          <p className="text-gray-600">Loading clients...</p>
+        <Card>
+          <CardContent className="p-12 text-center">
+            <div className="flex items-center justify-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            </div>
+          </CardContent>
         </Card>
       ) : clients.length === 0 ? (
-        <Card className="p-12 text-center">
-          <p className="text-gray-600 mb-4">No clients found</p>
-          <Link href="/clients/add">
-            <Button variant="primary">Add Your First Client</Button>
-          </Link>
+        <Card>
+          <CardContent className="p-12 text-center">
+            <p className="text-gray-600 mb-4">No clients found</p>
+            <Link href="/clients/add">
+              <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white">
+                Add Your First Client
+              </Button>
+            </Link>
+          </CardContent>
         </Card>
       ) : (
         <div>
-          <Card className="overflow-hidden">
+          <Card className="overflow-hidden shadow-lg">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50 border-b">
@@ -200,18 +208,19 @@ export default function ClientsPage() {
         </div>
       )}
       
-      <ConfirmDialog
-        isOpen={!!deleteConfirm}
-        title="Delete Client"
-        description={`Are you sure you want to delete "${deleteConfirm?.name}"? This action cannot be undone.`}
-        confirmText="Delete"
-        cancelText="Cancel"
-        isLoading={isDeleting}
-        isDangerous={true}
-        onConfirm={handleDelete}
-        onCancel={() => setDeleteConfirm(null)}
-      />
-    </div>
+          <ConfirmDialog
+            isOpen={!!deleteConfirm}
+            title="Delete Client"
+            description={`Are you sure you want to delete "${deleteConfirm?.name}"? This action cannot be undone.`}
+            confirmText="Delete"
+            cancelText="Cancel"
+            isLoading={isDeleting}
+            isDangerous={true}
+            onConfirm={handleDelete}
+            onCancel={() => setDeleteConfirm(null)}
+          />
+        </div>
+      </div>
     </ProtectRoute>
   );
 }
