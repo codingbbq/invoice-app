@@ -59,7 +59,7 @@ export function Header() {
             </Link>
           </div>
 
-          {isAuthenticated ? (
+          {isAuthenticated && (
             <>
               <nav className="hidden md:flex items-center space-x-2">
                 <Link href="/" className={navLinkClass('/')}>
