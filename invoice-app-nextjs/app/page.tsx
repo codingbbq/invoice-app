@@ -3,8 +3,9 @@
 import { useInvoices } from '@/hooks/useInvoices';
 import { useClients } from '@/hooks/useClients';
 import { useProducts } from '@/hooks/useProducts';
-import { KPICards } from '@/components/dashboard/kpi-cards';
-import { QuickActions } from '@/components/dashboard/quick-actions';
+import { DashboardStats } from '@/components/dashboard/DashboardStats';
+import { RecentActivity } from '@/components/dashboard/RecentActivity';
+import { ProtectRoute } from '@/components/auth/ProtectRoute';
 import { ActivityFeed } from '@/components/dashboard/activity-feed';
 import { TopPerformers } from '@/components/dashboard/top-performers';
 import { Card } from '@/components/ui/card';
@@ -139,26 +140,28 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {/* Page Header */}
-        <div className="mb-6">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-600 text-sm mt-1">Financial overview and quick insights</p>
+    <ProtectRoute>
+      <div className="min-h-screen bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          {/* Page Header */}
+          <div className="mb-6">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">Dashboard</h1>
+            <p className="text-gray-600 text-sm mt-1">Financial overview and quick insights</p>
+          </div>
+
+          {/* KPI Cards */}
+          <KPICards data={kpiData} />
+
+          {/* Quick Actions */}
+          <QuickActions />
+
+          {/* Activity Feed */}
+          <ActivityFeed data={activityFeedData} />
+
+          {/* Top Performers */}
+          <TopPerformers data={{ topClients, topProducts }} />
         </div>
-
-        {/* KPI Cards */}
-        <KPICards data={kpiData} />
-
-        {/* Quick Actions */}
-        <QuickActions />
-
-        {/* Activity Feed */}
-        <ActivityFeed data={activityFeedData} />
-
-        {/* Top Performers */}
-        <TopPerformers data={{ topClients, topProducts }} />
       </div>
-    </div>
+    </ProtectRoute>
   );
 }

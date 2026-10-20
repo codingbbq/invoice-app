@@ -1,25 +1,32 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useState, useContext } from 'react';
-import { AuthContext } from '@/components/providers/AuthProvider';
+import { useState, useEffect } from 'react';
+import { auth } from '@/lib/firebase';
+import { onAuthStateChanged, signOut, User as FirebaseUser } from 'firebase/auth';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState<FirebaseUser | null>(null);
   const pathname = usePathname();
-  const authContext = useContext(AuthContext);
-  
-  const user = authContext?.user || null;
-  const logout = authContext?.logout || (() => {});
-  const isAuthenticated = authContext?.isAuthenticated || false;
+  const router = useRouter();
 
-  // Debug logging
-  console.log('Header - authContext:', authContext);
-  console.log('Header - user:', user);
-  console.log('Header - isAuthenticated:', isAuthenticated);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    router.push('/login');
+  };
+
+  const isAuthenticated = !!user;
 
   const isActive = (href: string) => {
     if (href === '/') {
@@ -77,7 +84,7 @@ export function Header() {
                   <>
                     <span className="text-sm text-gray-600">Welcome, <strong>{user.email}</strong></span>
                     <Button
-                      onClick={logout}
+                      onClick={handleLogout}
                       variant="ghost"
                       className="flex items-center gap-2 text-slate-700 hover:bg-red-50 hover:text-red-600"
                     >
@@ -127,7 +134,7 @@ export function Header() {
               <div className="pt-4 border-t border-slate-200 space-y-2">
                 <p className="px-5 py-2 text-sm text-gray-600">Welcome, <strong>{user.email}</strong></p>
                 <button
-                  onClick={logout}
+                  onClick={handleLogout}
                   className="w-full text-left px-5 py-3 font-semibold text-red-600 hover:bg-red-50 rounded-xl transition-all duration-200 flex items-center gap-2"
                 >
                   <LogOut className="w-4 h-4" />
