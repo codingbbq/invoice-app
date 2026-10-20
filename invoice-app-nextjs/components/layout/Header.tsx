@@ -71,7 +71,7 @@ export function Header() {
               <div className="hidden md:flex items-center space-x-4">
                 {user && (
                   <>
-                    <span className="text-sm text-gray-600">Welcome, <strong>{user.username}</strong></span>
+                    <span className="text-sm text-gray-600">Welcome, <strong>{user.email}</strong></span>
                     <Button
                       onClick={logout}
                       variant="ghost"
@@ -121,7 +121,7 @@ export function Header() {
             </Link>
             {user && (
               <div className="pt-4 border-t border-slate-200 space-y-2">
-                <p className="px-5 py-2 text-sm text-gray-600">Welcome, <strong>{user.username}</strong></p>
+                <p className="px-5 py-2 text-sm text-gray-600">Welcome, <strong>{user.email}</strong></p>
                 <button
                   onClick={logout}
                   className="w-full text-left px-5 py-3 font-semibold text-red-600 hover:bg-red-50 rounded-xl transition-all duration-200 flex items-center gap-2"

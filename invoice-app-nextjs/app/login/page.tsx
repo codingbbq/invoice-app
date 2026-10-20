@@ -1,16 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { loginUser } from '@/lib/auth-service';
+import { useState, useContext } from 'react';
+import { AuthContext } from '@/components/providers/AuthProvider';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { AlertCircle } from 'lucide-react';
 
 export default function LoginPage() {
-  const router = useRouter();
-  const [username, setUsername] = useState('');
+  const authContext = useContext(AuthContext);
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -21,14 +20,12 @@ export default function LoginPage() {
     setIsSubmitting(true);
 
     try {
-      console.log('Attempting login with:', { username });
-      await loginUser(username, password);
-      console.log('Login successful');
-      // Redirect to dashboard
-      router.push('/');
-    } catch (err) {
-      console.error('Login failed:', err);
-      setError(err instanceof Error ? err.message : 'Login failed');
+      if (!authContext?.login) {
+        throw new Error('Authentication service not available');
+      }
+      await authContext.login(email, password);
+    } catch (err: any) {
+      setError(err.message || 'Login failed');
     } finally {
       setIsSubmitting(false);
     }
@@ -51,15 +48,15 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
-              Username
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              Email
             </label>
             <Input
-              id="username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter your username"
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
               required
               disabled={isSubmitting}
               className="w-full"
@@ -84,7 +81,7 @@ export default function LoginPage() {
 
           <Button
             type="submit"
-            disabled={isSubmitting || !username || !password}
+            disabled={isSubmitting || !email || !password}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition-colors"
           >
             {isSubmitting ? 'Signing in...' : 'Sign In'}
@@ -93,7 +90,7 @@ export default function LoginPage() {
 
         <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
           <p className="text-sm text-blue-800">
-            <strong>Demo credentials:</strong> Use any username/password from the users collection in Firestore
+            <strong>Note:</strong> Create a user in Firebase Authentication to log in
           </p>
         </div>
       </Card>

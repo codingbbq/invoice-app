@@ -2,19 +2,24 @@
 
 import { createContext, useContext, ReactNode, useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { db } from '@/lib/firebase';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { auth } from '@/lib/firebase';
+import { 
+  signInWithEmailAndPassword, 
+  signOut, 
+  onAuthStateChanged,
+  User as FirebaseUser
+} from 'firebase/auth';
 
 interface User {
   id: string;
-  username: string;
-  email?: string;
+  email: string;
+  displayName?: string;
 }
 
 interface AuthContextType {
   user: User | null;
   isLoading: boolean;
-  login: (username: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;
   logout: () => void;
   isAuthenticated: boolean;
 }
@@ -27,83 +32,48 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
 
-  // Check if user is logged in on mount
+  // Listen to Firebase auth state changes
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const storedUser = localStorage.getItem('user');
-        if (storedUser) {
-          const parsedUser = JSON.parse(storedUser);
-          // Validate that the user object has required fields (id and username)
-          if (parsedUser && typeof parsedUser === 'object' && parsedUser.id && parsedUser.username) {
-            setUser(parsedUser);
-          } else {
-            // Invalid user object, clear it
-            localStorage.removeItem('user');
-            setUser(null);
-          }
-        } else {
-          setUser(null);
-        }
-      } catch (error) {
-        console.error('Error parsing stored user:', error);
-        localStorage.removeItem('user');
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser: FirebaseUser | null) => {
+      if (firebaseUser) {
+        setUser({
+          id: firebaseUser.uid,
+          email: firebaseUser.email || '',
+          displayName: firebaseUser.displayName || undefined,
+        });
+      } else {
         setUser(null);
       }
       setIsLoading(false);
-    };
+    });
 
-    checkAuth();
+    return () => unsubscribe();
   }, []);
 
   // Redirect to login if not authenticated and not on login page
   useEffect(() => {
-    if (!isLoading && !user && pathname !== '/login') {
+    if (!isLoading && !user && pathname !== '/login' && pathname !== '/clear-cache') {
       router.push('/login');
     }
   }, [isLoading, user, pathname, router]);
 
-  const login = async (username: string, password: string) => {
-    setIsLoading(true);
+  const login = async (email: string, password: string) => {
     try {
-      // Query Firestore for user with matching username
-      const usersRef = collection(db, 'users');
-      const q = query(usersRef, where('username', '==', username));
-      const querySnapshot = await getDocs(q);
-
-      if (querySnapshot.empty) {
-        throw new Error('Invalid username or password');
-      }
-
-      const userDoc = querySnapshot.docs[0];
-      const userData = userDoc.data();
-
-      // Simple password comparison (in production, use bcrypt or similar)
-      if (userData.password !== password) {
-        throw new Error('Invalid username or password');
-      }
-
-      // Store user in state and localStorage
-      const loggedInUser: User = {
-        id: userDoc.id,
-        username: userData.username,
-        email: userData.email,
-      };
-
-      setUser(loggedInUser);
-      localStorage.setItem('user', JSON.stringify(loggedInUser));
-      // Redirect after a short delay to allow state to update
-      setTimeout(() => router.push('/'), 100);
-    } catch (error) {
-      setIsLoading(false);
-      throw error;
+      await signInWithEmailAndPassword(auth, email, password);
+      // onAuthStateChanged will handle setting the user
+      router.push('/');
+    } catch (error: any) {
+      throw new Error(error.message || 'Login failed');
     }
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('user');
-    router.push('/login');
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      router.push('/login');
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   };
 
   return (
