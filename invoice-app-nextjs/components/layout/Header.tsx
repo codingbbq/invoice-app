@@ -10,12 +10,16 @@ import { AuthContext } from '@/components/providers/AuthProvider';
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const authContext = useContext(AuthContext) as any;
+  const authContext = useContext(AuthContext);
   
-  // Handle case where Header is rendered outside AuthProvider
   const user = authContext?.user || null;
   const logout = authContext?.logout || (() => {});
   const isAuthenticated = authContext?.isAuthenticated || false;
+
+  // Debug logging
+  console.log('Header - authContext:', authContext);
+  console.log('Header - user:', user);
+  console.log('Header - isAuthenticated:', isAuthenticated);
 
   const isActive = (href: string) => {
     if (href === '/') {
