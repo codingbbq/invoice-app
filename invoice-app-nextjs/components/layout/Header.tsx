@@ -95,12 +95,6 @@ export function Header() {
                 )}
               </div>
             </>
-          ) : (
-            <div className="hidden md:flex items-center">
-              <Link href="/login" className="px-5 py-2.5 font-semibold text-blue-600 hover:bg-blue-50 rounded-xl transition-all">
-                Sign In
-              </Link>
-            </div>
           )}
 
           <Button
