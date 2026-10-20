@@ -91,11 +91,6 @@ export default function LoginPage() {
           </Button>
         </form>
 
-        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <p className="text-sm text-blue-800">
-            <strong>Note:</strong> Create a user in Firebase Authentication to log in
-          </p>
-        </div>
       </Card>
     </div>
   );
