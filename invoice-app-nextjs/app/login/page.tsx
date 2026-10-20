@@ -1,14 +1,16 @@
 'use client';
 
-import { useState, useContext } from 'react';
-import { AuthContext } from '@/components/providers/AuthProvider';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { auth } from '@/lib/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { AlertCircle } from 'lucide-react';
 
 export default function LoginPage() {
-  const authContext = useContext(AuthContext);
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -20,12 +22,13 @@ export default function LoginPage() {
     setIsSubmitting(true);
 
     try {
-      if (!authContext?.login) {
-        throw new Error('Authentication service not available');
-      }
-      await authContext.login(email, password);
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push('/');
     } catch (err: any) {
-      setError(err.message || 'Login failed');
+      const errorMessage = err.code === 'auth/invalid-credential' 
+        ? 'Invalid email or password'
+        : err.message || 'Login failed';
+      setError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
