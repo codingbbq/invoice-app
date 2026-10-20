@@ -76,19 +76,20 @@ export default function InvoicesPage() {
 
   return (
     <ProtectRoute>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-4xl font-bold text-gray-900">Invoices</h1>
-          <p className="text-gray-600 mt-2">Manage and create invoices</p>
-        </div>
-        <Link href="/invoices/create">
-          <Button variant="primary" className="flex items-center gap-2">
-            <Plus className="h-4 w-4" />
-            Create Invoice
-          </Button>
-        </Link>
-      </div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <PageHeader 
+            title="Invoices" 
+            description="Manage and create invoices"
+            action={
+              <Link href="/invoices/create">
+                <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
+                  <Plus className="h-4 w-4" />
+                  Create Invoice
+                </Button>
+              </Link>
+            }
+          />
 
       {invoices.length > 0 && (
         <div className="mb-8">
@@ -217,18 +218,19 @@ export default function InvoicesPage() {
         </div>
       )}
       
-      <ConfirmDialog
-        isOpen={!!deleteConfirm}
-        title="Delete Invoice"
-        description={`Are you sure you want to delete invoice "${deleteConfirm?.number}"? This action cannot be undone.`}
-        confirmText="Delete"
-        cancelText="Cancel"
-        isLoading={isDeleting}
-        isDangerous={true}
-        onConfirm={handleDelete}
-        onCancel={() => setDeleteConfirm(null)}
-      />
-    </div>
+          <ConfirmDialog
+            isOpen={!!deleteConfirm}
+            title="Delete Invoice"
+            description={`Are you sure you want to delete invoice "${deleteConfirm?.number}"? This action cannot be undone.`}
+            confirmText="Delete"
+            cancelText="Cancel"
+            isLoading={isDeleting}
+            isDangerous={true}
+            onConfirm={handleDelete}
+            onCancel={() => setDeleteConfirm(null)}
+          />
+        </div>
+      </div>
     </ProtectRoute>
   );
 }

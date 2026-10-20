@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
+import { PageHeader } from '@/components/ui/page-header';
 import { ProtectRoute } from '@/components/auth/ProtectRoute';
 
 export default function SettingsPage() {
@@ -76,13 +77,15 @@ export default function SettingsPage() {
 
   return (
     <ProtectRoute>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-gray-900">Settings</h1>
-        <p className="text-gray-600 mt-2">Manage your company information</p>
-      </div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <PageHeader 
+            title="Settings" 
+            description="Manage your company information"
+          />
 
-      <Card className="p-6">
+          <Card className="shadow-lg">
+            <CardContent className="p-8">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -175,14 +178,16 @@ export default function SettingsPage() {
             <Button
               type="submit"
               disabled={updateSettings.isPending}
-              variant="primary"
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all"
             >
               {updateSettings.isPending ? 'Saving...' : 'Save Settings'}
             </Button>
           </div>
         </form>
-      </Card>
-    </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </ProtectRoute>
   );
 }
