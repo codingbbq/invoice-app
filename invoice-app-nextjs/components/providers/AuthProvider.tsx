@@ -32,13 +32,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
 
-  console.log('AuthProvider rendering - user:', user, 'isLoading:', isLoading);
-
   // Listen to Firebase auth state changes
   useEffect(() => {
-    console.log('AuthProvider - setting up onAuthStateChanged listener');
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser: FirebaseUser | null) => {
-      console.log('AuthProvider - onAuthStateChanged fired, user:', firebaseUser);
       if (firebaseUser) {
         setUser({
           id: firebaseUser.uid,
