@@ -36,25 +36,25 @@ export function Header() {
   };
 
   const navLinkClass = (href: string) => {
-    const baseClass = 'px-5 py-2.5 font-semibold rounded-xl transition-all duration-200';
-    const activeClass = 'bg-blue-600 text-white';
-    const inactiveClass = 'text-slate-700 hover:text-blue-600 hover:bg-blue-50';
+    const baseClass = 'px-3 py-2 text-sm font-medium transition-colors';
+    const activeClass = 'text-gray-900';
+    const inactiveClass = 'text-gray-500 hover:text-gray-900';
     return `${baseClass} ${isActive(href) ? activeClass : inactiveClass}`;
   };
 
   const mobileNavLinkClass = (href: string) => {
-    const baseClass = 'block px-5 py-3 font-semibold rounded-xl transition-all duration-200';
-    const activeClass = 'bg-blue-600 text-white';
-    const inactiveClass = 'text-slate-700 hover:bg-blue-50 hover:text-blue-600';
+    const baseClass = 'block px-4 py-2 text-sm font-medium transition-colors';
+    const activeClass = 'text-gray-900 bg-gray-50';
+    const inactiveClass = 'text-gray-500 hover:text-gray-900 hover:bg-gray-50';
     return `${baseClass} ${isActive(href) ? activeClass : inactiveClass}`;
   };
 
   return (
-    <header className="bg-white shadow-lg border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-        <div className="flex justify-between items-center h-24">
+    <header className="bg-white border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
+            <Link href="/" className="text-xl font-semibold text-gray-900 hover:text-gray-700 transition-colors">
               Invoice App
             </Link>
           </div>
@@ -82,11 +82,11 @@ export function Header() {
               <div className="hidden md:flex items-center space-x-4">
                 {user && (
                   <>
-                    <span className="text-sm text-gray-600">Welcome, <strong>{user.email}</strong></span>
+                    <span className="text-sm text-gray-500">{user.email}</span>
                     <Button
                       onClick={handleLogout}
                       variant="ghost"
-                      className="flex items-center gap-2 text-slate-700 hover:bg-red-50 hover:text-red-600"
+                      className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900"
                     >
                       <LogOut className="w-4 h-4" />
                       Logout
