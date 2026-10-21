@@ -189,29 +189,31 @@ export default function ClientsPage() {
                 </tbody>
               </table>
             </div>
-          </Card>
-          <Pagination
-            currentPage={pagination.currentPage}
-            totalPages={pagination.totalPages}
-            pageSize={pagination.pageSize}
-            totalItems={pagination.totalItems}
-            onPageChange={goToPage}
-            onPageSizeChange={setPageSize}
-          />
+          </div>
+          <div className="mt-6">
+            <Pagination
+              currentPage={pagination.currentPage}
+              totalPages={pagination.totalPages}
+              pageSize={pagination.pageSize}
+              totalItems={pagination.totalItems}
+              onPageChange={goToPage}
+              onPageSizeChange={setPageSize}
+            />
+          </div>
         </div>
       )}
       
-          <ConfirmDialog
-            isOpen={!!deleteConfirm}
-            title="Delete Client"
-            description={`Are you sure you want to delete "${deleteConfirm?.name}"? This action cannot be undone.`}
-            confirmText="Delete"
-            cancelText="Cancel"
-            isLoading={isDeleting}
-            isDangerous={true}
-            onConfirm={handleDelete}
-            onCancel={() => setDeleteConfirm(null)}
-          />
+      <ConfirmDialog
+        isOpen={!!deleteConfirm}
+        title="Delete Client"
+        description={`Are you sure you want to delete "${deleteConfirm?.name}"? This action cannot be undone.`}
+        confirmText="Delete"
+        cancelText="Cancel"
+        isLoading={isDeleting}
+        isDangerous={true}
+        onConfirm={handleDelete}
+        onCancel={() => setDeleteConfirm(null)}
+      />
         </div>
       </div>
     </ProtectRoute>

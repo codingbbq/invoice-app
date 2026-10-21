@@ -76,20 +76,20 @@ export default function InvoicesPage() {
 
   return (
     <ProtectRoute>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <PageHeader 
-            title="Invoices" 
-            description="Manage and create invoices"
-            action={
-              <Link href="/invoices/create">
-                <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
-                  <Plus className="h-4 w-4" />
-                  Create Invoice
-                </Button>
-              </Link>
-            }
-          />
+      <div className="min-h-screen bg-white">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h1 className="text-2xl font-semibold text-gray-900 mb-1">Invoices</h1>
+              <p className="text-sm text-gray-500">Manage and create invoices</p>
+            </div>
+            <Link href="/invoices/create">
+              <Button className="flex items-center gap-2">
+                <Plus className="h-4 w-4" />
+                Create Invoice
+              </Button>
+            </Link>
+          </div>
 
       {invoices.length > 0 && (
         <div className="mb-8">

@@ -77,15 +77,14 @@ export default function SettingsPage() {
 
   return (
     <ProtectRoute>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <PageHeader 
-            title="Settings" 
-            description="Manage your company information"
-          />
+      <div className="min-h-screen bg-white">
+        <div className="max-w-4xl mx-auto px-6 py-12">
+          <div className="mb-8">
+            <h1 className="text-2xl font-semibold text-gray-900 mb-1">Settings</h1>
+            <p className="text-sm text-gray-500">Manage your company information</p>
+          </div>
 
-          <Card className="shadow-lg">
-            <CardContent className="p-8">
+          <div className="border border-gray-200 rounded-lg p-8">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -178,14 +177,12 @@ export default function SettingsPage() {
             <Button
               type="submit"
               disabled={updateSettings.isPending}
-              className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all"
             >
               {updateSettings.isPending ? 'Saving...' : 'Save Settings'}
             </Button>
           </div>
         </form>
-            </CardContent>
-          </Card>
+          </div>
         </div>
       </div>
     </ProtectRoute>
