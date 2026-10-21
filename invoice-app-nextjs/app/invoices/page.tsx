@@ -120,45 +120,49 @@ export default function InvoicesPage() {
           <Card className="overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-50 border-b">
+                <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
-                    <th className="px-6 py-3 text-left text-sm">
+                    <th className="px-6 py-4 text-left">
                       <SortableHeader
                         label="Invoice #"
                         sortKey="invoiceNumber"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
                         onSort={() => toggleSort('invoiceNumber' as any)}
+                        icon={Hash}
                       />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm">
+                    <th className="px-6 py-4 text-left">
                       <SortableHeader
                         label="Client"
                         sortKey="clientId"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
                         onSort={() => toggleSort('clientId' as any)}
+                        icon={User}
                       />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm">
+                    <th className="px-6 py-4 text-left">
                       <SortableHeader
                         label="Date"
                         sortKey="invoiceDate"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
                         onSort={() => toggleSort('invoiceDate' as any)}
+                        icon={Calendar}
                       />
                     </th>
-                    <th className="px-6 py-3 text-right text-sm">
+                    <th className="px-6 py-4 text-right">
                       <SortableHeader
                         label="Amount"
                         sortKey="total"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
                         onSort={() => toggleSort('total' as any)}
+                        icon={DollarSign}
                       />
                     </th>
-                    <th className="px-6 py-3 text-right text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-4 text-right text-sm font-medium text-gray-500">
                       Actions
                     </th>
                   </tr>
