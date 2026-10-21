@@ -1,10 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { Menu, X, LogOut } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Menu, X, LogOut, LayoutDashboard, Users, Package, FileText, Settings } from 'lucide-react';
 import { auth } from '@/lib/firebase';
 import { onAuthStateChanged, signOut, User as FirebaseUser } from 'firebase/auth';
 
@@ -12,7 +12,6 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<FirebaseUser | null>(null);
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
@@ -23,7 +22,7 @@ export function Header() {
 
   const handleLogout = async () => {
     await signOut(auth);
-    router.push('/login');
+    window.location.href = '/login';
   };
 
   const isAuthenticated = !!user;
@@ -61,20 +60,25 @@ export function Header() {
 
           {isAuthenticated && (
             <>
-              <nav className="hidden md:flex items-center space-x-2">
-                <Link href="/" className={navLinkClass('/')}>
+              <nav className="hidden md:flex items-center space-x-1">
+                <Link href="/" className={`${navLinkClass('/')} flex items-center gap-2`}>
+                  <LayoutDashboard className="w-4 h-4" />
                   Dashboard
                 </Link>
-                <Link href="/clients" className={navLinkClass('/clients')}>
+                <Link href="/clients" className={`${navLinkClass('/clients')} flex items-center gap-2`}>
+                  <Users className="w-4 h-4" />
                   Clients
                 </Link>
-                <Link href="/products" className={navLinkClass('/products')}>
+                <Link href="/products" className={`${navLinkClass('/products')} flex items-center gap-2`}>
+                  <Package className="w-4 h-4" />
                   Products
                 </Link>
-                <Link href="/invoices" className={navLinkClass('/invoices')}>
+                <Link href="/invoices" className={`${navLinkClass('/invoices')} flex items-center gap-2`}>
+                  <FileText className="w-4 h-4" />
                   Invoices
                 </Link>
-                <Link href="/settings" className={navLinkClass('/settings')}>
+                <Link href="/settings" className={`${navLinkClass('/settings')} flex items-center gap-2`}>
+                  <Settings className="w-4 h-4" />
                   Settings
                 </Link>
               </nav>
@@ -108,35 +112,42 @@ export function Header() {
         </div>
 
         {mobileMenuOpen && isAuthenticated && (
-          <nav className="md:hidden pb-6 space-y-2 border-t border-slate-200 pt-4">
-            <Link href="/" className={mobileNavLinkClass('/')}>
-              Dashboard
-            </Link>
-            <Link href="/clients" className={mobileNavLinkClass('/clients')}>
-              Clients
-            </Link>
-            <Link href="/products" className={mobileNavLinkClass('/products')}>
-              Products
-            </Link>
-            <Link href="/invoices" className={mobileNavLinkClass('/invoices')}>
-              Invoices
-            </Link>
-            <Link href="/settings" className={mobileNavLinkClass('/settings')}>
-              Settings
-            </Link>
-            {user && (
-              <div className="pt-4 border-t border-slate-200 space-y-2">
-                <p className="px-5 py-2 text-sm text-gray-600">Welcome, <strong>{user.email}</strong></p>
-                <button
-                  onClick={handleLogout}
-                  className="w-full text-left px-5 py-3 font-semibold text-red-600 hover:bg-red-50 rounded-xl transition-all duration-200 flex items-center gap-2"
-                >
-                  <LogOut className="w-4 h-4" />
-                  Logout
-                </button>
-              </div>
-            )}
-          </nav>
+          <div className="md:hidden">
+            <div className="px-4 pt-2 pb-4 space-y-1">
+              <Link href="/" className={`${mobileNavLinkClass('/')} flex items-center gap-2`} onClick={() => setMobileMenuOpen(false)}>
+                <LayoutDashboard className="w-4 h-4" />
+                Dashboard
+              </Link>
+              <Link href="/clients" className={`${mobileNavLinkClass('/clients')} flex items-center gap-2`} onClick={() => setMobileMenuOpen(false)}>
+                <Users className="w-4 h-4" />
+                Clients
+              </Link>
+              <Link href="/products" className={`${mobileNavLinkClass('/products')} flex items-center gap-2`} onClick={() => setMobileMenuOpen(false)}>
+                <Package className="w-4 h-4" />
+                Products
+              </Link>
+              <Link href="/invoices" className={`${mobileNavLinkClass('/invoices')} flex items-center gap-2`} onClick={() => setMobileMenuOpen(false)}>
+                <FileText className="w-4 h-4" />
+                Invoices
+              </Link>
+              <Link href="/settings" className={`${mobileNavLinkClass('/settings')} flex items-center gap-2`} onClick={() => setMobileMenuOpen(false)}>
+                <Settings className="w-4 h-4" />
+                Settings
+              </Link>
+              {user && (
+                <div className="pt-4 border-t border-gray-200 space-y-2">
+                  <p className="px-4 py-2 text-sm text-gray-500">{user.email}</p>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 transition-colors flex items-center gap-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         )}
       </div>
     </header>
