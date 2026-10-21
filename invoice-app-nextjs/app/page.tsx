@@ -4,12 +4,9 @@ import { useInvoices } from '@/hooks/useInvoices';
 import { useClients } from '@/hooks/useClients';
 import { useProducts } from '@/hooks/useProducts';
 import { ProtectRoute } from '@/components/auth/ProtectRoute';
-import { PageHeader } from '@/components/ui/page-header';
-import { StatCard } from '@/components/ui/stat-card';
-import { DollarSign, FileText, Users, Package } from 'lucide-react';
-import { ActivityFeed } from '@/components/dashboard/activity-feed';
-import { TopPerformers } from '@/components/dashboard/top-performers';
-import { QuickActions } from '@/components/dashboard/quick-actions';
+import { Card, CardContent } from '@/components/ui/card';
+import { ArrowUpRight, TrendingUp } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Dashboard() {
   const { data: invoices = [], isLoading: invoicesLoading } = useInvoices();
@@ -18,6 +15,8 @@ export default function Dashboard() {
 
   // Calculate KPI data
   const totalRevenue = invoices.reduce((sum: number, inv: any) => sum + (inv.total || 0), 0);
+  const paidInvoices = invoices.filter((inv: any) => inv.status === 'paid').length;
+  const pendingInvoices = invoices.filter((inv: any) => inv.status === 'pending').length;
   
   const kpiData = {
     paidRevenue: totalRevenue,
@@ -142,45 +141,102 @@ export default function Dashboard() {
 
   return (
     <ProtectRoute>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <PageHeader 
-            title="Dashboard" 
-            description="Financial overview and quick insights"
-          />
-
-          {/* KPI Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <StatCard
-              title="Total Revenue"
-              value={`₹${totalRevenue.toLocaleString()}`}
-              icon={DollarSign}
-            />
-            <StatCard
-              title="Total Invoices"
-              value={invoices.length}
-              icon={FileText}
-            />
-            <StatCard
-              title="Total Clients"
-              value={clients.length}
-              icon={Users}
-            />
-            <StatCard
-              title="Total Products"
-              value={products.length}
-              icon={Package}
-            />
+      <div className="min-h-screen bg-white">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          {/* Header */}
+          <div className="mb-12">
+            <h1 className="text-2xl font-semibold text-gray-900 mb-1">Dashboard</h1>
+            <p className="text-sm text-gray-500">Overview of your business metrics</p>
           </div>
 
-          {/* Quick Actions */}
-          <QuickActions />
+          {/* Stats Grid - Minimalist */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">
+              <div className="text-sm font-medium text-gray-500 mb-2">Total Revenue</div>
+              <div className="text-3xl font-semibold text-gray-900">₹{totalRevenue.toLocaleString()}</div>
+              <div className="text-xs text-gray-400 mt-2">{invoices.length} invoices</div>
+            </div>
 
-          {/* Activity Feed */}
-          <ActivityFeed data={activityFeedData} />
+            <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">
+              <div className="text-sm font-medium text-gray-500 mb-2">Invoices</div>
+              <div className="text-3xl font-semibold text-gray-900">{invoices.length}</div>
+              <div className="text-xs text-gray-400 mt-2">{paidInvoices} paid · {pendingInvoices} pending</div>
+            </div>
 
-          {/* Top Performers */}
-          <TopPerformers data={{ topClients, topProducts }} />
+            <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">
+              <div className="text-sm font-medium text-gray-500 mb-2">Clients</div>
+              <div className="text-3xl font-semibold text-gray-900">{clients.length}</div>
+              <div className="text-xs text-gray-400 mt-2">Active clients</div>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">
+              <div className="text-sm font-medium text-gray-500 mb-2">Products</div>
+              <div className="text-3xl font-semibold text-gray-900">{products.length}</div>
+              <div className="text-xs text-gray-400 mt-2">In catalog</div>
+            </div>
+          </div>
+
+          {/* Recent Activity */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Recent Invoices */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-lg font-semibold text-gray-900">Recent Invoices</h2>
+                <Link href="/invoices" className="text-sm text-gray-500 hover:text-gray-900 flex items-center gap-1">
+                  View all
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+              </div>
+              <div className="border border-gray-200 rounded-lg divide-y divide-gray-200">
+                {recentInvoices.slice(0, 5).map((invoice: any) => (
+                  <div key={invoice.id} className="p-4 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-sm font-medium text-gray-900">
+                          Invoice #{invoice.invoiceNumber}
+                        </div>
+                        <div className="text-xs text-gray-500 mt-1">
+                          {clientMap[invoice.clientId] || 'Unknown Client'}
+                        </div>
+                      </div>
+                      <div className="text-sm font-semibold text-gray-900">
+                        ₹{invoice.total?.toLocaleString()}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Top Clients */}
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-lg font-semibold text-gray-900">Top Clients</h2>
+              </div>
+              <div className="border border-gray-200 rounded-lg divide-y divide-gray-200">
+                {topClients.slice(0, 5).map((client: any, index: number) => (
+                  <div key={client.id} className="p-4 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+                        <span className="text-xs font-medium text-gray-600">{index + 1}</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-medium text-gray-900 truncate">
+                          {client.name}
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          {client.invoiceCount} invoices
+                        </div>
+                      </div>
+                      <div className="text-sm font-semibold text-gray-900">
+                        ₹{client.totalRevenue.toLocaleString()}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </ProtectRoute>
