@@ -7,12 +7,10 @@ import { usePagination } from '@/hooks/usePagination';
 import { useSearch } from '@/hooks/useSearch';
 import { useSort } from '@/hooks/useSort';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
 import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
-import { PageHeader } from '@/components/ui/page-header';
 import { Trash2, Edit, Plus } from 'lucide-react';
 import { ProtectRoute } from '@/components/auth/ProtectRoute';
 
@@ -46,20 +44,21 @@ export default function ClientsPage() {
 
   return (
     <ProtectRoute>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <PageHeader 
-            title="Clients" 
-            description="Manage your clients and their information"
-            action={
-              <Link href="/clients/add">
-                <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
-                  <Plus className="h-4 w-4" />
-                  Add Client
-                </Button>
-              </Link>
-            }
-          />
+      <div className="min-h-screen bg-white">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h1 className="text-2xl font-semibold text-gray-900 mb-1">Clients</h1>
+              <p className="text-sm text-gray-500">Manage your clients and their information</p>
+            </div>
+            <Link href="/clients/add">
+              <Button className="flex items-center gap-2">
+                <Plus className="h-4 w-4" />
+                Add Client
+              </Button>
+            </Link>
+          </div>
 
       {clients.length > 0 && (
         <div className="mb-8">
@@ -75,32 +74,26 @@ export default function ClientsPage() {
       )}
 
       {isLoading ? (
-        <Card>
-          <CardContent className="p-12 text-center">
-            <div className="flex items-center justify-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="border border-gray-200 rounded-lg p-12 text-center">
+          <div className="flex items-center justify-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+          </div>
+        </div>
       ) : clients.length === 0 ? (
-        <Card>
-          <CardContent className="p-12 text-center">
-            <p className="text-gray-600 mb-4">No clients found</p>
-            <Link href="/clients/add">
-              <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white">
-                Add Your First Client
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
+        <div className="border border-gray-200 rounded-lg p-12 text-center">
+          <p className="text-gray-500 mb-4">No clients found</p>
+          <Link href="/clients/add">
+            <Button>Add Your First Client</Button>
+          </Link>
+        </div>
       ) : (
         <div>
-          <Card className="overflow-hidden shadow-lg">
+          <div className="border border-gray-200 rounded-lg overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-50 border-b">
+                <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
-                    <th className="px-6 py-3 text-left text-sm">
+                    <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       <SortableHeader
                         label="Name"
                         sortKey="client_name"
