@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { ArrowUp, ArrowDown } from 'lucide-react';
+import { ArrowUp, ArrowDown, LucideIcon } from 'lucide-react';
 
 export interface SortableHeaderProps {
   label: string;
@@ -9,6 +9,7 @@ export interface SortableHeaderProps {
   currentSortKey?: string;
   sortDirection?: 'asc' | 'desc';
   onSort: (key: string) => void;
+  icon?: LucideIcon;
 }
 
 export function SortableHeader({
@@ -17,6 +18,7 @@ export function SortableHeader({
   currentSortKey,
   sortDirection,
   onSort,
+  icon: Icon,
 }: SortableHeaderProps) {
   const isActive = currentSortKey === sortKey;
 
@@ -24,8 +26,9 @@ export function SortableHeader({
     <Button
       onClick={() => onSort(sortKey)}
       variant="ghost"
-      className="h-auto p-0 font-semibold text-gray-900 hover:bg-transparent hover:text-blue-600 flex items-center gap-1 group"
+      className="h-auto p-0 font-medium text-gray-500 hover:bg-transparent hover:text-gray-900 flex items-center gap-2 group"
     >
+      {Icon && <Icon className="h-4 w-4" />}
       {label}
       {isActive && (
         <span className="ml-1">

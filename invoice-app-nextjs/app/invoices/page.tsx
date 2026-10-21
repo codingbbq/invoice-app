@@ -15,7 +15,7 @@ import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { PageHeader } from '@/components/ui/page-header';
-import { Trash2, Eye, Plus, Download } from 'lucide-react';
+import { Trash2, Eye, Plus, Download, Hash, User, Calendar, DollarSign, AlertCircle } from 'lucide-react';
 
 export default function InvoicesPage() {
   const { data: invoices = [], isLoading } = useInvoices();

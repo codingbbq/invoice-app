@@ -13,7 +13,7 @@ import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { PageHeader } from '@/components/ui/page-header';
-import { Trash2, Edit, Plus } from 'lucide-react';
+import { Trash2, Edit, Plus, Package, Hash, IndianRupee, Percent } from 'lucide-react';
 import { ProtectRoute } from '@/components/auth/ProtectRoute';
 
 export default function ProductsPage() {
@@ -122,27 +122,29 @@ export default function ProductsPage() {
           <Card className="overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-50 border-b">
+                <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
-                    <th className="px-6 py-3 text-left text-sm">
+                    <th className="px-6 py-4 text-left">
                       <SortableHeader
                         label="Name"
                         sortKey="product_name"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
                         onSort={() => toggleSort('product_name' as any)}
+                        icon={Package}
                       />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm">
+                    <th className="px-6 py-4 text-left">
                       <SortableHeader
                         label="HSN Code"
                         sortKey="product_hsn_code"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
                         onSort={() => toggleSort('product_hsn_code' as any)}
+                        icon={Hash}
                       />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm">
+                    <th className="px-6 py-4 text-left">
                       <SortableHeader
                         label="Description"
                         sortKey="product_description"
@@ -151,7 +153,7 @@ export default function ProductsPage() {
                         onSort={() => toggleSort('product_description' as any)}
                       />
                     </th>
-                    <th className="px-6 py-3 text-right text-sm">
+                    <th className="px-6 py-4 text-right">
                       <SortableHeader
                         label="MRP"
                         sortKey="product_mrp"

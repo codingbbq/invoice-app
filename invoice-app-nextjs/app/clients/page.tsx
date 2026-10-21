@@ -11,7 +11,7 @@ import { Pagination } from '@/components/ui/pagination';
 import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
-import { Trash2, Edit, Plus } from 'lucide-react';
+import { Trash2, Edit, Plus, User, Hash, Mail, Phone, MapPin } from 'lucide-react';
 import { ProtectRoute } from '@/components/auth/ProtectRoute';
 
 export default function ClientsPage() {
@@ -93,52 +93,57 @@ export default function ClientsPage() {
               <table className="w-full">
                 <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
-                    <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left">
                       <SortableHeader
                         label="Name"
                         sortKey="client_name"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
                         onSort={() => toggleSort('client_name' as any)}
+                        icon={User}
                       />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm">
+                    <th className="px-6 py-4 text-left">
                       <SortableHeader
                         label="GST Number"
                         sortKey="client_gst_no"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
                         onSort={() => toggleSort('client_gst_no' as any)}
+                        icon={Hash}
                       />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm">
+                    <th className="px-6 py-4 text-left">
                       <SortableHeader
                         label="Email"
                         sortKey="client_email"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
                         onSort={() => toggleSort('client_email' as any)}
+                        icon={Mail}
                       />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm">
+                    <th className="px-6 py-4 text-left">
                       <SortableHeader
                         label="Phone"
                         sortKey="client_phone"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
                         onSort={() => toggleSort('client_phone' as any)}
+                        icon={Phone}
                       />
                     </th>
-                    <th className="px-6 py-3 text-left text-sm">
+                    <th className="px-6 py-4 text-left">
                       <SortableHeader
                         label="Address"
                         sortKey="client_address"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
                         onSort={() => toggleSort('client_address' as any)}
+                        icon={MapPin}
                       />
                     </th>
-                    <th className="px-6 py-3 text-right text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-4 text-right text-sm font-medium text-gray-500">
                       Actions
                     </th>
                   </tr>
