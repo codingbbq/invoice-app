@@ -78,7 +78,7 @@ export default function SettingsPage() {
   return (
     <ProtectRoute>
       <div className="min-h-screen bg-white">
-        <div className="max-w-4xl mx-auto px-6 py-12">
+        <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="mb-8">
             <h1 className="text-2xl font-semibold text-gray-900 mb-1">Settings</h1>
             <p className="text-sm text-gray-500">Manage your company information</p>
