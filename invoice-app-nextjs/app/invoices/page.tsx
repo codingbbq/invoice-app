@@ -6,16 +6,14 @@ import Link from 'next/link';
 import { useInvoices, useDeleteInvoice } from '@/hooks/useInvoices';
 import { useClients } from '@/hooks/useClients';
 import { usePagination } from '@/hooks/usePagination';
-import { useSearch } from '@/hooks/useSearch';
 import { useSort } from '@/hooks/useSort';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
 import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
-import { PageHeader } from '@/components/ui/page-header';
-import { Trash2, Eye, Plus, Download, Hash, User, Calendar, DollarSign, AlertCircle } from 'lucide-react';
+import { Trash2, Eye, Plus, Hash, User, Calendar, DollarSign } from 'lucide-react';
 
 export default function InvoicesPage() {
   const { data: invoices = [], isLoading } = useInvoices();
@@ -117,7 +115,7 @@ export default function InvoicesPage() {
         </Card>
       ) : (
         <div>
-          <Card className="overflow-hidden">
+          <div className="border border-gray-200 rounded-lg overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50 border-b border-gray-200">
@@ -210,7 +208,7 @@ export default function InvoicesPage() {
                 </tbody>
               </table>
             </div>
-          </Card>
+          </div>
           <Pagination
             currentPage={pagination.currentPage}
             totalPages={pagination.totalPages}

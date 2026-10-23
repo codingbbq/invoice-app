@@ -13,7 +13,7 @@ export function ClientLayout({ children }: { children: ReactNode }) {
   return (
     <Providers>
       {!isLoginPage && <Header />}
-      <main className="min-h-screen">
+      <main className={isLoginPage ? 'min-h-screen' : 'min-h-screen pt-16'}>
         {children}
       </main>
       <Footer />

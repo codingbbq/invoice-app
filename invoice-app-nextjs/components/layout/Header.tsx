@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { Menu, X, LogOut, LayoutDashboard, Users, Package, FileText, Settings } from 'lucide-react';
+import { Menu, X, LogOut, LayoutDashboard, Users, Package, FileText, Settings, ReceiptText } from 'lucide-react';
 import { auth } from '@/lib/firebase';
 import { onAuthStateChanged, signOut, User as FirebaseUser } from 'firebase/auth';
 
@@ -49,12 +49,15 @@ export function Header() {
   };
 
   return (
-    <header className="bg-white border-b border-gray-200">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/95 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.35)] backdrop-blur supports-[backdrop-filter]:bg-white/85">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-semibold text-gray-900 hover:text-gray-700 transition-colors">
-              Invoice App
+            <Link href="/" className="flex items-center gap-2 text-xl font-semibold text-gray-900 hover:text-gray-700 transition-colors">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-50 text-gray-700 shadow-sm">
+                <ReceiptText className="h-4.5 w-4.5" />
+              </span>
+              <span>Invoice App</span>
             </Link>
           </div>
 

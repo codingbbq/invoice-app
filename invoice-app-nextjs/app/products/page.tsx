@@ -119,7 +119,7 @@ export default function ProductsPage() {
         </Card>
       ) : (
         <div>
-          <Card className="overflow-hidden">
+          <div className="border border-gray-200 rounded-lg overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50 border-b border-gray-200">
@@ -210,7 +210,7 @@ export default function ProductsPage() {
                 </tbody>
               </table>
             </div>
-          </Card>
+          </div>
           <Pagination
             currentPage={pagination.currentPage}
             totalPages={pagination.totalPages}

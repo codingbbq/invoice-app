@@ -4,7 +4,6 @@ import { useInvoices } from '@/hooks/useInvoices';
 import { useClients } from '@/hooks/useClients';
 import { useProducts } from '@/hooks/useProducts';
 import { ProtectRoute } from '@/components/auth/ProtectRoute';
-import { Card, CardContent } from '@/components/ui/card';
 import { ArrowUpRight, DollarSign, FileText, Users, Package } from 'lucide-react';
 import Link from 'next/link';
 
@@ -15,8 +14,6 @@ export default function Dashboard() {
 
   // Calculate KPI data
   const totalRevenue = invoices.reduce((sum: number, inv: any) => sum + (inv.total || 0), 0);
-  const paidInvoices = invoices.filter((inv: any) => inv.status === 'paid').length;
-  const pendingInvoices = invoices.filter((inv: any) => inv.status === 'pending').length;
   
   const kpiData = {
     paidRevenue: totalRevenue,
@@ -166,7 +163,6 @@ export default function Dashboard() {
                 Invoices
               </div>
               <div className="text-3xl font-semibold text-gray-900">{invoices.length}</div>
-              <div className="text-xs text-gray-400 mt-2">{paidInvoices} paid · {pendingInvoices} pending</div>
             </div>
 
             <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">

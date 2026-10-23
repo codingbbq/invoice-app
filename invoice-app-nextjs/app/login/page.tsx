@@ -37,12 +37,6 @@ export default function LoginPage() {
         <div className="w-full max-w-md">
           {/* Logo/Brand */}
           <div className="mb-8 text-center">
-            <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-sm">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-950 text-white">
-                <Sparkles className="h-4 w-4" />
-              </span>
-              Invoice App
-            </div>
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Welcome back</p>
             <h2 className="text-3xl font-semibold tracking-tight text-slate-950">Sign in</h2>
           </div>
