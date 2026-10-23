@@ -1,10 +1,12 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Invoice } from '@/lib/firestore';
 
+type InvoiceRecord = Invoice & { id: string };
+
 export const useInvoices = () => {
-  return useQuery({
+  return useQuery<InvoiceRecord[]>({
     queryKey: ['invoices'],
-    queryFn: async () => {
+    queryFn: async (): Promise<InvoiceRecord[]> => {
       const response = await fetch('/api/invoices');
       if (!response.ok) throw new Error('Failed to fetch invoices');
       return response.json();
@@ -13,9 +15,9 @@ export const useInvoices = () => {
 };
 
 export const useInvoice = (id: string | null) => {
-  return useQuery({
+  return useQuery<InvoiceRecord | null>({
     queryKey: ['invoice', id],
-    queryFn: async () => {
+    queryFn: async (): Promise<InvoiceRecord | null> => {
       if (!id) return null;
       const response = await fetch(`/api/invoices?id=${id}`);
       if (!response.ok) throw new Error('Failed to fetch invoice');

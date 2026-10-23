@@ -53,7 +53,7 @@ export default function InvoicesPage() {
   };
   
   const { items: sortedInvoices, sortConfig, toggleSort } = useSort(searchedInvoices, {
-    key: 'invoiceNumber' as any,
+    key: 'invoiceNumber',
     direction: 'desc',
   });
   
@@ -126,7 +126,7 @@ export default function InvoicesPage() {
                         sortKey="invoiceNumber"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
-                        onSort={() => toggleSort('invoiceNumber' as any)}
+                        onSort={() => toggleSort('invoiceNumber')}
                         icon={Hash}
                       />
                     </th>
@@ -136,7 +136,7 @@ export default function InvoicesPage() {
                         sortKey="clientId"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
-                        onSort={() => toggleSort('clientId' as any)}
+                        onSort={() => toggleSort('clientId')}
                         icon={User}
                       />
                     </th>
@@ -146,7 +146,7 @@ export default function InvoicesPage() {
                         sortKey="invoiceDate"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
-                        onSort={() => toggleSort('invoiceDate' as any)}
+                        onSort={() => toggleSort('invoiceDate')}
                         icon={Calendar}
                       />
                     </th>
@@ -156,7 +156,7 @@ export default function InvoicesPage() {
                         sortKey="total"
                         currentSortKey={sortConfig?.key as string | undefined}
                         sortDirection={sortConfig?.direction}
-                        onSort={() => toggleSort('total' as any)}
+                        onSort={() => toggleSort('total')}
                         icon={DollarSign}
                       />
                     </th>
@@ -196,7 +196,7 @@ export default function InvoicesPage() {
                             size="sm"
                             variant="outline"
                             className="text-red-600 hover:text-red-700 flex items-center gap-1"
-                            onClick={() => setDeleteConfirm({ id: invoice.id, number: invoice.invoiceNumber })}
+                            onClick={() => setDeleteConfirm({ id: invoice.id, number: String(invoice.invoiceNumber) })}
                           >
                             <Trash2 className="h-4 w-4" />
                             Delete
