@@ -7,6 +7,7 @@ import { usePagination } from '@/hooks/usePagination';
 import { useSearch } from '@/hooks/useSearch';
 import { useSort } from '@/hooks/useSort';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
 import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
@@ -74,21 +75,21 @@ export default function ClientsPage() {
       )}
 
       {isLoading ? (
-        <div className="border border-gray-200 rounded-lg p-12 text-center">
+        <Card className="p-12 text-center">
           <div className="flex items-center justify-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
           </div>
-        </div>
+        </Card>
       ) : clients.length === 0 ? (
-        <div className="border border-gray-200 rounded-lg p-12 text-center">
+        <Card className="p-12 text-center">
           <p className="text-gray-500 mb-4">No clients found</p>
           <Link href="/clients/add">
             <Button>Add Your First Client</Button>
           </Link>
-        </div>
+        </Card>
       ) : (
         <div>
-          <div className="border border-gray-200 rounded-lg overflow-hidden">
+          <Card className="overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50 border-b border-gray-200">
@@ -194,7 +195,7 @@ export default function ClientsPage() {
                 </tbody>
               </table>
             </div>
-          </div>
+          </Card>
           <div className="mt-6">
             <Pagination
               currentPage={pagination.currentPage}

@@ -234,7 +234,7 @@ export default function CreateInvoicePage() {
                     gstPercentage: parseFloat(e.target.value),
                   })
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition-[border-color,box-shadow,background-color] hover:border-gray-300 focus:border-gray-300 focus:ring-4 focus:ring-blue-100"
               >
                 <option value="0">0%</option>
                 <option value="5">5%</option>
@@ -451,7 +451,6 @@ export default function CreateInvoicePage() {
           </Button>
           <Button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white"
             disabled={addInvoice.isPending}
           >
             {addInvoice.isPending ? 'Creating...' : 'Create Invoice'}

@@ -25,7 +25,7 @@ export function TopPerformers({ data }: { data: TopPerformersData }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {/* Top 5 Clients */}
-      <Card className="p-4 border border-gray-100">
+      <Card className="p-4">
         <h3 className="text-sm font-semibold text-gray-900 mb-3">Top 5 Clients</h3>
 
         <div className="space-y-2">
@@ -53,7 +53,7 @@ export function TopPerformers({ data }: { data: TopPerformersData }) {
       </Card>
 
       {/* Top 5 Products */}
-      <Card className="p-4 border border-gray-100">
+      <Card className="p-4">
         <h3 className="text-sm font-semibold text-gray-900 mb-3">Top 5 Products</h3>
 
         <div className="space-y-2">

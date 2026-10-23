@@ -5,8 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent } from '@/components/ui/card';
-import { PageHeader } from '@/components/ui/page-header';
+import { Card } from '@/components/ui/card';
 import { ProtectRoute } from '@/components/auth/ProtectRoute';
 
 export default function SettingsPage() {
@@ -84,7 +83,7 @@ export default function SettingsPage() {
             <p className="text-sm text-gray-500">Manage your company information</p>
           </div>
 
-          <div className="border border-gray-200 rounded-lg p-8">
+          <Card className="p-8">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -182,7 +181,7 @@ export default function SettingsPage() {
             </Button>
           </div>
         </form>
-          </div>
+          </Card>
         </div>
       </div>
     </ProtectRoute>

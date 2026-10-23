@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Eye, Trash2 } from 'lucide-react';
+import { Eye } from 'lucide-react';
 
 export interface Invoice {
   id: string;
@@ -42,7 +42,7 @@ export function ActivityFeed({ data }: { data: ActivityFeedData }) {
   const [activeTab, setActiveTab] = useState<'invoices' | 'clients' | 'products'>('invoices');
 
   return (
-    <Card className="p-4 mb-6 border border-gray-100">
+    <Card className="p-4 mb-6">
       <h3 className="text-sm font-semibold text-gray-900 mb-3">Recent Activity</h3>
 
       {/* Tab Switcher */}

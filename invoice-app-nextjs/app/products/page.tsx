@@ -7,13 +7,12 @@ import { usePagination } from '@/hooks/usePagination';
 import { useSearch } from '@/hooks/useSearch';
 import { useSort } from '@/hooks/useSort';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
 import { SearchInput } from '@/components/ui/search-input';
 import { SortableHeader } from '@/components/ui/sortable-header';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
-import { PageHeader } from '@/components/ui/page-header';
-import { Trash2, Edit, Plus, Package, Hash, IndianRupee, Percent } from 'lucide-react';
+import { Trash2, Edit, Plus, Package, Hash } from 'lucide-react';
 import { ProtectRoute } from '@/components/auth/ProtectRoute';
 
 export default function ProductsPage() {
@@ -119,7 +118,7 @@ export default function ProductsPage() {
         </Card>
       ) : (
         <div>
-          <div className="border border-gray-200 rounded-lg overflow-hidden">
+          <Card className="overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50 border-b border-gray-200">
@@ -210,7 +209,7 @@ export default function ProductsPage() {
                 </tbody>
               </table>
             </div>
-          </div>
+          </Card>
           <Pagination
             currentPage={pagination.currentPage}
             totalPages={pagination.totalPages}

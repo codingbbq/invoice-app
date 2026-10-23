@@ -15,7 +15,7 @@ export function KPICards({ data }: { data: KPIData }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
       {/* Paid Revenue Card */}
-      <Card className="p-4 bg-white border border-gray-100 hover:border-gray-200 transition-colors">
+      <Card className="p-4 hover:border-gray-200 transition-colors">
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Paid Revenue</p>
@@ -29,7 +29,7 @@ export function KPICards({ data }: { data: KPIData }) {
       </Card>
 
       {/* Total Invoices Card */}
-      <Card className="p-4 bg-white border border-gray-100 hover:border-gray-200 transition-colors">
+      <Card className="p-4 hover:border-gray-200 transition-colors">
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Total Invoices</p>
@@ -43,7 +43,7 @@ export function KPICards({ data }: { data: KPIData }) {
       </Card>
 
       {/* Clients Card */}
-      <Card className="p-4 bg-white border border-gray-100 hover:border-gray-200 transition-colors">
+      <Card className="p-4 hover:border-gray-200 transition-colors">
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Total Clients</p>
@@ -57,7 +57,7 @@ export function KPICards({ data }: { data: KPIData }) {
       </Card>
 
       {/* Products Card */}
-      <Card className="p-4 bg-white border border-gray-100 hover:border-gray-200 transition-colors">
+      <Card className="p-4 hover:border-gray-200 transition-colors">
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Total Products</p>

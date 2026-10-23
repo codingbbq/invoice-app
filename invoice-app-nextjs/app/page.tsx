@@ -4,6 +4,7 @@ import { useInvoices } from '@/hooks/useInvoices';
 import { useClients } from '@/hooks/useClients';
 import { useProducts } from '@/hooks/useProducts';
 import { ProtectRoute } from '@/components/auth/ProtectRoute';
+import { Card } from '@/components/ui/card';
 import { ArrowUpRight, DollarSign, FileText, Users, Package } from 'lucide-react';
 import Link from 'next/link';
 
@@ -148,40 +149,40 @@ export default function Dashboard() {
 
           {/* Stats Grid - Minimalist */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-            <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">
+            <Card className="p-6 hover:border-gray-300 transition-colors">
               <div className="flex items-center gap-2 text-sm font-medium text-gray-500 mb-2">
                 <DollarSign className="w-4 h-4" />
                 Total Revenue
               </div>
               <div className="text-3xl font-semibold text-gray-900">₹{totalRevenue.toLocaleString()}</div>
               <div className="text-xs text-gray-400 mt-2">{invoices.length} invoices</div>
-            </div>
+            </Card>
 
-            <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">
+            <Card className="p-6 hover:border-gray-300 transition-colors">
               <div className="flex items-center gap-2 text-sm font-medium text-gray-500 mb-2">
                 <FileText className="w-4 h-4" />
                 Invoices
               </div>
               <div className="text-3xl font-semibold text-gray-900">{invoices.length}</div>
-            </div>
+            </Card>
 
-            <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">
+            <Card className="p-6 hover:border-gray-300 transition-colors">
               <div className="flex items-center gap-2 text-sm font-medium text-gray-500 mb-2">
                 <Users className="w-4 h-4" />
                 Clients
               </div>
               <div className="text-3xl font-semibold text-gray-900">{clients.length}</div>
               <div className="text-xs text-gray-400 mt-2">Active clients</div>
-            </div>
+            </Card>
 
-            <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">
+            <Card className="p-6 hover:border-gray-300 transition-colors">
               <div className="flex items-center gap-2 text-sm font-medium text-gray-500 mb-2">
                 <Package className="w-4 h-4" />
                 Products
               </div>
               <div className="text-3xl font-semibold text-gray-900">{products.length}</div>
               <div className="text-xs text-gray-400 mt-2">In catalog</div>
-            </div>
+            </Card>
           </div>
 
           {/* Recent Activity */}
@@ -195,7 +196,7 @@ export default function Dashboard() {
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </div>
-              <div className="border border-gray-200 rounded-lg divide-y divide-gray-200">
+              <Card className="divide-y divide-gray-200 overflow-hidden">
                 {recentInvoices.slice(0, 5).map((invoice: any) => (
                   <div key={invoice.id} className="p-4 hover:bg-gray-50 transition-colors">
                     <div className="flex items-center justify-between">
@@ -213,7 +214,7 @@ export default function Dashboard() {
                     </div>
                   </div>
                 ))}
-              </div>
+              </Card>
             </div>
 
             {/* Top Clients */}
@@ -221,7 +222,7 @@ export default function Dashboard() {
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-semibold text-gray-900">Top Clients</h2>
               </div>
-              <div className="border border-gray-200 rounded-lg divide-y divide-gray-200">
+              <Card className="divide-y divide-gray-200 overflow-hidden">
                 {topClients.slice(0, 5).map((client: any, index: number) => (
                   <div key={client.id} className="p-4 hover:bg-gray-50 transition-colors">
                     <div className="flex items-center gap-3">
@@ -242,7 +243,7 @@ export default function Dashboard() {
                     </div>
                   </div>
                 ))}
-              </div>
+              </Card>
             </div>
           </div>
         </div>

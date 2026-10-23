@@ -56,30 +56,30 @@ export function SearchableSelect({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-left bg-white flex items-center justify-between"
+        className="flex h-11 w-full items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-left text-sm text-slate-900 shadow-sm transition-[border-color,box-shadow,background-color] hover:border-gray-300 focus:outline-none focus:ring-4 focus:ring-blue-100"
       >
-        <span className="text-gray-900">
+        <span className={selectedOption ? 'text-slate-900' : 'text-slate-400'}>
           {selectedOption ? selectedOption.name : placeholder}
         </span>
         <ChevronDown
-          className={`h-4 w-4 text-gray-400 transition-transform ${
+          className={`h-4 w-4 text-slate-400 transition-transform ${
             isOpen ? 'transform rotate-180' : ''
           }`}
         />
       </button>
 
       {isOpen && (
-        <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
-          <div className="p-2 border-b border-gray-200">
+        <div className="absolute z-50 mt-2 w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
+          <div className="border-b border-gray-100 p-3">
             <div className="relative">
-              <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
               <input
                 ref={inputRef}
                 type="text"
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-8 pr-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="h-10 w-full rounded-lg border border-gray-200 bg-white pl-9 pr-3 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-gray-300 focus:ring-4 focus:ring-blue-100"
               />
             </div>
           </div>
@@ -95,17 +95,17 @@ export function SearchableSelect({
                     setIsOpen(false);
                     setSearchTerm('');
                   }}
-                  className={`w-full text-left px-3 py-2 text-sm hover:bg-blue-50 ${
+                  className={`w-full px-4 py-2.5 text-left text-sm transition-colors hover:bg-slate-50 ${
                     value === option.id
-                      ? 'bg-blue-100 text-blue-900'
-                      : 'text-gray-900'
+                      ? 'bg-blue-50 text-blue-900'
+                      : 'text-slate-900'
                   }`}
                 >
                   {option.name}
                 </button>
               ))
             ) : (
-              <div className="px-3 py-2 text-sm text-gray-500">
+              <div className="px-4 py-3 text-sm text-slate-500">
                 No results found
               </div>
             )}
