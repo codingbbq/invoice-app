@@ -362,7 +362,7 @@ export default function CreateInvoicePage() {
             })}
           </div>
 
-          <div className="hidden md:block overflow-x-auto">
+          <div className="hidden md:block">
             <table className="w-full" style={{ tableLayout: 'fixed' }}>
               <colgroup>
                 <col style={{ width: '35%' }} />
@@ -491,11 +491,34 @@ export default function CreateInvoicePage() {
                   <span className="text-gray-600">Subtotal:</span>
                   <span className="font-medium">₹{totals.subtotal.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Discount ({formData.discountPercentage}%):</span>
-                  <span className="font-medium">
-                    -₹{totals.discountAmount.toFixed(2)}
-                  </span>
+                <div className="rounded-xl border border-gray-200 bg-gray-50 p-3 sm:p-4">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                    <div className="space-y-1">
+                      <span className="block text-sm font-medium text-gray-700">
+                        Discount %
+                      </span>
+                      <Input
+                        type="number"
+                        value={formData.discountPercentage}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            discountPercentage: parseFloat(e.target.value) || 0,
+                          })
+                        }
+                        className="w-full sm:w-28"
+                        step="0.01"
+                        min="0"
+                        max="100"
+                      />
+                    </div>
+                    <div className="flex justify-between gap-4 sm:block sm:text-right">
+                      <span className="text-gray-600 sm:block">Discount Amount</span>
+                      <span className="font-medium sm:mt-1 sm:block">
+                        -₹{totals.discountAmount.toFixed(2)}
+                      </span>
+                    </div>
+                  </div>
                 </div>
                 <div className="border-t pt-3">
                   <div className="flex justify-between">
@@ -534,28 +557,6 @@ export default function CreateInvoicePage() {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="mt-6 flex justify-between">
-            <label className="flex items-center gap-2">
-              <span className="text-sm font-medium text-gray-700">
-                Discount %:
-              </span>
-              <Input
-                type="number"
-                value={formData.discountPercentage}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    discountPercentage: parseFloat(e.target.value) || 0,
-                  })
-                }
-                className="w-20"
-                step="0.01"
-                min="0"
-                max="100"
-              />
-            </label>
           </div>
         </Card>
 
