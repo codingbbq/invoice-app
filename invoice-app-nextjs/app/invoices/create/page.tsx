@@ -113,6 +113,10 @@ export default function CreateInvoicePage() {
     ]);
   };
 
+  const getProductById = (productId: string) => {
+    return products.find((product: any) => product.id === productId);
+  };
+
   const removeItem = (index: number) => {
     setItems(items.filter((_, i) => i !== index));
   };
@@ -248,95 +252,20 @@ export default function CreateInvoicePage() {
         {/* Invoice Items */}
         <Card className="p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Items</h2>
-          <table className="w-full" style={{ tableLayout: 'fixed' }}>
-            <colgroup>
-              <col style={{ width: '35%' }} />
-              <col style={{ width: '12%' }} />
-              <col style={{ width: '12%' }} />
-              <col style={{ width: '10%' }} />
-              <col style={{ width: '10%' }} />
-              <col style={{ width: '12%' }} />
-              <col style={{ width: '9%' }} />
-            </colgroup>
-            <thead className="bg-gray-50 border-b">
-              <tr>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-900">
-                  Product
-                </th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-900">
-                  HSN
-                </th>
-                <th className="px-4 py-2 text-right text-sm font-semibold text-gray-900">
-                  MRP
-                </th>
-                <th className="px-4 py-2 text-right text-sm font-semibold text-gray-900">
-                  Qty
-                </th>
-                <th className="px-4 py-2 text-right text-sm font-semibold text-gray-900">
-                  Rate
-                </th>
-                <th className="px-4 py-2 text-right text-sm font-semibold text-gray-900">
-                  Total
-                </th>
-                <th className="px-4 py-2 text-center text-sm font-semibold text-gray-900">
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              {items.map((item, index) => (
-                <tr key={index} className="hover:bg-gray-50">
-                  <td className="px-4 py-2 min-w-0">
-                    <SearchableSelect
-                      value={item.productId}
-                      onChange={(value) =>
-                        handleItemChange(index, 'productId', value)
-                      }
-                      options={products.map((product: any) => ({
-                        id: product.id,
-                        name: product.product_name || product.name || 'Unknown',
-                      }))}
-                      placeholder="Select Product"
-                      required
-                    />
-                  </td>
-                  <td className="px-4 py-2 text-sm text-gray-600 text-center">
-                    {item.mrp > 0
-                      ? products.find((p: any) => p.id === item.productId)
-                          ?.product_hsn_code || products.find((p: any) => p.id === item.productId)?.hsnCode || '-'
-                      : '-'}
-                  </td>
-                  <td className="px-4 py-2 text-right text-sm">
-                    ₹{(item.mrp || 0).toFixed(2)}
-                  </td>
-                  <td className="px-4 py-2 min-w-0">
-                    <Input
-                      type="number"
-                      value={item.quantity ?? 0}
-                      onChange={(e) =>
-                        handleItemChange(index, 'quantity', e.target.value)
-                      }
-                      className="w-full text-right text-sm"
-                      step="0.01"
-                      min="0"
-                    />
-                  </td>
-                  <td className="px-4 py-2 min-w-0">
-                    <Input
-                      type="number"
-                      value={item.rate ?? 0}
-                      onChange={(e) =>
-                        handleItemChange(index, 'rate', e.target.value)
-                      }
-                      className="w-full text-right text-sm"
-                      step="0.01"
-                      min="0"
-                    />
-                  </td>
-                  <td className="px-4 py-2 text-right text-sm font-medium">
-                    ₹{(item.totalCost || 0).toFixed(2)}
-                  </td>
-                  <td className="px-4 py-2 text-center">
+          <div className="space-y-4 md:hidden">
+            {items.map((item, index) => {
+              const selectedProduct = getProductById(item.productId);
+
+              return (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm"
+                >
+                  <div className="mb-4 flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-sm font-semibold text-gray-900">Item {index + 1}</p>
+                      <p className="text-xs text-gray-500">Add product, quantity and rate</p>
+                    </div>
                     <Button
                       type="button"
                       variant="outline"
@@ -346,11 +275,201 @@ export default function CreateInvoicePage() {
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
-                  </td>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div>
+                      <label className="mb-2 block text-sm font-medium text-gray-700">
+                        Product
+                      </label>
+                      <SearchableSelect
+                        value={item.productId}
+                        onChange={(value) =>
+                          handleItemChange(index, 'productId', value)
+                        }
+                        options={products.map((product: any) => ({
+                          id: product.id,
+                          name: product.product_name || product.name || 'Unknown',
+                        }))}
+                        placeholder="Select Product"
+                        required
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="rounded-xl bg-gray-50 px-3 py-2">
+                        <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
+                          HSN
+                        </p>
+                        <p className="mt-1 text-sm font-medium text-gray-900">
+                          {item.mrp > 0
+                            ? selectedProduct?.product_hsn_code || selectedProduct?.hsnCode || '-'
+                            : '-'}
+                        </p>
+                      </div>
+                      <div className="rounded-xl bg-gray-50 px-3 py-2 text-right">
+                        <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
+                          MRP
+                        </p>
+                        <p className="mt-1 text-sm font-medium text-gray-900">
+                          ₹{(item.mrp || 0).toFixed(2)}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="mb-2 block text-sm font-medium text-gray-700">
+                          Qty
+                        </label>
+                        <Input
+                          type="number"
+                          value={item.quantity ?? 0}
+                          onChange={(e) =>
+                            handleItemChange(index, 'quantity', e.target.value)
+                          }
+                          className="w-full text-right text-sm"
+                          step="0.01"
+                          min="0"
+                        />
+                      </div>
+                      <div>
+                        <label className="mb-2 block text-sm font-medium text-gray-700">
+                          Rate
+                        </label>
+                        <Input
+                          type="number"
+                          value={item.rate ?? 0}
+                          onChange={(e) =>
+                            handleItemChange(index, 'rate', e.target.value)
+                          }
+                          className="w-full text-right text-sm"
+                          step="0.01"
+                          min="0"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between rounded-xl border border-gray-200 bg-gray-50 px-3 py-3">
+                      <span className="text-sm font-medium text-gray-600">Total</span>
+                      <span className="text-base font-semibold text-gray-900">
+                        ₹{(item.totalCost || 0).toFixed(2)}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="hidden md:block overflow-x-auto">
+            <table className="w-full" style={{ tableLayout: 'fixed' }}>
+              <colgroup>
+                <col style={{ width: '35%' }} />
+                <col style={{ width: '12%' }} />
+                <col style={{ width: '12%' }} />
+                <col style={{ width: '10%' }} />
+                <col style={{ width: '10%' }} />
+                <col style={{ width: '12%' }} />
+                <col style={{ width: '9%' }} />
+              </colgroup>
+              <thead className="bg-gray-50 border-b">
+                <tr>
+                  <th className="px-4 py-2 text-left text-sm font-semibold text-gray-900">
+                    Product
+                  </th>
+                  <th className="px-4 py-2 text-left text-sm font-semibold text-gray-900">
+                    HSN
+                  </th>
+                  <th className="px-4 py-2 text-right text-sm font-semibold text-gray-900">
+                    MRP
+                  </th>
+                  <th className="px-4 py-2 text-right text-sm font-semibold text-gray-900">
+                    Qty
+                  </th>
+                  <th className="px-4 py-2 text-right text-sm font-semibold text-gray-900">
+                    Rate
+                  </th>
+                  <th className="px-4 py-2 text-right text-sm font-semibold text-gray-900">
+                    Total
+                  </th>
+                  <th className="px-4 py-2 text-center text-sm font-semibold text-gray-900">
+                    Action
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y">
+                {items.map((item, index) => {
+                  const selectedProduct = getProductById(item.productId);
+
+                  return (
+                    <tr key={index} className="hover:bg-gray-50">
+                      <td className="px-4 py-2 min-w-0">
+                        <SearchableSelect
+                          value={item.productId}
+                          onChange={(value) =>
+                            handleItemChange(index, 'productId', value)
+                          }
+                          options={products.map((product: any) => ({
+                            id: product.id,
+                            name: product.product_name || product.name || 'Unknown',
+                          }))}
+                          placeholder="Select Product"
+                          required
+                        />
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-600 text-center">
+                        {item.mrp > 0
+                          ? selectedProduct?.product_hsn_code || selectedProduct?.hsnCode || '-'
+                          : '-'}
+                      </td>
+                      <td className="px-4 py-2 text-right text-sm">
+                        ₹{(item.mrp || 0).toFixed(2)}
+                      </td>
+                      <td className="px-4 py-2 min-w-0">
+                        <Input
+                          type="number"
+                          value={item.quantity ?? 0}
+                          onChange={(e) =>
+                            handleItemChange(index, 'quantity', e.target.value)
+                          }
+                          className="w-full text-right text-sm"
+                          step="0.01"
+                          min="0"
+                        />
+                      </td>
+                      <td className="px-4 py-2 min-w-0">
+                        <Input
+                          type="number"
+                          value={item.rate ?? 0}
+                          onChange={(e) =>
+                            handleItemChange(index, 'rate', e.target.value)
+                          }
+                          className="w-full text-right text-sm"
+                          step="0.01"
+                          min="0"
+                        />
+                      </td>
+                      <td className="px-4 py-2 text-right text-sm font-medium">
+                        ₹{(item.totalCost || 0).toFixed(2)}
+                      </td>
+                      <td className="px-4 py-2 text-center">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => removeItem(index)}
+                          className="text-red-600 hover:text-red-700"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
 
           <Button
             type="button"
