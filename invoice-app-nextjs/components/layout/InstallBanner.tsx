@@ -12,7 +12,15 @@ interface BeforeInstallPromptEvent extends Event {
   }>;
 }
 
-const DISMISS_KEY = 'invoice-app-install-banner-dismissed';
+const DISMISS_KEY = 'invoice-app-install-banner-dismissed-session';
+
+function isDismissedForNow() {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
+  return window.sessionStorage.getItem(DISMISS_KEY) === 'true';
+}
 
 export function InstallBanner() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
@@ -31,18 +39,16 @@ export function InstallBanner() {
       return;
     }
 
-    const isDismissed = window.localStorage.getItem(DISMISS_KEY) === 'true';
-
     const handleBeforeInstallPrompt = (event: Event) => {
       event.preventDefault();
       setDeferredPrompt(event as BeforeInstallPromptEvent);
-      setIsVisible(!isDismissed);
+      setIsVisible(!isDismissedForNow());
     };
 
     const handleAppInstalled = () => {
       setDeferredPrompt(null);
       setIsVisible(false);
-      window.localStorage.removeItem(DISMISS_KEY);
+      window.sessionStorage.removeItem(DISMISS_KEY);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -64,14 +70,16 @@ export function InstallBanner() {
     setDeferredPrompt(null);
 
     if (outcome === 'accepted') {
-      window.localStorage.removeItem(DISMISS_KEY);
+      window.sessionStorage.removeItem(DISMISS_KEY);
+    } else {
+      window.sessionStorage.setItem(DISMISS_KEY, 'true');
     }
 
     setIsVisible(false);
   };
 
   const handleDismiss = () => {
-    window.localStorage.setItem(DISMISS_KEY, 'true');
+    window.sessionStorage.setItem(DISMISS_KEY, 'true');
     setIsVisible(false);
   };
 
