@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Providers } from '@/components/providers';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { InstallBanner } from '@/components/layout/InstallBanner';
 
 export function ClientLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -25,6 +26,7 @@ export function ClientLayout({ children }: { children: ReactNode }) {
         {children}
       </main>
       <Footer />
+      <InstallBanner />
     </Providers>
   );
 }
